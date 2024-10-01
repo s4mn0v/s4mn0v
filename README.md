@@ -11,8 +11,5 @@
 ![](https://github-readme-stats.vercel.app/api?username=s4mn0v&theme=synthwave&hide_border=false&include_all_commits=false&count_private=false)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=s4mn0v&theme=synthwave&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=s4mn0v&theme=synthwave&no-frame=false&no-bg=true&margin-w=4)
-
 ### 🔝 Top Contributed Repo
 ![](https://github-contributor-stats.vercel.app/api?username=s4mn0v&limit=5&theme=synthwave&combine_all_yearly_contributions=true)
