@@ -6,6 +6,7 @@
   ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
   ![Kali](https://img.shields.io/badge/kali-1C1E24?style=for-the-badge&logo=kalilinux&logoColor=#D04A37)
   ![ParrotSecurity](https://img.shields.io/badge/parrot.os-1C1E24?style=for-the-badge&logo=parrotsecurity&logoColor=#D04A37)
+  ![ParrotSecurity](https://img.shields.io/badge/pinescript-1C1E24?style=for-the-badge&logo=pinescript&logoColor=#D04A37)
 
 </div>
 
