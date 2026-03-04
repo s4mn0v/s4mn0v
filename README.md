@@ -4,6 +4,14 @@
 
 <p align="center">𝐶𝑢𝑟𝑟𝑒𝑛𝑡𝑙𝑦, 𝐼'𝑚 𝑓𝑜𝑐𝑢𝑠𝑒𝑑 𝑜𝑛:</p>
 
+<div align="center">
+  
+  ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)  ![PineScript](https://img.shields.io/badge/pinescript-1C1E24?style=for-the-badge&logo=pinescript&logoColor=#D04A37)
+
+</div>
+
+---
+
 <br>
 
 <table width="100%">
@@ -37,7 +45,7 @@
 
 <div align="center">
 
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=s4mn0v&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+<img src="https://github.com/s4mn0v/s4mn0v/blob/main/logo.png?raw=true" width="100" height="100" alt="𝕾𝕬𝕸-𝕹𝕺𝖁" />
 
 𝕾𝕬𝕸-𝕹𝕺𝖁
 
