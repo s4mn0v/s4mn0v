@@ -43,8 +43,6 @@
   </tr>
 </table>
 
-[![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=s4mn0v&bg_color=011627&color=c792ea&line=9141ac&point=dc8add&area=true&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
-
 ---
 
 <div align="center">
