@@ -6,8 +6,8 @@
 
 <div align="center">
   
-  ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)  ![PineScript](https://img.shields.io/badge/pinescript-1C1E24?style=for-the-badge&logo=pinescript&logoColor=#D04A37)
-
+  ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)  ![PineScript](https://img.shields.io/badge/pinescript-1C1E24?style=for-the-badge&logo=pinescript&logoColor=#D04A37) ![Python](https://img.shields.io/badge/python-1C1E24?style=for-the-badge&logo=python&logoColor=#D04A37)
+  
 </div>
 
 ---
