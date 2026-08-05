@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>s4mn0v — trading infrastructure</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=JetBrains+Mono:wght@500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "surface-variant": "#2e2e2e",
+                    "on-primary-container": "#1a1a1a",
+                    "on-tertiary-fixed": "#0d0d0d",
+                    "primary-fixed-dim": "#e6e6e6",
+                    "surface-container": "#1c1c1c",
+                    "primary-fixed": "#f5f5f5",
+                    "on-secondary-container": "#f0f0f0",
+                    "on-secondary-fixed-variant": "#2b2b2b",
+                    "on-tertiary-container": "#262626",
+                    "primary": "#ffffff",
+                    "secondary-fixed-dim": "#b3b3b3",
+                    "surface-bright": "#454545",
+                    "on-surface": "#ededed",
+                    "inverse-surface": "#ededed",
+                    "error": "#f2f2f2",
+                    "on-background": "#ededed",
+                    "surface-container-highest": "#2e2e2e",
+                    "outline-variant": "#4d4d4d",
+                    "tertiary-fixed": "#d9d9d9",
+                    "surface-container-lowest": "#050505",
+                    "surface-tint": "#e6e6e6",
+                    "on-secondary-fixed": "#0d0d0d",
+                    "on-error": "#0d0d0d",
+                    "on-tertiary-fixed-variant": "#262626",
+                    "on-primary-fixed-variant": "#1a1a1a",
+                    "on-secondary": "#1a1a1a",
+                    "on-error-container": "#f0f0f0",
+                    "inverse-primary": "#4d4d4d",
+                    "tertiary-fixed-dim": "#bfbfbf",
+                    "secondary": "#b3b3b3",
+                    "surface-container-low": "#171717",
+                    "outline": "#8a8a8a",
+                    "inverse-on-surface": "#2b2b2b",
+                    "background": "#131313",
+                    "surface-container-high": "#2a2a2a",
+                    "on-primary-fixed": "#141414",
+                    "secondary-container": "#333333",
+                    "surface": "#131313",
+                    "error-container": "#1a1a1a",
+                    "tertiary": "#d9d9d9",
+                    "secondary-fixed": "#cccccc",
+                    "primary-container": "#e6e6e6",
+                    "on-surface-variant": "#b3b3b3",
+                    "tertiary-container": "#333333",
+                    "on-primary": "#0d0d0d",
+                    "on-tertiary": "#141414"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "nav-link": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg-mobile": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-lg": [
+                            "JetBrains Mono"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-xl": [
+                            "JetBrains Mono"
+                    ],
+                    "label-sm": [
+                            "JetBrains Mono"
+                    ]
+            },
+            "fontSize": {
+                    "nav-link": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl": [
+                            "80px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Glassmorphism overlayers */
+        .glass-overlay {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Ambient Shadows */
+        .shadow-ambient-teal {
+            box-shadow: 0 20px 60px -15px rgba(255, 255, 255, 0.10);
+        }
+
+        .shadow-ambient-amber {
+            box-shadow: 0 20px 60px -15px rgba(255, 255, 255, 0.18);
+        }
+
+        /* Stacked Deck */
+        .deck-container {
+            perspective: 1000px;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .record-sleeve {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #141414;
+            border: 1px solid rgba(255,255,255,0.1);
+            transform-origin: bottom center;
+            transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.6s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .sleeve-gradient {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 0.25rem;
+            font-weight: bold;
+        }
+
+        /* Custom Scrollbar for inner modules */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.02);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+
+        /* Scroll Animations */
+        #wordmark-left, #wordmark-right {
+            transition: transform 0.1s ease-out, letter-spacing 0.1s ease-out;
+            display: inline-block;
+        }
+
+        #hero-overlay {
+            transition: opacity 0.1s ease-out;
+        }
+
+        .content-section {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1), transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Code Block Styling */
+        .code-snippet {
+            font-family: 'JetBrains Mono', monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .code-keyword { color: #ffffff; font-weight: 600; }
+        .code-string { color: #c9c9c9; }
+        .code-comment { color: #6b6b6b; font-style: italic; }
+        .code-function { color: #e0e0e0; }
+    </style>
+</head>
+<body class="text-on-surface font-body-md antialiased overflow-x-hidden flex flex-col relative">
+<!-- Fullscreen Cinematic Background -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<!--
+  BACKGROUND IMAGE — reemplázala por la tuya:
+  1) Sube tu imagen junto a este archivo HTML (ej: "background.png")
+  2) Cambia el src de abajo a ese nombre de archivo, o pega una URL directa
+  Recomendado: imagen oscura/atmosférica en alta resolución (mínimo 1920px de ancho)
+-->
+<div class="absolute inset-0 w-full h-full opacity-70" id="bg-fallback" style="background-image: radial-gradient(80% 60% at 20% 20%, rgba(255,255,255,0.10), transparent 60%), radial-gradient(70% 50% at 85% 75%, rgba(255,255,255,0.06), transparent 60%), linear-gradient(180deg, #0a0a0a 0%, #121212 50%, #0a0a0a 100%);"></div>
+<img alt="Fondo — reemplazar por imagen propia" class="absolute inset-0 w-full h-full object-cover opacity-50" id="bg-image" src="background.png" onerror="this.style.display='none'"/>
+<div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a] opacity-90 transition-opacity duration-300" id="hero-overlay"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]/80"></div>
+</div>
+<!-- Scrollable Content -->
+<div class="relative z-10 w-full">
+<!-- Hero Portal Section (Sticky) -->
+<div class="h-[150vh] relative">
+<div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pointer-events-none">
+<h1 class="font-display-xl text-[120px] md:text-[200px] text-primary/80 m-0 tracking-tight flex justify-center w-full drop-shadow-2xl"><span id="wordmark-left">S4M</span><span class="w-8 md:w-16 flex-shrink-0" id="wordmark-gap"></span><span id="wordmark-right">N0V</span></h1>
+</div>
+</div>
+<!-- Main Content Container -->
+<main class="w-full flex flex-col items-center justify-center overflow-hidden px-margin-mobile md:px-margin-desktop pb-32 gap-32">
+<!-- Top Repositories Section -->
+<div class="w-full content-section" id="repos-section">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-primary uppercase mb-12 text-center tracking-widest">TOP REPOSITORIES</h2>
+<div class="flex flex-col gap-8 w-full max-w-6xl mx-auto">
+<!-- Card 1: Code Preview -->
+<div class="glass-overlay w-full rounded-2xl flex flex-col md:flex-row overflow-hidden shadow-ambient-amber">
+<div class="w-full md:w-1/3 p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center relative">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<h3 class="font-headline-lg-mobile text-3xl text-primary mb-2 relative z-10">pinescript</h3>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase mb-4 relative z-10">Pine Script v6 / TradingView</p>
+<p class="text-on-surface-variant font-body-md mb-8 relative z-10">Colección de indicadores y estrategias: Bollinger Bands, EMA Crossovers, MACD Impulse, Market Profile y Volume Profile. ★ 6 · el repo con más estrellas del catálogo.</p>
+<div class="flex gap-4 relative z-10">
+<a class="bg-primary text-on-primary-container font-label-sm text-label-sm px-6 py-3 uppercase rounded hover:opacity-90 transition-opacity" href="https://github.com/s4mn0v/pinescript" rel="noopener" target="_blank">View Source</a>
+</div>
+</div>
+<div class="w-full md:w-2/3 p-0 bg-[#050505] flex flex-col">
+<div class="bg-[#111] px-4 py-2 border-b border-white/5 flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="ml-4 font-label-sm text-xs text-on-surface-variant">RSI+MFI/RSITMA.pine</span>
+</div>
+<div class="p-8 overflow-x-auto flex-1 flex items-center">
+<pre class="code-snippet text-sm leading-relaxed"><span class="code-comment">// RSI + MFI combined momentum reading</span>
+<span class="code-function">confirmSignal</span>(rsiVal, mfiVal, rsiTh, mfiTh) =&gt;
+    <span class="code-keyword">bool</span> rsiConfirm = rsiVal &gt; rsiTh
+    <span class="code-keyword">bool</span> mfiConfirm = mfiVal &gt; mfiTh
+    rsiConfirm <span class="code-keyword">and</span> mfiConfirm
+
+<span class="code-comment">// only fire when price (RSI) and volume (MFI) agree</span>
+longSignal = <span class="code-function">confirmSignal</span>(rsi, mfi, <span class="code-string">50</span>, <span class="code-string">50</span>)
+plotshape(longSignal, <span class="code-string">"Confirmed Long"</span>, shape.triangleup)</pre>
+</div>
+</div>
+</div>
+<!-- Card 2: Technical Diagram -->
+<div class="glass-overlay w-full rounded-2xl flex flex-col md:flex-row-reverse overflow-hidden shadow-ambient-teal">
+<div class="w-full md:w-1/3 p-8 md:p-12 border-b md:border-b-0 md:border-l border-white/10 flex flex-col justify-center relative">
+<div class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-secondary/5 to-transparent pointer-events-none"></div>
+<h3 class="font-headline-lg-mobile text-3xl text-secondary mb-2 relative z-10">bitget-bias</h3>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase mb-4 relative z-10">Go / Market Analysis</p>
+<p class="text-on-surface-variant font-body-md mb-8 relative z-10">Scanner de sesgo de mercado en tiempo real para Bitget: analiza whale flow institucional, open interest de futuros y sentimiento retail para detectar liquidity sweeps.</p>
+<div class="flex gap-4 relative z-10">
+<a class="border border-secondary text-secondary font-label-sm text-label-sm px-6 py-3 uppercase rounded bg-secondary/10 hover:bg-secondary/20 transition-colors" href="https://github.com/s4mn0v/bitget-bias" rel="noopener" target="_blank">View Source</a>
+</div>
+</div>
+<div class="w-full md:w-2/3 h-64 md:h-auto bg-[#050505] relative overflow-hidden">
+<div class="absolute inset-0 opacity-80" role="img" aria-label="Representación abstracta de flujo de whale — gradiente teal y ámbar oscuro" style="background-image: radial-gradient(90% 70% at 25% 30%, rgba(255,255,255,0.20), transparent 60%), radial-gradient(80% 60% at 80% 80%, rgba(255,255,255,0.10), transparent 60%), linear-gradient(160deg,#0a0a0a,#101010);"></div>
+<div class="absolute inset-0" style="background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 6px);"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#050505]/40 to-[#050505]"></div>
+</div>
+</div>
+<!-- Card 3: Status Readout -->
+<div class="glass-overlay w-full rounded-2xl flex flex-col md:flex-row overflow-hidden shadow-ambient-amber">
+<div class="w-full md:w-1/3 p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center relative">
+<h3 class="font-headline-lg-mobile text-3xl text-primary mb-2 relative z-10">risk-reward-tool</h3>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase mb-4 relative z-10">C# / NinjaTrader 8</p>
+<p class="text-on-surface-variant font-body-md mb-8 relative z-10">Herramienta de riesgo/beneficio para NinjaTrader 8, con sincronización automática de posición y ChartTrader.</p>
+<div class="flex gap-4 relative z-10">
+<a class="border border-primary text-primary font-label-sm text-label-sm px-6 py-3 uppercase rounded bg-primary/10 hover:bg-primary/20 transition-colors" href="https://github.com/s4mn0v/Advanced-Risk-Reward-Tool-for-NinjaTrader-8" rel="noopener" target="_blank">View Source</a>
+</div>
+</div>
+<div class="w-full md:w-2/3 p-8 md:p-12 bg-[#050505] flex flex-col justify-center">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="flex flex-col gap-2">
+<span class="text-on-surface-variant font-label-sm text-[10px] uppercase tracking-widest">Stars</span>
+<span class="text-primary font-headline-lg-mobile text-2xl">★ 1</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-on-surface-variant font-label-sm text-[10px] uppercase tracking-widest">Language</span>
+<span class="text-secondary font-headline-lg-mobile text-2xl">C#</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-on-surface-variant font-label-sm text-[10px] uppercase tracking-widest">Platform</span>
+<span class="text-on-surface font-headline-lg-mobile text-2xl">NT8</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-on-surface-variant font-label-sm text-[10px] uppercase tracking-widest">Status</span>
+<span class="text-tertiary font-headline-lg-mobile text-2xl flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span> Active</span>
+</div>
+</div>
+<div class="mt-8 w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[70%] rounded-full"></div>
+</div>
+<div class="mt-2 flex justify-between text-[10px] font-label-sm text-on-surface-variant uppercase">
+<span>Last commit</span>
+<span>updated 2 weeks ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Gists / Snippets Section -->
+<div class="w-full content-section" id="artists-section">
+<div class="glass-overlay w-full max-w-6xl mx-auto rounded-2xl flex flex-col overflow-hidden shadow-ambient-teal relative z-20 pointer-events-auto">
+<div class="p-8 border-b border-white/10 flex justify-between items-end shrink-0 bg-[#050505]/40">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface uppercase">GIST // CODE WORK</h2>
+</div>
+<div class="flex-1 p-8 bg-[#050505]/20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Code Card 1: trade-timers (Python) -->
+<div class="flex flex-col gap-3">
+<div>
+<h4 class="font-headline-lg-mobile text-xl text-primary uppercase tracking-widest mb-1">trade-timers</h4>
+<p class="text-on-surface-variant text-xs font-body-md">Widget de escritorio, siempre visible, para trackear cuentas regresivas de sesiones de trading — cero dependencias.</p>
+</div>
+<div class="rounded-xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-lg flex flex-col">
+<div class="bg-[#111] px-4 py-3 border-b border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+</div>
+<span class="font-label-sm text-xs text-on-surface-variant">countdown.py</span>
+</div>
+<div class="p-6 overflow-x-auto">
+<pre class="code-snippet text-sm leading-loose"><span class="code-keyword">def</span> <span class="code-function">time_remaining</span>(session_close: datetime) -&gt; str:
+    <span class="code-comment"># always-on-top desktop widget, refreshed every tick</span>
+    delta = session_close - datetime.utcnow()
+    <span class="code-keyword">if</span> delta.total_seconds() &lt;= <span class="code-string">0</span>:
+        <span class="code-keyword">return</span> <span class="code-string">"SESSION CLOSED"</span>
+
+    h, rem = divmod(delta.seconds, <span class="code-string">3600</span>)
+    m, s = divmod(rem, <span class="code-string">60</span>)
+    <span class="code-keyword">return</span> <span class="code-string">f"{h:02d}:{m:02d}:{s:02d}"</span></pre>
+</div>
+<div class="px-6 pb-6"><a class="font-label-sm text-[10px] text-primary/70 hover:text-primary tracking-[0.3em] uppercase" href="https://github.com/s4mn0v/trade-timers" rel="noopener" target="_blank">-- VER REPO --</a></div>
+</div>
+</div>
+<!-- Code Card 2: templink (Vue/Nuxt) -->
+<div class="flex flex-col gap-3">
+<div>
+<h4 class="font-headline-lg-mobile text-xl text-secondary uppercase tracking-widest mb-1">templink</h4>
+<p class="text-on-surface-variant text-xs font-body-md">Generador de enlaces temporales (Nuxt.js): expiración configurable, countdown y validación de links.</p>
+</div>
+<div class="rounded-xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-lg flex flex-col">
+<div class="bg-[#111] px-4 py-3 border-b border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+</div>
+<span class="font-label-sm text-xs text-on-surface-variant">useExpiringLink.ts</span>
+</div>
+<div class="p-6 overflow-x-auto">
+<pre class="code-snippet text-sm leading-loose"><span class="code-keyword">export function</span> <span class="code-function">useExpiringLink</span>(ttlMinutes: <span class="code-keyword">number</span>) {
+  <span class="code-keyword">const</span> expiresAt = <span class="code-function">ref</span>(Date.now() + ttlMinutes * <span class="code-string">60_000</span>);
+  <span class="code-keyword">const</span> isValid = <span class="code-function">computed</span>(() =&gt; Date.now() &lt; expiresAt.value);
+
+  <span class="code-keyword">return</span> { expiresAt, isValid };
+}</pre>
+</div>
+<div class="px-6 pb-6"><a class="font-label-sm text-[10px] text-secondary/70 hover:text-secondary tracking-[0.3em] uppercase" href="https://github.com/s4mn0v/templink" rel="noopener" target="_blank">-- VER REPO --</a></div>
+</div>
+</div>
+<!-- Code Card 3: bitget SDK (Go) -->
+<div class="flex flex-col gap-3 md:col-span-2">
+<div>
+<h4 class="font-headline-lg-mobile text-xl text-tertiary uppercase tracking-widest mb-1">bitget</h4>
+<p class="text-on-surface-variant text-xs font-body-md">SDK de Go para Bitget — fixes sobre issues conocidos y versiones modificadas del cliente oficial (v3-bitget-sdk-golang).</p>
+</div>
+<div class="rounded-xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-lg flex flex-col">
+<div class="bg-[#111] px-4 py-3 border-b border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+</div>
+<span class="font-label-sm text-xs text-on-surface-variant">client/orders.go</span>
+</div>
+<div class="p-6 overflow-x-auto">
+<pre class="code-snippet text-sm leading-loose"><span class="code-keyword">func</span> (c *<span class="code-function">Client</span>) <span class="code-function">PlaceOrder</span>(ctx context.Context, req OrderRequest) (*OrderResponse, <span class="code-keyword">error</span>) {
+    <span class="code-comment">// v3 endpoint with retry on rate-limit</span>
+    resp, err := c.<span class="code-function">post</span>(ctx, <span class="code-string">"/api/v3/mix/order/place"</span>, req)
+    <span class="code-keyword">if</span> err != <span class="code-keyword">nil</span> {
+        <span class="code-keyword">return</span> <span class="code-keyword">nil</span>, fmt.Errorf(<span class="code-string">"place order: %w"</span>, err)
+    }
+    <span class="code-keyword">return</span> parseOrderResponse(resp)
+}</pre>
+</div>
+<div class="px-6 pb-6"><a class="font-label-sm text-[10px] text-tertiary/70 hover:text-tertiary tracking-[0.3em] uppercase" href="https://github.com/s4mn0v/bitget" rel="noopener" target="_blank">-- VER REPO --</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    // Scroll Animation Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const leftWord = document.getElementById('wordmark-left');
+        const rightWord = document.getElementById('wordmark-right');
+        const gap = document.getElementById('wordmark-gap');
+        const overlay = document.getElementById('hero-overlay');
+        const maxScroll = window.innerHeight; // The amount of scroll over which the effect completes
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const progress = Math.min(scrollY / maxScroll, 1);
+
+            // Calculate movement
+            const moveDist = progress * window.innerWidth * 0.4;
+            const tracking = progress * -0.08; // Tighten tracking slightly
+
+            if (leftWord && rightWord) {
+                leftWord.style.transform = `translateX(-${moveDist}px)`;
+                leftWord.style.letterSpacing = `${-0.04 + tracking}em`;
+
+                rightWord.style.transform = `translateX(${moveDist}px)`;
+                rightWord.style.letterSpacing = `${-0.04 + tracking}em`;
+            }
+
+            // Reveal background
+            if (overlay) {
+                overlay.style.opacity = 0.9 - (progress * 0.7);
+            }
+        });
+
+        // Intersection Observer for content fading in
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
+</body></html>
