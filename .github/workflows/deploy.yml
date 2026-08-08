@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - web
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,9 +18,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      # Pick your own package manager and build script
+          cache: pnpm
+
+      - name: Resolve base URL
+        id: base_url
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            echo "value=/" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=/$REPO_NAME/" >> "$GITHUB_OUTPUT"
+          fi
+
       - run: pnpm install
       - run: pnpx nuxt build --preset github_pages
+        env:
+          NUXT_APP_BASE_URL: ${{ steps.base_url.outputs.value }}
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
