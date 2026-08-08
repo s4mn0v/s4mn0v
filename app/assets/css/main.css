@@ -1,0 +1,302 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+    /* Colors */
+    --color-on-tertiary-fixed: #1e1b1c;
+    --color-inverse-surface: #e5e2e0;
+    --color-on-surface: #e5e2e0;
+    --color-on-secondary-fixed-variant: #43474f;
+    --color-error: #ffb4ab;
+    --color-surface-container-high: #2b2a29;
+    --color-on-primary: #30312d;
+    --color-surface-container-highest: #353434;
+    --color-on-secondary: #2c3138;
+    --color-secondary-container: #454951;
+    --color-on-error: #690005;
+    --color-on-background: #e5e2e0;
+    --color-tertiary-fixed: #e8e1e3;
+    --color-outline-variant: #464741;
+    --color-on-primary-fixed: #1b1c18;
+    --color-primary-fixed: #e4e2dc;
+    --color-on-secondary-fixed: #171c23;
+    --color-on-secondary-container: #b5b8c2;
+    --color-secondary: #c3c6d0;
+    --color-surface-container-low: #1c1b1b;
+    --color-on-surface-variant: #c7c7bf;
+    --color-on-tertiary: #332f31;
+    --color-surface: #141313;
+    --color-surface-variant: #353434;
+    --color-tertiary: #ffffff;
+    --color-on-error-container: #ffdad6;
+    --color-on-primary-fixed-variant: #474743;
+    --color-inverse-primary: #5f5f5a;
+    --color-on-primary-container: #656560;
+    --color-surface-dim: #141313;
+    --color-outline: #91918a;
+    --color-error-container: #93000a;
+    --color-surface-container: #201f1f;
+    --color-tertiary-container: #e8e1e3;
+    --color-tertiary-fixed-dim: #ccc5c7;
+    --color-surface-tint: #c8c6c1;
+    --color-surface-bright: #3a3938;
+    --color-secondary-fixed-dim: #c3c6d0;
+    --color-background: #141313;
+    --color-secondary-fixed: #dfe2ec;
+    --color-inverse-on-surface: #313030;
+    --color-surface-container-lowest: #0e0e0e;
+    --color-primary-container: #e4e2dc;
+    --color-on-tertiary-fixed-variant: #4a4647;
+    --color-primary: #ffffff;
+    --color-on-tertiary-container: #686365;
+    --color-primary-fixed-dim: #c8c6c1;
+
+    --color-identity-bg: #08090d;
+    --color-identity-text: #f2f0ea;
+
+    --color-studio-bg: #0e0e0e;
+    --color-studio-accent: #d9d9d3;
+    --color-studio-accent-2: #9c9c96;
+    --color-studio-accent-3: #6e6e68;
+    --color-studio-text: #e7e4de;
+    --color-studio-border: #2e2d2a;
+
+    --color-vault-bg: #0b0b0b;
+    --color-vault-surface: #1c1b19;
+    --color-vault-gold: #c4c4be;
+    --color-vault-burgundy: #4a4a46;
+    --color-vault-text: #e7e4dc;
+    --color-vault-code: #c9c6bc;
+    --color-vault-python: #bfbfb8;
+    --color-vault-golang: #8a8a84;
+    --color-vault-automation: #6e6e68;
+
+    --color-ivory: #fffff0;
+    --color-background-void: #0a0a0a;
+    --color-surface-high: #2a2a2a;
+    --color-surface-lowest: #050505;
+    --color-code-comment: #6b6b6b;
+    --color-glass-fill: rgba(10, 10, 10, 0.7);
+
+    /* Border radius */
+    --radius: 0.125rem;
+    --radius-lg: 0.25rem;
+    --radius-xl: 0.5rem;
+    --radius-full: 0.75rem;
+
+    /* Spacing */
+    --spacing-container-max: 1440px;
+    --spacing-margin-desktop: 64px;
+    --spacing-margin-mobile: 16px;
+    --spacing-unit: 4px;
+    --spacing-gutter: 24px;
+    --spacing-section-gap: 128px;
+
+    /* Font families */
+    --font-display-lg: "Hanken Grotesk";
+    --font-body-md: "Hanken Grotesk";
+    --font-headline-lg: "Hanken Grotesk";
+    --font-label-sm: "JetBrains Mono";
+    --font-headline-lg-mobile: "Hanken Grotesk";
+    --font-code-md: "JetBrains Mono";
+    --font-display-xl: "JetBrains Mono";
+
+    /* Font sizes */
+    --text-display-lg: 64px;
+    --text-display-lg--line-height: 1.1;
+    --text-display-lg--letter-spacing: -0.02em;
+    --text-display-lg--font-weight: 700;
+
+    --text-body-md: 16px;
+    --text-body-md--line-height: 1.6;
+    --text-body-md--font-weight: 400;
+
+    --text-headline-lg: 32px;
+    --text-headline-lg--line-height: 1.2;
+    --text-headline-lg--letter-spacing: -0.01em;
+    --text-headline-lg--font-weight: 600;
+
+    --text-label-sm: 12px;
+    --text-label-sm--line-height: 1.4;
+    --text-label-sm--font-weight: 500;
+
+    --text-headline-lg-mobile: 24px;
+    --text-headline-lg-mobile--line-height: 1.2;
+    --text-headline-lg-mobile--font-weight: 600;
+
+    --text-code-md: 14px;
+    --text-code-md--line-height: 1.5;
+    --text-code-md--font-weight: 400;
+
+    --text-display-xl: 80px;
+    --text-display-xl--line-height: 1;
+    --text-display-xl--letter-spacing: -0.04em;
+    --text-display-xl--font-weight: 800;
+
+    /* Animations */
+    --animate-breathe: breathe 4s ease-in-out infinite;
+    --animate-flicker-in: flickerIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes breathe {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes flickerIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    10% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Global reset: without these, the browser's default body margin/padding
+   leaves a gap around the fixed hero background gif */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+body {
+    background-color: var(--color-background-void);
+    color: var(--color-on-surface);
+    font-family: var(--font-body-md);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body ::selection {
+    background-color: var(--color-surface-bright);
+    color: var(--color-primary);
+}
+
+/* Custom scrollbar for entire page */
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: #08090d;
+}
+::-webkit-scrollbar-thumb {
+    background: #464741;
+    border-radius: 4px;
+}
+/* Vault specific scrollbar styling will be applied via JS when in section */
+body.vault-active ::-webkit-scrollbar-track {
+    background: #0b0b0b;
+}
+body.vault-active ::-webkit-scrollbar-thumb {
+    background: #b5b5b0;
+}
+/* Hero text glow */
+.text-glow {
+    text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.35),
+        0 0 40px rgba(255, 255, 255, 0.15);
+}
+/* Glass transition: frosted glass that fades out via mask, so the blur itself has no hard edge */
+.glass-transition {
+    background: linear-gradient(
+        to bottom,
+        rgba(11, 11, 11, 0.4) 0%,
+        rgba(11, 11, 11, 0.15) 55%,
+        rgba(11, 11, 11, 0) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 20%,
+        transparent 85%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 20%,
+        transparent 85%
+    );
+}
+/* Vault Inner Shadow */
+.vault-inner-shadow {
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+/* Smooth section transitions */
+section {
+    transition: background-color 1s ease-in-out;
+}
+/* Scroll snap fue removido a propósito: `scroll-snap-type` en <html> hace que
+   los elementos con `position: fixed` (el header fijo del hero) se recorten
+   respecto al "snapport" del contenedor de scroll-snap en lugar del viewport
+   real (bug conocido en Chromium/WebKit). Eso generaba un hueco negro arriba
+   del gif de fondo apenas se llegaba a la mitad de la sección Vault. */
+html {
+    scroll-behavior: smooth;
+}
+.nav-item-active {
+    color: #ffffff;
+}
+/* Fixed hero: #identity itself carries real height so there is guaranteed scroll room for the pinned header to play its parallax before Studio slides over it */
+#identity {
+    position: relative;
+    height: 150vh;
+}
+#identity .hero-fixed-header {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.06) 0%,
+        transparent 70%
+    );
+}
+.blur-shift {
+    filter: blur(10px);
+    transition:
+        filter 0.8s ease-out,
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+}
+.blur-shift.revealed {
+    filter: blur(0px);
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
