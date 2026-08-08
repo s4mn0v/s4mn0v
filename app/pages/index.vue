@@ -581,8 +581,6 @@ const GITHUB_USER = "s4mn0v";
 const MAX_REPOS = 4;
 const MAX_GISTS = 5;
 
-// Sección activa: controla qué ícono del nav se muestra "filled" vs "outline",
-// y qué tab luce resaltado.
 const activeSection = ref("identity");
 
 const repos = ref<GithubRepo[]>([]);
@@ -593,19 +591,12 @@ const gists = ref<GithubGist[]>([]);
 const gistsLoading = ref(true);
 const gistsError = ref<string | null>(null);
 
-// Nombres canónicos (no-alias) de @iconify-json/material-symbols. Algunas
-// variantes "-outline-rounded" son solo alias de otro ícono (mismo path) y
-// el bundler local de Nuxt Icon no las resuelve, generando warnings en
-// consola aunque terminen renderizando via fallback remoto. Usamos siempre
-// el nombre real para que resuelvan 100% en local.
 const NAV_ICONS: Record<string, { filled: string; outline: string }> = {
     identity: {
         filled: "i-material-symbols-person-rounded",
         outline: "i-material-symbols-person-outline-rounded",
     },
     vault: {
-        // "terminal" no tiene un trazo "outline" distinto en este set: la
-        // variante outline es alias del mismo glyph relleno.
         filled: "i-material-symbols-terminal-rounded",
         outline: "i-material-symbols-terminal-rounded",
     },
@@ -690,27 +681,24 @@ async function loadGithubData(): Promise<void> {
     }
 }
 
-let handleHeroScroll: () => void = () => {};
-let onScroll: () => void = () => {};
-let updateHeroHeight: () => void = () => {};
+const MOBILE_QUERY = "(max-width: 767px)";
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
+let cleanupHero: () => void = () => {};
 
 onMounted(() => {
     const textTop = document.getElementById("text-top");
     const textBottom = document.getElementById("text-bottom");
     const heroImgContainer = document.getElementById("hero-img-container");
     const heroHalos = document.getElementById("hero-halos");
-    // window.visualViewport refleja el alto real visible (sin la barra de
-    // URL/toolbar de mobile), y se recalcula en cada resize -- así el
-    // progreso del scroll no se desincroniza cuando esa barra aparece o
-    // desaparece mientras se scrollea.
-    let heroHeight = window.visualViewport?.height ?? window.innerHeight;
     const body = document.body;
 
-    updateHeroHeight = () => {
+    let heroHeight = window.visualViewport?.height ?? window.innerHeight;
+    const updateHeroHeight = () => {
         heroHeight = window.visualViewport?.height ?? window.innerHeight;
     };
 
-    handleHeroScroll = () => {
+    const handleHeroScroll = () => {
         const scrollY = window.scrollY;
         const progress = Math.min(scrollY / (heroHeight * 0.6), 1);
         const easedProgress = 1 - Math.pow(1 - progress, 3);
@@ -735,8 +723,23 @@ onMounted(() => {
         }
     };
 
+    const showHeroSettled = () => {
+        if (textTop && textBottom) {
+            textTop.style.transform = "";
+            textBottom.style.transform = "";
+            textTop.style.opacity = "1";
+            textBottom.style.opacity = "1";
+        }
+        if (heroHalos) heroHalos.style.opacity = "1";
+        if (heroImgContainer) {
+            heroImgContainer.style.opacity = "0.9";
+            heroImgContainer.style.transform = "scale(1)";
+            heroImgContainer.style.filter = "blur(0px)";
+        }
+    };
+
     let ticking = false;
-    onScroll = () => {
+    const onScroll = () => {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(() => {
@@ -745,15 +748,44 @@ onMounted(() => {
         });
     };
 
-    handleHeroScroll();
-    // { passive: true } le dice al navegador que este listener nunca hace
-    // preventDefault(), así puede scrollear sin esperar a que termine
-    // nuestro JS -- clave para que no se sienta "trabado" en mobile.
-    document.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", updateHeroHeight, { passive: true });
-    window.visualViewport?.addEventListener("resize", updateHeroHeight, {
-        passive: true,
-    });
+    const detachScrollAnimation = () => {
+        document.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", updateHeroHeight);
+        window.visualViewport?.removeEventListener("resize", updateHeroHeight);
+    };
+
+    const attachScrollAnimation = () => {
+        handleHeroScroll();
+        document.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", updateHeroHeight, {
+            passive: true,
+        });
+        window.visualViewport?.addEventListener("resize", updateHeroHeight, {
+            passive: true,
+        });
+    };
+
+    const mobileQuery = window.matchMedia(MOBILE_QUERY);
+    const reducedMotionQuery = window.matchMedia(REDUCED_MOTION_QUERY);
+
+    const applyMotionMode = () => {
+        detachScrollAnimation();
+        if (mobileQuery.matches || reducedMotionQuery.matches) {
+            showHeroSettled();
+        } else {
+            attachScrollAnimation();
+        }
+    };
+
+    applyMotionMode();
+    mobileQuery.addEventListener("change", applyMotionMode);
+    reducedMotionQuery.addEventListener("change", applyMotionMode);
+
+    cleanupHero = () => {
+        detachScrollAnimation();
+        mobileQuery.removeEventListener("change", applyMotionMode);
+        reducedMotionQuery.removeEventListener("change", applyMotionMode);
+    };
 
     const sections = document.querySelectorAll("section");
 
@@ -785,9 +817,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-    document.removeEventListener("scroll", onScroll);
-    window.removeEventListener("resize", updateHeroHeight);
-    window.visualViewport?.removeEventListener("resize", updateHeroHeight);
+    cleanupHero();
 });
 </script>
 

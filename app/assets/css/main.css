@@ -284,6 +284,14 @@ html {
         transparent 70%
     );
 }
+/* En mobile la animación de scroll del hero está desactivada (ver index.vue),
+   así que no necesita los 150dvh extra de "espacio para animar": con un
+   viewport completo alcanza y se evita scroll vacío antes de llegar a Vault. */
+@media (max-width: 767px) {
+    #identity {
+        height: 100dvh;
+    }
+}
 .blur-shift {
     filter: blur(10px);
     transition:
