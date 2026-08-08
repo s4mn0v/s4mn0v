@@ -691,14 +691,24 @@ async function loadGithubData(): Promise<void> {
 }
 
 let handleHeroScroll: () => void = () => {};
+let onScroll: () => void = () => {};
+let updateHeroHeight: () => void = () => {};
 
 onMounted(() => {
     const textTop = document.getElementById("text-top");
     const textBottom = document.getElementById("text-bottom");
     const heroImgContainer = document.getElementById("hero-img-container");
     const heroHalos = document.getElementById("hero-halos");
-    const heroHeight = window.innerHeight;
+    // window.visualViewport refleja el alto real visible (sin la barra de
+    // URL/toolbar de mobile), y se recalcula en cada resize -- así el
+    // progreso del scroll no se desincroniza cuando esa barra aparece o
+    // desaparece mientras se scrollea.
+    let heroHeight = window.visualViewport?.height ?? window.innerHeight;
     const body = document.body;
+
+    updateHeroHeight = () => {
+        heroHeight = window.visualViewport?.height ?? window.innerHeight;
+    };
 
     handleHeroScroll = () => {
         const scrollY = window.scrollY;
@@ -725,8 +735,25 @@ onMounted(() => {
         }
     };
 
+    let ticking = false;
+    onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            handleHeroScroll();
+            ticking = false;
+        });
+    };
+
     handleHeroScroll();
-    document.addEventListener("scroll", handleHeroScroll);
+    // { passive: true } le dice al navegador que este listener nunca hace
+    // preventDefault(), así puede scrollear sin esperar a que termine
+    // nuestro JS -- clave para que no se sienta "trabado" en mobile.
+    document.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateHeroHeight, { passive: true });
+    window.visualViewport?.addEventListener("resize", updateHeroHeight, {
+        passive: true,
+    });
 
     const sections = document.querySelectorAll("section");
 
@@ -758,7 +785,9 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-    document.removeEventListener("scroll", handleHeroScroll);
+    document.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", updateHeroHeight);
+    window.visualViewport?.removeEventListener("resize", updateHeroHeight);
 });
 </script>
 

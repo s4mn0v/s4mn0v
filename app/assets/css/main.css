@@ -262,12 +262,16 @@ html {
 #identity {
     position: relative;
     height: 150vh;
+    /* dvh se ajusta al viewport visible real; evita que el hero salte
+       cuando la barra de URL de Safari/Chrome mobile aparece o desaparece */
+    height: 150dvh;
 }
 #identity .hero-fixed-header {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;

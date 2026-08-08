@@ -5,4 +5,24 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/ui'],
   css: ['~/assets/css/main.css'],
+
+  icon: {
+    provider: "none",
+    clientBundle: {
+      scan: true,
+      icons: [
+        "material-symbols:arrow-forward-rounded",
+        "material-symbols:code-rounded",
+        "material-symbols:description-outline-rounded",
+        "material-symbols:folder-data-outline-rounded",
+        "material-symbols:fork-right-rounded",
+        "material-symbols:palette",
+        "material-symbols:palette-outline",
+        "material-symbols:person-outline-rounded",
+        "material-symbols:person-rounded",
+        "material-symbols:star-outline-rounded",
+        "material-symbols:terminal-rounded",
+      ],
+    },
+  },
 })
