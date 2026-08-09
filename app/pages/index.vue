@@ -5,12 +5,10 @@
             class="inline-defs-container"
             style="position: absolute; width: 0; height: 0; overflow: hidden"
         ></svg>
-        <!-- SideNavBar (Universe Navigator): bottom-centered glass dock -->
         <nav
             class="fixed left-1/2 -translate-x-1/2 bottom-4 md:bottom-8 z-50 flex flex-row items-center gap-1 md:gap-2 bg-black/40 backdrop-blur-none md:backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 md:px-3 md:py-3 shadow-2xl"
             id="sideNav"
         >
-            <!-- Identity Tab -->
             <a
                 :class="navLinkClass('identity')"
                 data-section="identity"
@@ -25,7 +23,6 @@
                     >Identity</span
                 >
             </a>
-            <!-- Vault Tab -->
             <a
                 :class="navLinkClass('vault')"
                 data-section="vault"
@@ -40,7 +37,6 @@
                     >Vault</span
                 >
             </a>
-            <!-- Studio Tab -->
             <a
                 :class="navLinkClass('studio')"
                 data-section="studio"
@@ -56,64 +52,48 @@
                 >
             </a>
         </nav>
-        <!-- Universe 1: Identity (fixed / pinned hero) -->
         <section id="identity">
-            <!-- Fixed Hero Header -->
-            <header class="hero-fixed-header">
-                <!-- Atmospheric Halos (monochrome) -->
-                <div class="transition-opacity duration-300" id="hero-halos">
-                    <div
-                        class="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-[120px] pointer-events-none"
-                    ></div>
-                    <div
-                        class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-[100px] pointer-events-none"
-                    ></div>
-                </div>
-                <!-- Background GIF: full-bleed, covers the entire hero, dimmed so it reads as texture rather than a picture -->
+            <header class="hero-header">
                 <div
-                    class="absolute inset-0 opacity-0 transition-all duration-700 ease-out scale-95 blur-shift overflow-hidden"
-                    id="hero-img-container"
-                >
+                    class="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-[120px] pointer-events-none"
+                ></div>
+                <div
+                    class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-[100px] pointer-events-none"
+                ></div>
+                <div class="absolute inset-0 overflow-hidden">
                     <img
                         alt="Hero Background"
-                        class="absolute inset-0 w-full h-full object-cover grayscale"
+                        class="absolute inset-0 w-full h-full object-cover grayscale opacity-90"
                         :src="logoAnimation"
                     />
                     <div class="absolute inset-0 bg-identity-bg/70"></div>
                 </div>
-                <!-- Split Wordmark: opens apart and fades out as you scroll -->
                 <div
                     class="relative z-20 flex flex-col items-center justify-center h-full w-full"
-                    id="hero-title-group"
                 >
                     <h1
-                        class="font-display-xl font-extrabold text-[96px] md:text-[200px] text-identity-text leading-none tracking-tighter text-glow transition-transform duration-300 ease-out"
-                        id="text-top"
+                        class="font-display-xl font-extrabold text-[96px] md:text-[200px] text-identity-text leading-none tracking-tighter text-glow"
                     >
                         S4M
                     </h1>
                     <h1
-                        class="font-display-xl font-extrabold text-[96px] md:text-[200px] text-on-surface-variant leading-none tracking-tighter text-glow transition-transform duration-300 ease-out mt-2.5 md:mt-10"
-                        id="text-bottom"
+                        class="font-display-xl font-extrabold text-[96px] md:text-[200px] text-on-surface-variant leading-none tracking-tighter text-glow mt-2.5 md:mt-10"
                     >
                         N0V
                     </h1>
                 </div>
             </header>
         </section>
-        <!-- Universe 2: Engineering Vault -->
         <section
             class="min-h-screen w-full h-full z-20 bg-clip-padding backdrop-filter backdrop-blur-none md:backdrop-blur-xl bg-vault-bg/70 border-y border-white/10 text-vault-text flex flex-col relative px-margin-mobile md:px-margin-desktop py-24"
             id="vault"
         >
-            <!-- Glass transition: frosted blur fading to nothing, so the hero melts into the Vault instead of cutting -->
             <div
                 class="absolute top-0 inset-x-0 h-40 md:h-56 z-30 pointer-events-none glass-transition"
             ></div>
             <div
                 class="max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 z-10 relative"
             >
-                <!-- Decorative classical elements -->
                 <div
                     class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5"
                     style="
@@ -126,7 +106,6 @@
                         );
                     "
                 ></div>
-                <!-- Vault Header -->
                 <div
                     class="lg:col-span-12 mb-16 text-center border-b border-vault-gold/30 pb-12"
                 >
@@ -153,7 +132,6 @@
                         production—automation, performance, and real-world code.
                     </p>
                 </div>
-                <!-- Repositories (Manuscripts) -->
                 <div class="lg:col-span-8 flex flex-col gap-8">
                     <h3
                         class="font-label-sm text-label-sm uppercase text-ivory mb-4 border-b border-vault-gold/20 pb-2"
@@ -259,7 +237,6 @@
                         />
                     </a>
                 </div>
-                <!-- Gists / Fragments (Sidebar) -->
                 <div class="lg:col-span-4 flex flex-col gap-8">
                     <h3
                         class="font-label-sm text-label-sm uppercase text-ivory mb-4 border-b border-vault-gold/20 pb-2"
@@ -324,7 +301,6 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- Artifact Action -->
                     <a
                         class="w-full bg-transparent border border-vault-gold text-vault-gold font-code-md text-code-md py-4 hover:bg-vault-gold hover:text-vault-bg transition-colors flex items-center justify-center gap-2"
                         href="https://gist.github.com/s4mn0v"
@@ -339,7 +315,6 @@
                     </a>
                 </div>
             </div>
-            <!-- Internal spacer: black breathing room at the end of this section (not a separate element between sections) -->
             <div
                 class="w-screen relative left-1/2 -translate-x-1/2 h-16 md:h-28 mt-16"
                 aria-hidden="true"
@@ -349,7 +324,6 @@
             class="w-full h-full z-20 bg-clip-padding backdrop-filter backdrop-blur-none md:backdrop-blur-xl bg-studio-bg/70 text-studio-text relative px-margin-mobile md:px-margin-desktop py-32 overflow-hidden"
             id="studio"
         >
-            <!-- Glass transition: same soft frosted seam as Identity → Vault, now for Vault → Studio -->
             <div
                 class="absolute top-0 inset-x-0 h-40 md:h-56 z-30 pointer-events-none glass-transition"
             ></div>
@@ -393,11 +367,8 @@
                         View All Projects
                     </button>
                 </div>
-                <!-- Mockup wall: organized bento grid, no dead space, every piece properly framed -->
                 <div class="flex flex-col gap-6">
-                    <!-- Top row: the two flagship pieces -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <!-- E-Commerce -->
                         <div
                             class="lg:col-span-7 bg-[#161615] border border-[#302F2D] shadow-xl border-t-4 border-t-studio-accent overflow-hidden hover:border-vault-gold/50 transition-colors duration-300"
                         >
@@ -427,7 +398,6 @@
                                 "
                             ></div>
                         </div>
-                        <!-- Fintech App: now properly framed inside its own card, no floating orphan image -->
                         <div
                             class="lg:col-span-5 bg-[#101010] border border-[#302F2D] shadow-xl border-t-4 border-t-studio-accent-2 overflow-hidden hover:border-vault-gold/50 transition-colors duration-300 flex flex-col"
                         >
@@ -462,11 +432,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Bottom row: supporting pieces -->
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
                     >
-                        <!-- Brand Identity: redesigned with real content instead of an empty box -->
                         <div
                             class="bg-[#161615] border border-[#302F2D] shadow-lg overflow-hidden hover:border-vault-gold/50 transition-colors duration-300 flex flex-col"
                         >
@@ -505,7 +473,6 @@
                                 >
                             </div>
                         </div>
-                        <!-- E-Commerce detail crop -->
                         <div
                             class="bg-[#161615] border border-[#302F2D] shadow-lg overflow-hidden hover:border-vault-gold/50 transition-colors duration-300 flex flex-col"
                         >
@@ -523,7 +490,6 @@
                                 >
                             </div>
                         </div>
-                        <!-- Topic tags -->
                         <div
                             class="sm:col-span-2 flex flex-wrap items-center gap-3 p-6 bg-[#161615] border border-[#302F2D]"
                         >
@@ -606,7 +572,7 @@ const NAV_ICONS: Record<string, { filled: string; outline: string }> = {
 };
 
 function navIconName(section: string): string {
-    const icons = NAV_ICONS[section];
+    const icons = NAV_ICONS[section]!;
     return activeSection.value === section ? icons.filled : icons.outline;
 }
 
@@ -680,112 +646,10 @@ async function loadGithubData(): Promise<void> {
     }
 }
 
-const MOBILE_QUERY = "(max-width: 767px)";
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
-
-let cleanupHero: () => void = () => {};
+let observer: IntersectionObserver | null = null;
 
 onMounted(() => {
-    const textTop = document.getElementById("text-top");
-    const textBottom = document.getElementById("text-bottom");
-    const heroImgContainer = document.getElementById("hero-img-container");
-    const heroHalos = document.getElementById("hero-halos");
     const body = document.body;
-
-    let heroHeight = window.visualViewport?.height ?? window.innerHeight;
-    const updateHeroHeight = () => {
-        heroHeight = window.visualViewport?.height ?? window.innerHeight;
-    };
-
-    const handleHeroScroll = () => {
-        const scrollY = window.scrollY;
-        const progress = Math.min(scrollY / (heroHeight * 0.6), 1);
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-        if (textTop && textBottom) {
-            const titleOpacity = Math.max(1 - progress * 1.3, 0);
-            textTop.style.transform = `translateY(-${easedProgress * 40}vh)`;
-            textBottom.style.transform = `translateY(${easedProgress * 40}vh)`;
-            textTop.style.opacity = String(titleOpacity);
-            textBottom.style.opacity = String(titleOpacity);
-        }
-
-        if (heroHalos) {
-            heroHalos.style.opacity = String(Math.max(1 - progress * 1.3, 0));
-        }
-
-        if (heroImgContainer) {
-            const blurAmount = (1 - progress) * 24;
-            heroImgContainer.style.opacity = String(0.55 + progress * 0.35);
-            heroImgContainer.style.transform = `scale(${1.05 - progress * 0.05})`;
-            heroImgContainer.style.filter = `blur(${blurAmount}px)`;
-        }
-    };
-
-    const showHeroSettled = () => {
-        if (textTop && textBottom) {
-            textTop.style.transform = "";
-            textBottom.style.transform = "";
-            textTop.style.opacity = "1";
-            textBottom.style.opacity = "1";
-        }
-        if (heroHalos) heroHalos.style.opacity = "1";
-        if (heroImgContainer) {
-            heroImgContainer.style.opacity = "0.9";
-            heroImgContainer.style.transform = "scale(1)";
-            heroImgContainer.style.filter = "blur(0px)";
-        }
-    };
-
-    let ticking = false;
-    const onScroll = () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-            handleHeroScroll();
-            ticking = false;
-        });
-    };
-
-    const detachScrollAnimation = () => {
-        document.removeEventListener("scroll", onScroll);
-        window.removeEventListener("resize", updateHeroHeight);
-        window.visualViewport?.removeEventListener("resize", updateHeroHeight);
-    };
-
-    const attachScrollAnimation = () => {
-        handleHeroScroll();
-        document.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", updateHeroHeight, {
-            passive: true,
-        });
-        window.visualViewport?.addEventListener("resize", updateHeroHeight, {
-            passive: true,
-        });
-    };
-
-    const mobileQuery = window.matchMedia(MOBILE_QUERY);
-    const reducedMotionQuery = window.matchMedia(REDUCED_MOTION_QUERY);
-
-    const applyMotionMode = () => {
-        detachScrollAnimation();
-        if (mobileQuery.matches || reducedMotionQuery.matches) {
-            showHeroSettled();
-        } else {
-            attachScrollAnimation();
-        }
-    };
-
-    applyMotionMode();
-    mobileQuery.addEventListener("change", applyMotionMode);
-    reducedMotionQuery.addEventListener("change", applyMotionMode);
-
-    cleanupHero = () => {
-        detachScrollAnimation();
-        mobileQuery.removeEventListener("change", applyMotionMode);
-        reducedMotionQuery.removeEventListener("change", applyMotionMode);
-    };
-
     const sections = document.querySelectorAll("section");
 
     const observerOptions: IntersectionObserverInit = {
@@ -794,7 +658,7 @@ onMounted(() => {
         threshold: 0,
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 activeSection.value = entry.target.id;
@@ -809,14 +673,14 @@ onMounted(() => {
     }, observerOptions);
 
     sections.forEach((section) => {
-        if (section.id) observer.observe(section);
+        if (section.id) observer?.observe(section);
     });
 
     loadGithubData();
 });
 
 onBeforeUnmount(() => {
-    cleanupHero();
+    observer?.disconnect();
 });
 </script>
 
