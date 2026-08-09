@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+@import url("https://fonts.googleapis.com/css2?family=Codystar&family=Megrim&family=Monoton&family=Nabla&family=Rubik+Beastly&family=Rubik+Glitch&family=VT323&display=swap");
 
 @theme {
     --color-on-tertiary-fixed: #1e1b1c;

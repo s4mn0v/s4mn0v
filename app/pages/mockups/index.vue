@@ -11,13 +11,19 @@
                 <h1
                     class="font-display-xl text-[32px] md:text-display-xl leading-[1.2] md:leading-none tracking-tight md:tracking-tighter uppercase text-primary z-10 mix-blend-difference"
                 >
-                    SELECTED_WORK
+                    <span
+                        v-for="(letter, index) in titleLetters"
+                        :key="index"
+                        class="glitch-letter inline-block"
+                        :style="{ animationDelay: `${index * 0.06}s` }"
+                        >{{ letter }}</span
+                    >
                 </h1>
                 <div
                     class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20"
                 >
                     <div
-                        class="w-75 h-75 bg-primary rounded-full blur-[100px]"
+                        class="w-[300px] h-[300px] bg-primary rounded-full blur-[100px]"
                     ></div>
                 </div>
                 <div
@@ -36,12 +42,12 @@
                     class="h-svh w-full snap-center flex flex-col justify-center items-center p-5 md:p-margin-desktop bg-background-void relative"
                 >
                     <div
-                        class="max-w-container-max w-full h-full max-h-217.5 flex flex-col gap-gutter relative z-10"
+                        class="max-w-container-max w-full h-full max-h-[870px] flex flex-col gap-gutter relative z-10"
                     >
                         <NuxtLink
                             :to="`/mockups/archive/${entry.slug}`"
                             :aria-label="`Ver ${entry.title} en vivo`"
-                            class="group grow bg-glass-fill backdrop-blur-md rounded-xl border border-white/10 overflow-hidden relative shadow-[0_0_80px_rgba(255,255,255,0.05)] flex flex-col cursor-pointer"
+                            class="group flex-grow bg-glass-fill backdrop-blur-md rounded-xl border border-white/10 overflow-hidden relative shadow-[0_0_80px_rgba(255,255,255,0.05)] flex flex-col cursor-pointer"
                         >
                             <div
                                 class="h-10 bg-surface-lowest border-b border-white/10 flex items-center px-4 gap-2 shrink-0"
@@ -63,7 +69,7 @@
                                     {{ entry.title }}
                                 </div>
                             </div>
-                            <div class="grow overflow-hidden relative">
+                            <div class="flex-grow overflow-hidden relative">
                                 <iframe
                                     :src="mockupSrc(entry.path)"
                                     class="absolute inset-0 w-full h-full pointer-events-none"
@@ -149,7 +155,7 @@
                         class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]"
                     >
                         <div
-                            class="w-200 h-100 bg-primary rounded-full blur-[150px]"
+                            class="w-[800px] h-[400px] bg-primary rounded-full blur-[150px]"
                         ></div>
                     </div>
                 </section>
@@ -159,21 +165,21 @@
                     class="h-svh w-full snap-center flex flex-col justify-center items-center p-5 md:p-margin-desktop bg-background-void relative"
                 >
                     <div
-                        class="max-w-container-max w-full h-full max-h-217.5 flex flex-col md:flex-row gap-gutter relative z-10"
+                        class="max-w-container-max w-full h-full max-h-[870px] flex flex-col md:flex-row gap-gutter relative z-10"
                     >
                         <div
-                            class="grow flex justify-center items-center relative overflow-hidden"
+                            class="flex-grow flex justify-center items-center relative overflow-hidden"
                         >
                             <NuxtLink
                                 :to="`/mockups/archive/${entry.slug}`"
                                 :aria-label="`Ver ${entry.title} en vivo`"
-                                class="group block w-75 md:w-90 h-150 md:h-180 bg-surface-lowest rounded-[2.5rem] border-8 border-[#1A1A1A] p-2 relative shadow-[0_0_100px_rgba(255,255,255,0.03)] overflow-hidden shrink-0 cursor-pointer"
+                                class="group block w-[300px] md:w-[360px] h-[600px] md:h-[720px] bg-surface-lowest rounded-[2.5rem] border-8 border-[#1A1A1A] p-2 relative shadow-[0_0_100px_rgba(255,255,255,0.03)] overflow-hidden shrink-0 cursor-pointer"
                             >
                                 <div
                                     class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1A1A1A] rounded-b-xl z-20"
                                 ></div>
                                 <div
-                                    class="w-full h-full bg-background rounded-4xl overflow-hidden relative"
+                                    class="w-full h-full bg-background rounded-[2rem] overflow-hidden relative"
                                 >
                                     <iframe
                                         :src="mockupSrc(entry.path)"
@@ -266,6 +272,8 @@ import { mockups, type MockupEntry } from "~/data/mockups";
 
 const config = useRuntimeConfig();
 
+const titleLetters = "SELECTED_WORK".split("");
+
 function mockupSrc(path: string): string {
     return `${config.app.baseURL}${path}`;
 }
@@ -307,6 +315,36 @@ onMounted(() => {
     }
     50% {
         opacity: 1;
+    }
+}
+.glitch-letter {
+    animation: glitch-font 5s steps(1) infinite;
+}
+@keyframes glitch-font {
+    0% {
+        font-family: "Monoton", cursive;
+    }
+    8% {
+        font-family: "Nabla", system-ui;
+    }
+    16% {
+        font-family: "Rubik Glitch", cursive;
+    }
+    24% {
+        font-family: "Codystar", cursive;
+    }
+    32% {
+        font-family: "Megrim", cursive;
+    }
+    40% {
+        font-family: "Rubik Beastly", cursive;
+    }
+    48% {
+        font-family: "VT323", monospace;
+    }
+    56%,
+    100% {
+        font-family: var(--font-display-xl);
     }
 }
 </style>
