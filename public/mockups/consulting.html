@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VANGUARD LEGAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#001108",
+                      "surface-variant": "#343439",
+                      "tertiary": "#88d6af",
+                      "on-surface-variant": "#c8c5ca",
+                      "on-surface": "#e3e2e7",
+                      "surface-container-lowest": "#0d0e12",
+                      "error-container": "#93000a",
+                      "outline": "#919095",
+                      "on-secondary-fixed": "#1d1c16",
+                      "on-background": "#e3e2e7",
+                      "secondary": "#cac6bd",
+                      "on-secondary-container": "#bcb8af",
+                      "inverse-on-surface": "#2f3035",
+                      "tertiary-fixed": "#a4f3ca",
+                      "surface-dim": "#121317",
+                      "primary-fixed-dim": "#c8c6c8",
+                      "surface-container-high": "#292a2e",
+                      "secondary-fixed-dim": "#cac6bd",
+                      "surface-container": "#1f1f24",
+                      "error": "#ffb4ab",
+                      "on-primary-fixed": "#1b1b1d",
+                      "primary": "#c8c6c8",
+                      "on-error": "#690005",
+                      "surface-tint": "#c8c6c8",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-primary-container": "#7c7a7d",
+                      "on-secondary-fixed-variant": "#494740",
+                      "inverse-primary": "#5f5e60",
+                      "secondary-container": "#4b4942",
+                      "on-primary": "#313032",
+                      "background": "#121317",
+                      "primary-fixed": "#e5e1e4",
+                      "tertiary-fixed-dim": "#88d6af",
+                      "secondary-fixed": "#e7e2d8",
+                      "primary-container": "#0d0d0f",
+                      "on-secondary": "#32302a",
+                      "surface": "#121317",
+                      "surface-container-low": "#1a1b1f",
+                      "surface-bright": "#38393d",
+                      "on-tertiary-container": "#3b8966",
+                      "on-primary-fixed-variant": "#474649",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#002113",
+                      "surface-container-highest": "#343439",
+                      "inverse-surface": "#e3e2e7",
+                      "on-tertiary": "#003824",
+                      "outline-variant": "#47464a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "asymmetric-split": "66.66%",
+                      "margin-page": "48px",
+                      "section-gap": "80px",
+                      "unit": "4px",
+                      "gutter": "1px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-sm": [
+                              "Domine"
+                      ],
+                      "display-lg": [
+                              "Domine"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg-mobile": [
+                              "Domine"
+                      ],
+                      "data-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Domine"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "data-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;700&amp;family=Hanken+Grotesk:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0D0D0F; /* Pure Ink Black override */
+        }
+
+        /* Thin Structural Lines for Layout */
+        .grid-struct {
+            background-image: linear-gradient(to right, #47464a 1px, transparent 1px);
+            background-size: 8.333333% 100%;
+        }
+        @media (min-width: 768px) {
+            .grid-struct {
+                background-size: calc(100% / 12) 100%;
+            }
+        }
+
+        .border-stone {
+            border-color: #47464a;
+        }
+
+        /* SVG Signature Animation */
+        .signature-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawSignature 2s ease-in-out forwards;
+        }
+
+        @keyframes drawSignature {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .ink-point {
+            opacity: 0;
+            animation: pulseInk 0.5s ease-out 2s forwards;
+        }
+
+        @keyframes pulseInk {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        /* Headline Reveal */
+        .hero-headline {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealHeadline 1s cubic-bezier(0.2, 0, 0, 1) 2.5s forwards;
+        }
+
+        @keyframes revealHeadline {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Underline Hover Interaction */
+        .case-row {
+            position: relative;
+        }
+        .case-row::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* Align with border */
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background-color: #88d6af; /* Tertiary Emerald */
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .case-row:hover::after {
+            width: 100%;
+        }
+        .case-metric {
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .case-row:hover .case-metric {
+            transform: scale(1.05);
+            color: #88d6af;
+        }
+      </style>
+</head>
+<body class="bg-primary-container text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background text-on-background dark:text-on-background fixed top-0 w-full border-b border-outline-variant z-50">
+<div class="flex justify-between items-center w-full px-margin-page h-20">
+<div class="font-headline-sm text-headline-sm md:font-headline-md md:text-headline-md text-on-background tracking-tight uppercase">
+                VANGUARD LEGAL
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<!-- Navigation items would go here in a full app -->
+</nav>
+<button class="bg-tertiary text-tertiary-container px-6 py-3 font-label-caps text-label-caps hover:bg-tertiary-fixed transition-colors duration-100 flex items-center gap-2">
+                AGENDAR CITA
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</header>
+<!-- Main Content Container with Asymmetric 8/4 Split (Desktop) -->
+<main class="flex-grow pt-20 px-margin-page grid grid-cols-1 md:grid-cols-12 gap-0 border-x border-stone mx-auto max-w-[1920px] relative">
+<!-- Background Grid Lines (Decorative) -->
+<div class="absolute inset-0 pointer-events-none grid-struct opacity-20"></div>
+<!-- Left Column (8 cols) -->
+<div class="md:col-span-8 border-r border-stone relative flex flex-col justify-center min-h-[80vh] px-8 py-16">
+<div class="relative z-10 flex flex-col items-center justify-center space-y-12 h-full">
+<!-- Wordmark & Signature -->
+<div class="relative">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-[#F3EEE4] text-center uppercase tracking-widest relative z-0">
+                        VANGUARD
+                    </h1>
+<!-- Decorative SVG Signature over the text -->
+<svg class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-auto z-10 pointer-events-none" fill="none" viewbox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+<path class="signature-path" d="M30 70 C 50 20, 80 10, 100 50 S 150 90, 200 40 S 250 10, 300 60 S 350 80, 370 30" stroke="#88d6af" stroke-linecap="round" stroke-width="2"></path>
+<circle class="ink-point" cx="370" cy="30" fill="#88d6af" r="4"></circle>
+</svg>
+</div>
+<!-- Headline -->
+<p class="hero-headline font-headline-md text-headline-md text-[#F3EEE4] text-center max-w-2xl">
+                    PRECISIÓN ESTRATÉGICA PARA EL <span class="text-tertiary">FUTURO</span> CORPORATIVO.
+                </p>
+</div>
+<!-- Case Clock (Bottom Corner) -->
+<div class="absolute bottom-8 left-8 flex gap-12 font-data-mono text-data-mono text-on-surface-variant">
+<div>
+<div class="text-label-caps font-label-caps text-outline mb-2">CASOS RESUELTOS</div>
+<div class="text-tertiary text-2xl font-bold" id="cases-counter">0104</div>
+</div>
+<div>
+<div class="text-label-caps font-label-caps text-outline mb-2">AÑOS ACTIVOS</div>
+<div class="text-[#F3EEE4] text-2xl" id="years-counter">24</div>
+</div>
+</div>
+</div>
+<!-- Right Column (4 cols) - Success Cases -->
+<div class="md:col-span-4 flex flex-col py-16 px-8 relative">
+<h2 class="font-label-caps text-label-caps text-outline mb-8 border-b border-stone pb-4">CASOS RECIENTES</h2>
+<div class="flex flex-col flex-grow">
+<!-- Case Row 1 -->
+<div class="case-row flex justify-between items-center py-6 border-b border-stone cursor-pointer group">
+<div>
+<div class="font-body-md text-[#F3EEE4] mb-1">Fusiones &amp; Adquisiciones</div>
+<div class="font-data-mono text-xs text-on-surface-variant">SECTOR TECNOLÓGICO</div>
+</div>
+<div class="case-metric font-data-mono text-tertiary">
+                        18 MESES
+                    </div>
+</div>
+<!-- Case Row 2 -->
+<div class="case-row flex justify-between items-center py-6 border-b border-stone cursor-pointer group">
+<div>
+<div class="font-body-md text-[#F3EEE4] mb-1">Litigio Corporativo</div>
+<div class="font-data-mono text-xs text-on-surface-variant">SECTOR ENERGÉTICO</div>
+</div>
+<div class="case-metric font-data-mono text-tertiary">
+                        36 MESES
+                    </div>
+</div>
+<!-- Case Row 3 -->
+<div class="case-row flex justify-between items-center py-6 border-b border-stone cursor-pointer group">
+<div>
+<div class="font-body-md text-[#F3EEE4] mb-1">Reestructuración</div>
+<div class="font-data-mono text-xs text-on-surface-variant">SECTOR FINANCIERO</div>
+</div>
+<div class="case-metric font-data-mono text-tertiary">
+                        12 MESES
+                    </div>
+</div>
+<!-- Case Row 4 -->
+<div class="case-row flex justify-between items-center py-6 border-b border-stone cursor-pointer group">
+<div>
+<div class="font-body-md text-[#F3EEE4] mb-1">Propiedad Intelectual</div>
+<div class="font-data-mono text-xs text-on-surface-variant">SECTOR SALUD</div>
+</div>
+<div class="case-metric font-data-mono text-tertiary">
+                        24 MESES
+                    </div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background dark:bg-background text-on-background dark:text-on-background w-full border-t border-outline-variant font-label-caps text-label-caps mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-page py-section-gap w-full max-w-[1920px] mx-auto border-x border-stone">
+<div class="col-span-1 md:col-span-4 flex flex-col justify-between mb-8 md:mb-0">
+<div class="font-headline-sm text-headline-sm text-on-background mb-4 uppercase">
+                    VANGUARD LEGAL
+                </div>
+<div class="text-on-surface-variant">
+                    © 2024 VANGUARD LEGAL. ALL RIGHTS RESERVED.
+                </div>
+</div>
+<div class="col-span-1 md:col-span-8 flex flex-col md:flex-row justify-end items-start md:items-end gap-8">
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-100 linear transition-all" href="#">PRIVACY POLICY</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-100 linear transition-all" href="#">TERMS OF ENGAGEMENT</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-100 linear transition-all" href="#">REGULATORY DISCLOSURES</a>
+</div>
+</div>
+</footer>
+<!-- Mechanical Counter Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const casesCounter = document.getElementById('cases-counter');
+            let count = 104;
+            let tickCount = 0;
+            const maxTicks = 15; // Number of mechanical ticks before settling
+
+            const tick = () => {
+                if (tickCount < maxTicks) {
+                    count++;
+                    casesCounter.textContent = count.toString().padStart(4, '0');
+                    tickCount++;
+                    setTimeout(tick, 150); // Dry mechanical tick
+                }
+            };
+
+            setTimeout(tick, 3000); // Start after headline reveals
+        });
+    </script>
+</body></html>

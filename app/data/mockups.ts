@@ -33,18 +33,8 @@ export const mockups: MockupEntry[] = [
     year: "2027"
   },
   {
-    slug: "beauty",
-    title: "AI Beauty Studio",
-    description: "Beauty salon experience centered around AI hairstyle previews and bookings.",
-    path: "mockups/beauty.html",
-    type: "mobile",
-    stack: "React, Tailwind",
-    role: "Frontend / Product Design",
-    year: "2027"
-  },
-  {
-    slug: "beauty",
-    title: "AI Beauty Studio",
+    slug: "beauty-d",
+    title: "AI Beauty Studio Desktop",
     description: "Beauty salon experience centered around AI hairstyle previews and bookings.",
     path: "mockups/beauty-d.html",
     type: "desktop",
@@ -57,7 +47,7 @@ export const mockups: MockupEntry[] = [
     title: "Immersive Restaurant",
     description: "Visual restaurant experience with an immersive menu and frictionless reservations.",
     path: "mockups/dining.html",
-    type: "desktop",
+    type: "mobile",
     stack: "Nuxt 4 - Nuxt UI",
     role: "Frontend / Product Design",
     year: "2027"

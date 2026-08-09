@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite Aesthetics | Hero Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Manrope:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2f3130",
+                    "on-tertiary-container": "#af8d47",
+                    "on-secondary-fixed": "#101f0f",
+                    "tertiary": "#201500",
+                    "tertiary-fixed-dim": "#e8c175",
+                    "secondary-container": "#d4e8ce",
+                    "inverse-primary": "#b7c6ee",
+                    "on-surface-variant": "#45464e",
+                    "on-background": "#1a1c1b",
+                    "surface-container-highest": "#e2e3e1",
+                    "on-primary-fixed": "#0a1a3a",
+                    "on-primary-container": "#8392b7",
+                    "surface-variant": "#e2e3e1",
+                    "on-primary-fixed-variant": "#384668",
+                    "surface-dim": "#dadad8",
+                    "tertiary-fixed": "#ffdea2",
+                    "inverse-on-surface": "#f1f1ef",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b9ccb3",
+                    "error": "#ba1a1a",
+                    "primary": "#041534",
+                    "on-secondary-container": "#576954",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#b7c6ee",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#4f5e81",
+                    "surface-container": "#eeeeec",
+                    "surface": "#f9f9f7",
+                    "surface-container-low": "#f4f4f2",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#392800",
+                    "primary-fixed": "#d9e2ff",
+                    "on-surface": "#1a1c1b",
+                    "on-error": "#ffffff",
+                    "background": "#f9f9f7",
+                    "surface-bright": "#f9f9f7",
+                    "secondary-fixed": "#d4e8ce",
+                    "on-secondary-fixed-variant": "#3a4b38",
+                    "surface-container-high": "#e8e8e6",
+                    "on-tertiary-fixed-variant": "#5c4200",
+                    "secondary": "#52634e",
+                    "on-primary": "#ffffff",
+                    "outline": "#75777f",
+                    "primary-container": "#1b2a4a",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c5c6cf",
+                    "on-tertiary-fixed": "#261900"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-sm": [
+                            "Fraunces"
+                    ],
+                    "body-md": [
+                            "Manrope"
+                    ],
+                    "body-lg": [
+                            "Manrope"
+                    ],
+                    "headline-md": [
+                            "Fraunces"
+                    ],
+                    "data-mono": [
+                            "IBM Plex Mono"
+                    ],
+                    "label-sm": [
+                            "Manrope"
+                    ],
+                    "display-lg-mobile": [
+                            "Fraunces"
+                    ],
+                    "display-lg": [
+                            "Fraunces"
+                    ]
+            },
+            "fontSize": {
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "data-mono": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.08em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        .split-panel {
+            transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
+            will-change: transform;
+        }
+
+        /* Default state = portal OPEN: panels rest off-canvas, revealing the
+           interior photo, the inner title and the trust markers. Scrolling
+           past the threshold CLOSES the portal (adds .portal-closed),
+           sliding the panels back together and surfacing the outer wordmark. */
+        .left-panel { transform: translateX(-100%); }
+        .right-panel { transform: translateX(100%); }
+
+        .trust-marker, .inner-title {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .portal-closed .left-panel { transform: translateX(0); }
+        .portal-closed .right-panel { transform: translateX(0); }
+
+        .portal-closed .trust-marker { opacity: 0; transform: translateY(20px); }
+        .portal-closed .inner-title { opacity: 0; transform: translateY(-16px); }
+        .portal-closed .tm-1 { transition-delay: 0.05s; }
+        .portal-closed .tm-2 { transition-delay: 0.12s; }
+        .portal-closed .tm-3 { transition-delay: 0.19s; }
+
+        .wordmark-part {
+            letter-spacing: 0.05em;
+            transition: letter-spacing 1s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        .portal-closed .wordmark-part {
+            letter-spacing: 0.12em;
+        }
+
+        .guide-line {
+            transition: opacity 0.4s ease;
+        }
+        .portal-closed .guide-line {
+            opacity: 0;
+        }
+
+        /* Calendar Grid Highlight */
+        .cal-day:hover, .cal-day.selected {
+            background-color: theme('colors.primary-container');
+            color: theme('colors.on-primary');
+            border-color: theme('colors.primary-container');
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md dark:bg-inverse-surface/90 border-b border-primary/10 dark:border-primary-fixed/10 transition-colors duration-300">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
+<!-- Brand -->
+<a class="font-headline-md text-headline-md font-medium text-primary dark:text-primary-fixed" href="#">Elite Aesthetics</a>
+<!-- Links (Desktop) -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">Procedures</a>
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">About</a>
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">Results</a>
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">Locations</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<button class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant hover:text-primary transition-colors">EN / ES</button>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-3 font-label-sm text-label-sm uppercase tracking-[0.08em] rounded-none hover:bg-primary-container transition-colors border border-primary">Book Consultation</button>
+</div>
+</div>
+</nav>
+<!-- Portal Section -->
+<section class="relative w-full h-screen overflow-hidden bg-surface cursor-ns-resize" id="portal-container">
+<!-- The Revealed Background Content -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A high-fidelity, wide-angle architectural photograph of a luxury medical clinic waiting area. Bathed in natural, soft light from large floor-to-ceiling windows. The interior features minimalist, high-end design with neutral tones, sleek structural lines, and subtle botanical elements. The atmosphere is serene, clinical yet warmly inviting, exuding absolute trust and premium quality. The lighting is pristine and airy." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDCDWplMJa1S7QWcQRjsqU3na6u1Xh_zShAiNh7shhDEWRx9Gdvq7SwmI3CgfWn0BdGV6mtgAf2ZbRwGzGSvEw3iflywl3f1omLNEtglQdkBj37j137P86kD_DOhIyo3yHR8QQWXb64UgVAze1Tyo1nrQ2nnbe1qvYiUslZRSTbv3obNKCMfQddYxM6AUxzk_A2ZlyO5BTR6VZ4QOiGTPZvXn4jwztkQ3spk2Lq63soZQgx8cELL2Y')"></div>
+<!-- Overlay for text readability -->
+<div class="absolute inset-0 bg-surface/40 backdrop-blur-[2px]"></div>
+<!-- Inner Title: visible while the portal is OPEN, i.e. "inside" the clinic -->
+<div class="inner-title absolute top-28 md:top-36 left-1/2 -translate-x-1/2 text-center z-10 max-w-2xl px-margin-mobile">
+<p class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-secondary mb-3">Elite Aesthetics</p>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary italic">Where Confidence<br/>Takes Shape</h2>
+</div>
+<!-- Revealed Trust Markers -->
+<div class="absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col md:flex-row gap-12 w-full max-w-container-max px-margin-mobile md:px-margin-desktop z-10">
+<div class="trust-marker tm-1 flex items-center gap-4 bg-surface/80 p-4 border border-primary/10 backdrop-blur-md">
+<div class="w-12 h-12 rounded-full border border-secondary flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-weight="regular">workspace_premium</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-primary">International</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Certification</p>
+</div>
+</div>
+<div class="trust-marker tm-2 flex items-center gap-4 bg-surface/80 p-4 border border-primary/10 backdrop-blur-md">
+<div class="w-12 h-12 rounded-full border border-secondary flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-weight="regular">history</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-primary">15+ Years</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Clinical Excellence</p>
+</div>
+</div>
+<div class="trust-marker tm-3 flex items-center gap-4 bg-surface/80 p-4 border border-primary/10 backdrop-blur-md">
+<div class="w-12 h-12 rounded-full border border-secondary flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-weight="regular">clinical_notes</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-primary">5,000+</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Procedures</p>
+</div>
+</div>
+</div>
+</div>
+<!-- The Sliding Panels (Foreground) — outer wordmark, assembles when the portal closes -->
+<div class="absolute inset-0 z-20 flex pointer-events-none">
+<!-- Left Panel -->
+<div class="split-panel left-panel w-1/2 h-full bg-surface relative border-r border-tertiary-fixed-dim pointer-events-auto">
+<div class="absolute top-1/2 -translate-y-1/2 right-0 pr-2">
+<h1 class="font-display-lg md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary wordmark-part tracking-widest whitespace-nowrap">ELITE AES</h1>
+</div>
+</div>
+<!-- Right Panel -->
+<div class="split-panel right-panel w-1/2 h-full bg-surface relative border-l border-tertiary-fixed-dim pointer-events-auto">
+<div class="absolute top-1/2 -translate-y-1/2 left-0 pl-2">
+<h1 class="font-display-lg md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary wordmark-part tracking-widest whitespace-nowrap">THETICS</h1>
+</div>
+</div>
+<!-- Architectural Guide Line (Center) — hidden once the portal closes -->
+<div class="guide-line absolute left-1/2 top-0 bottom-0 w-[1px] bg-tertiary-fixed-dim -translate-x-1/2 z-30 pointer-events-none opacity-50"></div>
+</div>
+<div class="absolute bottom-8 left-0 w-full z-30 flex flex-col items-center text-center animate-bounce pointer-events-none">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-[0.08em] mb-2">Scroll to Continue</span>
+<span class="material-symbols-outlined text-primary">arrow_downward</span>
+</div>
+</section>
+<!-- Booking Section -->
+<section class="py-32 bg-surface relative z-30 border-t border-primary/10">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="col-span-1 md:col-span-4 flex flex-col justify-center">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Schedule Your Consultation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Select a preferred date to begin your journey toward clinical excellence. Our coordinators will contact you to confirm the exact time.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">location_on</span>
+<span class="font-data-mono text-data-mono text-on-surface">Beverly Hills Clinic</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">videocam</span>
+<span class="font-data-mono text-data-mono text-on-surface">Virtual Consultation</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-7 md:col-start-6">
+<!-- Integrated Calendar -->
+<div class="bg-surface-container-lowest border border-primary/10 p-8">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-sm text-headline-sm text-primary">October 2024</h3>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-primary/10 hover:border-primary transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="w-8 h-8 flex items-center justify-center border border-primary/10 hover:border-primary transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 mb-2">
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant py-2">SUN</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant py-2">MON</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant py-2">TUE</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant py-2">WED</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant py-2">THU</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant py-2">FRI</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant py-2">SAT</div>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Empty slots -->
+<div class="aspect-square"></div>
+<div class="aspect-square"></div>
+<!-- Days -->
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors text-on-surface-variant/50">1</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors text-on-surface-variant/50">2</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">3</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">4</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">5</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">6</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">7</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">8</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">9</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">10</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">11</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">12</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">13</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">14</div>
+<div class="cal-day selected aspect-square border border-primary-container bg-primary-container text-on-primary flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">15</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">16</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">17</div>
+<div class="cal-day aspect-square border border-surface-variant flex items-center justify-center font-data-mono text-data-mono cursor-pointer transition-colors">18</div>
+</div>
+<div class="mt-8 pt-6 border-t border-primary/10 flex justify-between items-center">
+<span class="font-data-mono text-data-mono text-primary">Selected: Oct 15, 2024</span>
+<button class="bg-primary text-on-primary px-8 py-4 font-label-sm text-label-sm uppercase tracking-[0.08em] hover:bg-primary-container transition-colors">Continue</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface w-full mt-auto border-t border-primary/10">
+<div class="flex flex-col gap-12 w-full px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-primary/10 pb-12">
+<a class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed" href="#">Elite Aesthetics</a>
+<div class="flex flex-wrap gap-8">
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">Medical Terms</a>
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">Certifications</a>
+<a class="font-label-sm text-label-sm uppercase tracking-[0.08em] text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">Contact</a>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<p class="font-body-md text-body-md text-on-secondary-container dark:text-secondary-fixed opacity-70">© 2024 Elite Aesthetics. All Rights Reserved. Clinical Excellence.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll interaction for Portal — inverted: the portal starts OPEN
+        // (revealing the interior) and CLOSES as the visitor scrolls down.
+        const portalContainer = document.getElementById('portal-container');
+        let isPortalClosed = false;
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const threshold = window.innerHeight * 0.3; // Trigger at 30% scroll
+
+            if (scrollY > threshold && !isPortalClosed) {
+                portalContainer.classList.add('portal-closed');
+                isPortalClosed = true;
+            } else if (scrollY <= threshold && isPortalClosed) {
+                portalContainer.classList.remove('portal-closed');
+                isPortalClosed = false;
+            }
+        });
+
+        // Calendar selection logic
+        const calDays = document.querySelectorAll('.cal-day:not(.text-on-surface-variant\\/50)');
+        calDays.forEach(day => {
+            day.addEventListener('click', () => {
+                calDays.forEach(d => d.classList.remove('selected', 'bg-primary-container', 'text-on-primary', 'border-primary-container'));
+                day.classList.add('selected', 'bg-primary-container', 'text-on-primary', 'border-primary-container');
+            });
+        });
+    </script>
+</body></html>

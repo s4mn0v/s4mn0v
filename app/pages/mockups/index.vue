@@ -36,6 +36,40 @@
                 </div>
             </section>
 
+            <section
+                class="h-svh w-full snap-center flex items-center justify-center p-5 md:p-margin-desktop bg-background-void relative"
+            >
+                <div
+                    class="max-w-container-max w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center relative z-10"
+                >
+                    <div class="flex justify-center md:justify-end">
+                        <img
+                            :src="logoImage"
+                            alt="S4M N0V logo"
+                            class="w-52 h-52 md:w-72 md:h-72 rounded-full object-cover grayscale"
+                        />
+                    </div>
+                    <div
+                        class="flex flex-col gap-4 text-center md:text-left"
+                    >
+                        <span
+                            class="font-label-xs text-label-xs uppercase tracking-widest text-on-surface-variant"
+                        >
+                            About This Selection
+                        </span>
+                        <p
+                            class="font-code-md text-code-md text-[#C7C7C2] leading-loose max-w-md mx-auto md:mx-0"
+                        >
+                            This is a small sample of my work as a UI/UX
+                            designer — a handful of interface explorations
+                            across web and mobile, built to test ideas,
+                            layouts, and interactions before they become
+                            real products.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             <template v-for="entry in orderedMockups" :key="entry.slug">
                 <section
                     v-if="entry.type === 'desktop'"
@@ -69,10 +103,17 @@
                                     {{ entry.title }}
                                 </div>
                             </div>
-                            <div class="flex-grow overflow-hidden relative">
+                            <div
+                                :ref="
+                                    (el) =>
+                                        registerDesktopCard(entry.slug, el)
+                                "
+                                class="flex-grow overflow-hidden relative"
+                            >
                                 <iframe
                                     :src="mockupSrc(entry.path)"
-                                    class="absolute inset-0 w-full h-full pointer-events-none"
+                                    class="absolute top-0 left-0 pointer-events-none border-0"
+                                    :style="desktopCardIframeStyle(entry)"
                                     loading="lazy"
                                     tabindex="-1"
                                     aria-hidden="true"
@@ -269,10 +310,11 @@
 
 <script setup lang="ts">
 import { mockups, type MockupEntry } from "~/data/mockups";
+import logoImage from "~/assets/img/logo.png";
 
 const config = useRuntimeConfig();
 
-const titleLetters = "SELECTED_WORK".split("");
+const titleLetters = "MY_UI_WORK".split("");
 
 function mockupSrc(path: string): string {
     return `${config.app.baseURL}${path}`;
@@ -287,10 +329,83 @@ function shuffle<T>(items: T[]): T[] {
     return result;
 }
 
-const orderedMockups = ref<MockupEntry[]>(mockups);
+const orderedMockups = useState<MockupEntry[]>("mockupsOrder", () => mockups);
+const hasShuffledMockups = useState<boolean>(
+    "mockupsOrderShuffled",
+    () => false,
+);
+
+const DESKTOP_DESIGN_WIDTH = 1440;
+const desktopCardEls = new Map<string, HTMLElement>();
+const desktopCardScales = reactive<Record<string, number>>({});
+let desktopResizeObserver: ResizeObserver | null = null;
+
+function updateDesktopCardScale(slug: string, el: HTMLElement): void {
+    const width = el.clientWidth;
+    if (width <= 0) return;
+    desktopCardScales[slug] = width / DESKTOP_DESIGN_WIDTH;
+}
+
+function registerDesktopCard(slug: string, el: Element | null): void {
+    if (el instanceof HTMLElement) {
+        desktopCardEls.set(slug, el);
+        updateDesktopCardScale(slug, el);
+        desktopResizeObserver?.observe(el);
+    } else {
+        const existing = desktopCardEls.get(slug);
+        if (existing) {
+            desktopResizeObserver?.unobserve(existing);
+            desktopCardEls.delete(slug);
+        }
+    }
+}
+
+function desktopCardIframeStyle(entry: MockupEntry) {
+    const scale = desktopCardScales[entry.slug] ?? 1;
+    const el = desktopCardEls.get(entry.slug);
+    const height = el && scale > 0 ? el.clientHeight / scale : 0;
+    return {
+        width: `${DESKTOP_DESIGN_WIDTH}px`,
+        height: height ? `${height}px` : "100%",
+        transform: `scale(${scale})`,
+        transformOrigin: "top left",
+    };
+}
+
+function handleWindowResize(): void {
+    desktopCardEls.forEach((el, slug) => updateDesktopCardScale(slug, el));
+}
 
 onMounted(() => {
-    orderedMockups.value = shuffle(mockups);
+    if (!hasShuffledMockups.value) {
+        orderedMockups.value = shuffle(mockups);
+        hasShuffledMockups.value = true;
+    }
+
+    if (typeof ResizeObserver !== "undefined") {
+        desktopResizeObserver = new ResizeObserver((entries) => {
+            for (const observed of entries) {
+                const target = observed.target as HTMLElement;
+                for (const [slug, el] of desktopCardEls) {
+                    if (el === target) {
+                        updateDesktopCardScale(slug, el);
+                        break;
+                    }
+                }
+            }
+        });
+        desktopCardEls.forEach((el, slug) => {
+            desktopResizeObserver?.observe(el);
+            updateDesktopCardScale(slug, el);
+        });
+    }
+
+    window.addEventListener("resize", handleWindowResize, { passive: true });
+});
+
+onBeforeUnmount(() => {
+    desktopResizeObserver?.disconnect();
+    window.removeEventListener("resize", handleWindowResize);
 });
 </script>
 

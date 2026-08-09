@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html class="h-full" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -7,8 +6,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -65,10 +63,10 @@
                         "on-surface-variant": "#424844"
                     },
                     "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
+                        "DEFAULT": "0.0625rem",
+                        "lg": "0.125rem",
+                        "xl": "0.25rem",
+                        "full": "999px"
                     },
                     "spacing": {
                         "gutter": "24px",
@@ -78,81 +76,22 @@
                         "margin-desktop": "40px"
                     },
                     "fontFamily": {
-                        "display-lg": [
-                            "EB Garamond"
-                        ],
-                        "headline-md": [
-                            "EB Garamond"
-                        ],
-                        "body-lg": [
-                            "Hanken Grotesk"
-                        ],
-                        "body-md": [
-                            "Hanken Grotesk"
-                        ],
-                        "display-lg-mobile": [
-                            "EB Garamond"
-                        ],
-                        "spec-label": [
-                            "Hanken Grotesk"
-                        ],
-                        "price-tag": [
-                            "Hanken Grotesk"
-                        ]
+                        "display-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "spec-label": ["JetBrains Mono"],
+                        "price-tag": ["JetBrains Mono"]
                     },
                     "fontSize": {
-                        "display-lg": [
-                            "48px",
-                            {
-                                "lineHeight": "56px",
-                                "letterSpacing": "-0.02em",
-                                "fontWeight": "500"
-                            }
-                        ],
-                        "headline-md": [
-                            "24px",
-                            {
-                                "lineHeight": "32px",
-                                "fontWeight": "500"
-                            }
-                        ],
-                        "body-lg": [
-                            "18px",
-                            {
-                                "lineHeight": "28px",
-                                "fontWeight": "400"
-                            }
-                        ],
-                        "body-md": [
-                            "16px",
-                            {
-                                "lineHeight": "24px",
-                                "fontWeight": "400"
-                            }
-                        ],
-                        "display-lg-mobile": [
-                            "32px",
-                            {
-                                "lineHeight": "40px",
-                                "letterSpacing": "-0.01em",
-                                "fontWeight": "500"
-                            }
-                        ],
-                        "spec-label": [
-                            "12px",
-                            {
-                                "lineHeight": "16px",
-                                "letterSpacing": "0.05em",
-                                "fontWeight": "600"
-                            }
-                        ],
-                        "price-tag": [
-                            "20px",
-                            {
-                                "lineHeight": "24px",
-                                "fontWeight": "600"
-                            }
-                        ]
+                        "display-lg": ["48px", {"lineHeight": "52px","letterSpacing": "-0.03em","fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "30px","letterSpacing": "-0.02em","fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px","fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px","fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "36px","letterSpacing": "-0.02em","fontWeight": "600"}],
+                        "spec-label": ["11px", {"lineHeight": "16px","letterSpacing": "0.08em","fontWeight": "600"}],
+                        "price-tag": ["20px", {"lineHeight": "24px","fontWeight": "600"}]
                     }
                 }
             }
@@ -160,25 +99,81 @@
     </script>
 <style>
         body {
-            background-color: #fbf9f4; /* Stone White */
+            background-color: #fbf9f4;
             color: #1b1c19;
-            overflow: hidden; /* Prevent body scrolling when map is full screen */
+            overflow: hidden;
         }
 
         .glass-panel {
-            background: rgba(244, 242, 237, 0.85); /* rgba Stone White */
+            background: rgba(244, 242, 237, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
 
+        /* ---------- Immersive isometric map ---------- */
+        .map-illustration {
+            background-color: #f0eee9;
+        }
+
+        .map-scene {
+            position: absolute;
+            inset: 0;
+            animation: mapDrift 20s ease-in-out infinite;
+            transform-origin: 50% 40%;
+            will-change: transform;
+        }
+        @keyframes mapDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-5px, -6px) scale(1.014); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .map-scene { animation: none; }
+        }
+
+        .map-scene svg { width: 100%; height: 100%; display: block; }
+
+        .ambient-light {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 900px 640px at 18% 8%, rgba(255,255,255,0.40), rgba(255,255,255,0) 62%),
+                linear-gradient(to bottom, rgba(27,28,25,0) 55%, rgba(27,28,25,0.14) 100%);
+        }
+
+        /* Elevated pins: stem + grounded shadow give the pins real height above the terrain */
+        .pins-layer { position: absolute; inset: 0; z-index: 2; }
+
+        .pin-wrap {
+            position: absolute;
+            transform: translate(-50%, -100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pin-glow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            top: 42%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,183,131,0.55), rgba(255,183,131,0) 70%);
+            filter: blur(6px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
         .map-pin {
+            position: relative;
             width: 24px;
             height: 24px;
-            background-color: #875126; /* Copper */
+            background-color: #875126;
             border-radius: 50% 50% 50% 0;
             transform: rotate(-45deg);
-            position: absolute;
-            box-shadow: 0 4px 10px rgba(47, 69, 56, 0.2);
+            box-shadow: 0 4px 10px rgba(47, 69, 56, 0.25);
             cursor: pointer;
         }
 
@@ -195,103 +190,109 @@
         }
 
         .map-pin.hotspot {
+            background-color: #c97b3e;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(135, 81, 38, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(135, 81, 38, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(135, 81, 38, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(201, 123, 62, 0.45); }
+            70% { box-shadow: 0 0 0 15px rgba(201, 123, 62, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(201, 123, 62, 0); }
+        }
+
+        .pin-stem {
+            width: 2px;
+            height: 18px;
+            margin-top: 1px;
+            background: linear-gradient(to bottom, rgba(74, 46, 20, 0.55), rgba(74, 46, 20, 0));
+        }
+
+        .pin-shadow {
+            width: 20px;
+            height: 7px;
+            margin-top: -3px;
+            border-radius: 50%;
+            background: rgba(25, 47, 35, 0.32);
+            filter: blur(2px);
+        }
+
+        .pin-wrap.hotspot .pin-stem {
+            background: linear-gradient(to bottom, rgba(201, 123, 62, 0.6), rgba(201, 123, 62, 0));
+        }
+
+        .pin-wrap.hotspot .pin-shadow {
+            background: rgba(255, 138, 61, 0.42);
         }
 
         .bottom-sheet {
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            transform: translateY(calc(100% - 140px)); /* Peek state */
+            transform: translateY(calc(100% - 140px));
         }
 
         .bottom-sheet.expanded {
             transform: translateY(0);
         }
 
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        /* Quiet, abstract map illustration (replaces the photographic map) */
-        .map-illustration {
-            background-color: #f0eee9; /* surface-container */
-        }
-        .map-illustration svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="h-full w-full relative flex flex-col font-body-md text-body-md">
-<!-- Map Background: quiet, abstract line-art illustration instead of a photo -->
-<div class="absolute inset-0 z-0 map-illustration" aria-label="Stylized abstract map illustration of streets and city blocks">
-<svg preserveAspectRatio="xMidYMid slice" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+<!-- Map Background: immersive isometric city illustration with real elevation -->
+<div class="absolute inset-0 z-0 map-illustration" aria-label="Stylized isometric map illustration of city blocks with elevation, a river and a glowing landmark tower marking the featured listing">
+<div class="map-scene" id="mapScene">
+<svg id="isoMap" preserveAspectRatio="xMidYMid slice" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="waterGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#aecdc6"></stop>
+<stop offset="100%" stop-color="#7ea4ae"></stop>
+</linearGradient>
+<radialGradient cx="35%" cy="28%" id="landmarkTop" r="80%">
+<stop offset="0%" stop-color="#ffe4cf"></stop>
+<stop offset="55%" stop-color="#ffb783"></stop>
+<stop offset="100%" stop-color="#c97b3e"></stop>
+</radialGradient>
+<filter height="200%" id="softBlur" width="200%" x="-50%" y="-50%">
+<feGaussianBlur stdDeviation="3"></feGaussianBlur>
+</filter>
+</defs>
 <rect fill="#f0eee9" height="1200" width="800"></rect>
-<!-- soft green park zones -->
-<rect fill="#e4e8e2" height="180" opacity="0.6" width="220" x="60" y="120"></rect>
-<rect fill="#e4e8e2" height="140" opacity="0.6" width="180" x="520" y="560"></rect>
-<rect fill="#e4e8e2" height="160" opacity="0.6" width="200" x="140" y="820"></rect>
-<!-- river ribbon -->
-<path d="M 0 700 C 150 680, 250 760, 400 720 C 550 680, 650 760, 800 730" fill="none" opacity="0.5" stroke="#b3cdbb" stroke-width="14"></path>
-<!-- main avenues -->
-<g opacity="0.55" stroke="#9a9990" stroke-linecap="round" stroke-width="2">
-<line x1="0" x2="800" y1="180" y2="180"></line>
-<line x1="0" x2="800" y1="420" y2="420"></line>
-<line x1="0" x2="800" y1="900" y2="900"></line>
-<line x1="0" x2="800" y1="1050" y2="1050"></line>
-<line x1="130" x2="130" y1="0" y2="1200"></line>
-<line x1="380" x2="380" y1="0" y2="1200"></line>
-<line x1="630" x2="630" y1="0" y2="1200"></line>
-</g>
-<!-- secondary streets grid -->
-<g opacity="0.28" stroke="#adaca4" stroke-width="1">
-<line x1="0" x2="800" y1="60" y2="60"></line>
-<line x1="0" x2="800" y1="300" y2="300"></line>
-<line x1="0" x2="800" y1="540" y2="540"></line>
-<line x1="0" x2="800" y1="660" y2="660"></line>
-<line x1="0" x2="800" y1="780" y2="780"></line>
-<line x1="0" x2="800" y1="980" y2="980"></line>
-<line x1="0" x2="800" y1="1140" y2="1140"></line>
-<line x1="60" x2="60" y1="0" y2="1200"></line>
-<line x1="260" x2="260" y1="0" y2="1200"></line>
-<line x1="320" x2="320" y1="0" y2="1200"></line>
-<line x1="460" x2="460" y1="0" y2="1200"></line>
-<line x1="560" x2="560" y1="0" y2="1200"></line>
-<line x1="710" x2="710" y1="0" y2="1200"></line>
-</g>
-<!-- a couple of gently curved boulevards for character -->
-<path d="M -20 380 C 220 340, 420 460, 820 400" fill="none" opacity="0.3" stroke="#9a9990" stroke-width="2"></path>
-<path d="M -20 960 C 260 1010, 480 900, 820 960" fill="none" opacity="0.3" stroke="#9a9990" stroke-width="2"></path>
 </svg>
+<div class="pins-layer" id="pinsLayer">
+<div class="pin-wrap hotspot" style="top: 16%; left: 31%;">
+<div class="pin-glow"></div>
+<div class="map-pin hotspot"></div>
+<div class="pin-stem"></div>
+<div class="pin-shadow"></div>
 </div>
-<!-- Pins -->
-<div class="absolute inset-0 z-0 pointer-events-none">
-<div class="map-pin hotspot pointer-events-auto" style="top: 30%; left: 45%;"></div>
-<div class="map-pin pointer-events-auto" style="top: 50%; left: 60%;"></div>
-<div class="map-pin pointer-events-auto" style="top: 20%; left: 70%;"></div>
-<div class="map-pin pointer-events-auto" style="top: 65%; left: 35%;"></div>
+<div class="pin-wrap" style="top: 33%; left: 71%;">
+<div class="map-pin"></div>
+<div class="pin-stem"></div>
+<div class="pin-shadow"></div>
+</div>
+<div class="pin-wrap" style="top: 13%; left: 80%;">
+<div class="map-pin"></div>
+<div class="pin-stem"></div>
+<div class="pin-shadow"></div>
+</div>
+<div class="pin-wrap" style="top: 58%; left: 21%;">
+<div class="map-pin"></div>
+<div class="pin-stem"></div>
+<div class="pin-shadow"></div>
+</div>
+</div>
+</div>
+<div class="ambient-light"></div>
 </div>
 <!-- Top Overlay: Branding & Filters -->
 <div class="relative z-10 w-full pt-12 px-margin-mobile flex flex-col gap-4 pointer-events-none">
-<!-- Header -->
 <div class="flex justify-between items-center pointer-events-auto">
-<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold tracking-tighter text-primary">ALTO</h1>
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold tracking-tighter text-primary text-[36px]" style="font-weight:700; letter-spacing:-0.04em;">ALTO</h1>
 <div class="flex items-center gap-2 bg-surface px-3 py-1 rounded-full border border-outline-variant shadow-[0_10px_30px_rgba(47,69,56,0.05)]">
-<span class="material-symbols-outlined text-[16px] text-secondary">star</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">star</span>
 <span class="font-spec-label text-spec-label text-on-surface">Premium Tier</span>
 </div>
 </div>
-<!-- Filter Pills -->
 <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2 pointer-events-auto">
 <button class="whitespace-nowrap px-4 py-2 rounded-full font-spec-label text-spec-label bg-primary text-on-primary border border-primary transition-colors">
                 El Poblado
@@ -309,88 +310,203 @@
 </div>
 <!-- Bottom Sheet (Listings) -->
 <div class="absolute bottom-[72px] left-0 w-full glass-panel border-t border-outline-variant/30 rounded-t-xl z-20 flex flex-col bottom-sheet h-[80vh]" id="bottomSheet">
-<!-- Drag Handle / Peek Area -->
-<div class="w-full flex flex-col items-center pt-3 pb-4 cursor-pointer shrink-0" id="dragHandle">
-<div class="w-12 h-1 bg-outline-variant rounded-full mb-3"></div>
+<div class="w-full flex flex-col items-center pt-3 pb-5 cursor-pointer shrink-0 border-b border-outline-variant/60" id="dragHandle">
+<div class="w-12 h-1 bg-outline-variant rounded-full mb-4"></div>
 <div class="w-full px-margin-mobile flex justify-between items-center">
 <h2 class="font-headline-md text-headline-md text-primary">Available Listings</h2>
-<span class="font-spec-label text-spec-label text-on-surface-variant">4 PROPERTIES</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-3 py-1.5">4 PROPERTIES</span>
 </div>
 </div>
-<!-- Scrollable Content List -->
-<div class="flex-1 overflow-y-auto px-margin-mobile pb-6 flex flex-col gap-6 hide-scrollbar">
-<!-- Listing Card 1 -->
-<div class="group cursor-pointer flex flex-col gap-3" onclick="toggleDetailView()">
+<div class="flex-1 overflow-y-auto px-margin-mobile pt-5 pb-6 flex flex-col gap-7 hide-scrollbar">
+<article class="group cursor-pointer flex flex-col rounded-lg border border-outline-variant/70 bg-surface-container-lowest overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-secondary/50 hover:shadow-[0_18px_44px_rgba(20,22,27,0.14)]" onclick="toggleDetailView()">
 <div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A stunning, high-contrast photograph of a luxury penthouse interior in El Poblado, Medellín. The image features floor-to-ceiling glass windows offering panoramic city views, sleek architectural lines, light wood floors, and minimalist modern furniture. The lighting is bright and natural, creating a sophisticated and airy atmosphere consistent with a premium real estate investment platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3TYkpZgJBtOxKQDvMi7edHsw2m3ja3nj-j_YFRq5QSO1zNPPln_cP1p-J2pYrqlWcaOoRdgnxZyYrXgtxUajwaEo83BtYag8Vossc3Lv3lJIhS3NNYLqlmDrV7dYcycsHF4VxgXXVB5i1htJMTTeWgBUz1keFTkKnkqF5J1gQ_nbBETdBXKtTJwN1bIoqxqIjn_xTHDoAlNYdblO3-BeFJi3QbgJuLReRp7DxUGWCJ0BMqjH2oD0"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A stunning, high-contrast photograph of a luxury penthouse interior in El Poblado, Medellín." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3TYkpZgJBtOxKQDvMi7edHsw2m3ja3nj-j_YFRq5QSO1zNPPln_cP1p-J2pYrqlWcaOoRdgnxZyYrXgtxUajwaEo83BtYag8Vossc3Lv3lJIhS3NNYLqlmDrV7dYcycsHF4VxgXXVB5i1htJMTTeWgBUz1keFTkKnkqF5J1gQ_nbBETdBXKtTJwN1bIoqxqIjn_xTHDoAlNYdblO3-BeFJi3QbgJuLReRp7DxUGWCJ0BMqjH2oD0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent"></div>
+<div class="absolute top-4 left-4 bg-tertiary text-on-tertiary font-spec-label text-spec-label px-2.5 py-1.5 rounded-full border border-tertiary-fixed-dim/40">
+                        FEATURED
+                    </div>
 <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
 <h3 class="font-headline-md text-headline-md text-on-primary">The Provenza Penthouse</h3>
 </div>
-<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur px-2 py-1 rounded">
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur w-9 h-9 rounded-full border border-outline-variant/60 flex items-center justify-center">
 <span class="material-symbols-outlined text-[18px] text-secondary">favorite_border</span>
 </div>
 </div>
-<div class="flex justify-between items-start">
-<div>
+<div class="flex flex-col gap-4 p-4">
+<div class="flex justify-between items-start gap-3">
+<div class="flex flex-col gap-1">
 <p class="font-price-tag text-price-tag text-secondary">$1,250,000</p>
-<p class="font-body-md text-body-md text-on-surface-variant">El Poblado, Medellín</p>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>El Poblado, Medellín
+                        </p>
 </div>
-<div class="flex gap-4 border-t border-outline-variant pt-2">
-<div class="flex flex-col items-end">
+<span class="font-spec-label text-spec-label text-secondary border border-secondary/40 bg-secondary-container/40 rounded-full px-2.5 py-1.5 shrink-0">AVAILABLE</span>
+</div>
+<div class="grid grid-cols-3 gap-2 border-y border-outline-variant/60 py-3">
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">bed</span>
+<span class="font-body-md text-body-md text-primary font-medium">3</span>
 <span class="font-spec-label text-spec-label text-on-surface-variant">BEDS</span>
-<span class="font-body-md text-body-md text-primary">3</span>
 </div>
-<div class="flex flex-col items-end">
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">shower</span>
+<span class="font-body-md text-body-md text-primary font-medium">3.5</span>
 <span class="font-spec-label text-spec-label text-on-surface-variant">BATHS</span>
-<span class="font-body-md text-body-md text-primary">3.5</span>
 </div>
-<div class="flex flex-col items-end">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-outline">aspect_ratio</span>
+<span class="font-body-md text-body-md text-primary font-medium">240m²</span>
 <span class="font-spec-label text-spec-label text-on-surface-variant">AREA</span>
-<span class="font-body-md text-body-md text-primary">240m²</span>
 </div>
 </div>
+<div class="flex flex-wrap gap-2">
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Rooftop Pool</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Smart Home</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Private Terrace</span>
 </div>
 </div>
-<!-- Divider -->
-<div class="w-full h-[1px] bg-outline-variant/30"></div>
-<!-- Listing Card 2 -->
-<div class="group cursor-pointer flex flex-col gap-3">
+</article>
+<article class="group cursor-pointer flex flex-col rounded-lg border border-outline-variant/70 bg-surface-container-lowest overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-secondary/50 hover:shadow-[0_18px_44px_rgba(20,22,27,0.14)]">
 <div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An elegant exterior shot of a modern architectural home in Laureles, Medellín. The composition highlights structural geometry, featuring a mix of raw concrete and warm wood paneling. Lush, stylized tropical landscaping frames the property. The lighting simulates a soft, golden-hour glow, conveying stability, luxury, and high-end residential design within a minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFVkkCsaa0PjKv9oP_Nik989BZbJCals72iybDmcCAQElNgampAJToqx1JZ1tzVwFanCYuXqrtOK26Hlj84mizJ-0cs_vr_oxrgyectzjf0Q51PiosjgXowpnqhLXYjORqEmUORACtyPKK8jzawkfLilpqO_puKxR0Jf5-GJje0Yc-ss4gidvy9Lu_yA3W2SMfn8m4dDZKheOq2E8ZTl_gO3tuzTCfi2JTOa6gyV_nIJuUwQNM2Hk"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An elegant exterior shot of a modern architectural home in Laureles, Medellín." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFVkkCsaa0PjKv9oP_Nik989BZbJCals72iybDmcCAQElNgampAJToqx1JZ1tzVwFanCYuXqrtOK26Hlj84mizJ-0cs_vr_oxrgyectzjf0Q51PiosjgXowpnqhLXYjORqEmUORACtyPKK8jzawkfLilpqO_puKxR0Jf5-GJje0Yc-ss4gidvy9Lu_yA3W2SMfn8m4dDZKheOq2E8ZTl_gO3tuzTCfi2JTOa6gyV_nIJuUwQNM2Hk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent"></div>
 <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
 <h3 class="font-headline-md text-headline-md text-on-primary">Laureles Modernist</h3>
 </div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur w-9 h-9 rounded-full border border-outline-variant/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-secondary">favorite_border</span>
 </div>
-<div class="flex justify-between items-start">
-<div>
+</div>
+<div class="flex flex-col gap-4 p-4">
+<div class="flex justify-between items-start gap-3">
+<div class="flex flex-col gap-1">
 <p class="font-price-tag text-price-tag text-secondary">$850,000</p>
-<p class="font-body-md text-body-md text-on-surface-variant">Laureles, Medellín</p>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>Laureles, Medellín
+                        </p>
 </div>
-<div class="flex gap-4 border-t border-outline-variant pt-2">
-<div class="flex flex-col items-end">
+<span class="font-spec-label text-spec-label text-secondary border border-secondary/40 bg-secondary-container/40 rounded-full px-2.5 py-1.5 shrink-0">AVAILABLE</span>
+</div>
+<div class="grid grid-cols-3 gap-2 border-y border-outline-variant/60 py-3">
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">bed</span>
+<span class="font-body-md text-body-md text-primary font-medium">2</span>
 <span class="font-spec-label text-spec-label text-on-surface-variant">BEDS</span>
-<span class="font-body-md text-body-md text-primary">2</span>
 </div>
-<div class="flex flex-col items-end">
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">shower</span>
+<span class="font-body-md text-body-md text-primary font-medium">2</span>
 <span class="font-spec-label text-spec-label text-on-surface-variant">BATHS</span>
-<span class="font-body-md text-body-md text-primary">2</span>
 </div>
-<div class="flex flex-col items-end">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-outline">aspect_ratio</span>
+<span class="font-body-md text-body-md text-primary font-medium">150m²</span>
 <span class="font-spec-label text-spec-label text-on-surface-variant">AREA</span>
-<span class="font-body-md text-body-md text-primary">150m²</span>
 </div>
 </div>
+<div class="flex flex-wrap gap-2">
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Garden View</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Concrete Facade</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Near Metro</span>
 </div>
 </div>
+</article>
+<article class="group cursor-pointer flex flex-col rounded-lg border border-outline-variant/70 bg-surface-container-lowest overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-secondary/50 hover:shadow-[0_18px_44px_rgba(20,22,27,0.14)]">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A highly detailed architectural photograph of a luxury living space in Medellín, with minimalist decor and copper accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABEN0iBvS_mLcF9Ekxqcc-RY5TyzDaLiqY-kMxFPDeYBUppOc3aZgyfFOvBCnO3NS0kzc0DgdMy-syfxklaxaua702w1sjNDTa77OBd7_GSTosInzs_yn-oVdpbt1OBb4yLmkpCzvaCJbhIqjKe47hgRGjgfTyPjf4SpgiDAXzcWrmE-e4n_3PnkGL0fhLbHBMoIOUBfEtKJzUCT2qyLhM74cMIytosJgSzEbLtuH6P5AfZYUVPWw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<h3 class="font-headline-md text-headline-md text-on-primary">Envigado Loft</h3>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur w-9 h-9 rounded-full border border-outline-variant/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-secondary">favorite_border</span>
 </div>
 </div>
-<!-- Detail View Overlay (Hidden by default) -->
+<div class="flex flex-col gap-4 p-4">
+<div class="flex justify-between items-start gap-3">
+<div class="flex flex-col gap-1">
+<p class="font-price-tag text-price-tag text-secondary">$620,000</p>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>Envigado, Medellín
+                        </p>
+</div>
+<span class="font-spec-label text-spec-label text-secondary border border-secondary/40 bg-secondary-container/40 rounded-full px-2.5 py-1.5 shrink-0">AVAILABLE</span>
+</div>
+<div class="grid grid-cols-3 gap-2 border-y border-outline-variant/60 py-3">
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">bed</span>
+<span class="font-body-md text-body-md text-primary font-medium">1</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant">BEDS</span>
+</div>
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">shower</span>
+<span class="font-body-md text-body-md text-primary font-medium">1.5</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant">BATHS</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-outline">aspect_ratio</span>
+<span class="font-body-md text-body-md text-primary font-medium">95m²</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant">AREA</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Dark Interior</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Skyline View</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Gym Access</span>
+</div>
+</div>
+</article>
+<article class="group cursor-pointer flex flex-col rounded-lg border border-outline-variant/70 bg-surface-container-lowest overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-secondary/50 hover:shadow-[0_18px_44px_rgba(20,22,27,0.14)]">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A stunning, high-contrast photograph of a luxury penthouse interior in El Poblado, Medellín, with floor-to-ceiling windows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3TYkpZgJBtOxKQDvMi7edHsw2m3ja3nj-j_YFRq5QSO1zNPPln_cP1p-J2pYrqlWcaOoRdgnxZyYrXgtxUajwaEo83BtYag8Vossc3Lv3lJIhS3NNYLqlmDrV7dYcycsHF4VxgXXVB5i1htJMTTeWgBUz1keFTkKnkqF5J1gQ_nbBETdBXKtTJwN1bIoqxqIjn_xTHDoAlNYdblO3-BeFJi3QbgJuLReRp7DxUGWCJ0BMqjH2oD0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<h3 class="font-headline-md text-headline-md text-on-primary">Sabaneta Villa</h3>
+</div>
+<div class="absolute top-4 right-4 bg-surface/90 backdrop-blur w-9 h-9 rounded-full border border-outline-variant/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-secondary">favorite_border</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-4">
+<div class="flex justify-between items-start gap-3">
+<div class="flex flex-col gap-1">
+<p class="font-price-tag text-price-tag text-secondary">$980,000</p>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>Sabaneta, Medellín
+                        </p>
+</div>
+<span class="font-spec-label text-spec-label text-secondary border border-secondary/40 bg-secondary-container/40 rounded-full px-2.5 py-1.5 shrink-0">AVAILABLE</span>
+</div>
+<div class="grid grid-cols-3 gap-2 border-y border-outline-variant/60 py-3">
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">bed</span>
+<span class="font-body-md text-body-md text-primary font-medium">4</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant">BEDS</span>
+</div>
+<div class="flex flex-col items-center gap-1 border-r border-outline-variant/60">
+<span class="material-symbols-outlined text-[18px] text-outline">shower</span>
+<span class="font-body-md text-body-md text-primary font-medium">3</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant">BATHS</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-outline">aspect_ratio</span>
+<span class="font-body-md text-body-md text-primary font-medium">310m²</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant">AREA</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Private Garden</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Two-Story</span>
+<span class="font-spec-label text-spec-label text-on-surface-variant border border-outline-variant rounded-full px-2.5 py-1.5">Gated Community</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Detail View Overlay -->
 <div class="fixed inset-0 z-30 bg-surface transform translate-x-full transition-transform duration-300 flex flex-col h-full overflow-hidden" id="detailView">
-<!-- Header Image with Back Button -->
 <div class="relative w-full h-[40vh] shrink-0">
-<img class="w-full h-full object-cover" data-alt="A highly detailed, ultra-wide architectural photograph of a luxury living space in Medellín. The scene features minimalist decor, a neutral color palette of whites and soft greys, highlighted by deep forest green plants and copper accent pieces. The natural light pours in through expansive windows, creating a serene, high-end gallery aesthetic perfect for an elite investment portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABEN0iBvS_mLcF9Ekxqcc-RY5TyzDaLiqY-kMxFPDeYBUppOc3aZgyfFOvBCnO3NS0kzc0DgdMy-syfxklaxaua702w1sjNDTa77OBd7_GSTosInzs_yn-oVdpbt1OBb4yLmkpCzvaCJbhIqjKe47hgRGjgfTyPjf4SpgiDAXzcWrmE-e4n_3PnkGL0fhLbHBMoIOUBfEtKJzUCT2qyLhM74cMIytosJgSzEbLtuH6P5AfZYUVPWw"/>
+<img class="w-full h-full object-cover" data-alt="A highly detailed architectural photograph of a luxury living space in Medellín." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABEN0iBvS_mLcF9Ekxqcc-RY5TyzDaLiqY-kMxFPDeYBUppOc3aZgyfFOvBCnO3NS0kzc0DgdMy-syfxklaxaua702w1sjNDTa77OBd7_GSTosInzs_yn-oVdpbt1OBb4yLmkpCzvaCJbhIqjKe47hgRGjgfTyPjf4SpgiDAXzcWrmE-e4n_3PnkGL0fhLbHBMoIOUBfEtKJzUCT2qyLhM74cMIytosJgSzEbLtuH6P5AfZYUVPWw"/>
 <div class="absolute top-12 left-4">
 <button class="w-10 h-10 bg-surface/80 backdrop-blur rounded-full flex items-center justify-center text-primary border border-outline-variant/30" onclick="toggleDetailView()">
 <span class="material-symbols-outlined">arrow_back</span>
@@ -405,9 +521,7 @@
 </button>
 </div>
 </div>
-<!-- Scrollable Details -->
 <div class="flex-1 overflow-y-auto px-margin-mobile py-6 flex flex-col gap-8 bg-surface">
-<!-- Title & Price -->
 <div class="flex flex-col gap-2">
 <h2 class="font-display-lg-mobile text-display-lg-mobile text-primary leading-tight">The Provenza Penthouse</h2>
 <div class="flex items-center gap-2 text-on-surface-variant">
@@ -419,7 +533,6 @@
 <span class="font-spec-label text-spec-label bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded">AVAILABLE</span>
 </div>
 </div>
-<!-- Specs Grid -->
 <div class="grid grid-cols-3 gap-4 border-y border-outline-variant/30 py-4">
 <div class="flex flex-col gap-1 items-center justify-center border-r border-outline-variant/30">
 <span class="material-symbols-outlined text-outline">bed</span>
@@ -437,14 +550,12 @@
 <span class="font-spec-label text-spec-label text-outline">INTERIOR</span>
 </div>
 </div>
-<!-- Description -->
 <div class="flex flex-col gap-3">
 <h3 class="font-headline-md text-headline-md text-primary">About the Property</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                     An architectural masterpiece situated in the heart of Provenza. This dual-level penthouse offers panoramic views of the Aburrá Valley. Designed with meticulous attention to detail, featuring imported European finishes, a private terrace, and smart home integration. A rare investment opportunity in Medellín's most coveted district.
                 </p>
 </div>
-<!-- Amenities -->
 <div class="flex flex-col gap-3 pb-24">
 <h3 class="font-headline-md text-headline-md text-primary">Amenities</h3>
 <div class="flex flex-wrap gap-2">
@@ -463,7 +574,6 @@
 </div>
 </div>
 </div>
-<!-- Sticky Action Button -->
 <div class="absolute bottom-0 left-0 w-full p-margin-mobile glass-panel border-t border-outline-variant/30">
 <button class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-body-lg text-body-lg font-medium py-4 flex items-center justify-center gap-2 transition-colors">
 <span class="material-symbols-outlined">chat</span>
@@ -473,28 +583,24 @@
 </div>
 <!-- Bottom Navigation Bar -->
 <nav class="fixed bottom-0 left-0 w-full h-[72px] bg-surface flex justify-between items-center px-6 z-40" style="box-shadow: 0 -10px 30px rgba(47, 69, 56, 0.05);">
-<!-- Map (Active) -->
 <a class="flex flex-col items-center gap-1 min-w-[64px]" href="#">
 <div class="w-16 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
 </div>
 <span class="font-spec-label text-spec-label text-primary font-bold">MAP</span>
 </a>
-<!-- Portfolio -->
 <a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
 <div class="w-16 h-8 rounded-full flex items-center justify-center text-on-surface-variant group-hover:bg-surface-container-high transition-colors">
 <span class="material-symbols-outlined">domain</span>
 </div>
 <span class="font-spec-label text-spec-label text-on-surface-variant">PORTFOLIO</span>
 </a>
-<!-- Favorites -->
 <a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
 <div class="w-16 h-8 rounded-full flex items-center justify-center text-on-surface-variant group-hover:bg-surface-container-high transition-colors">
 <span class="material-symbols-outlined">favorite</span>
 </div>
 <span class="font-spec-label text-spec-label text-on-surface-variant">FAVORITES</span>
 </a>
-<!-- Settings -->
 <a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
 <div class="w-16 h-8 rounded-full flex items-center justify-center text-on-surface-variant group-hover:bg-surface-container-high transition-colors">
 <span class="material-symbols-outlined">settings</span>
@@ -503,29 +609,122 @@
 </a>
 </nav>
 <script>
-        // Simple logic to expand/collapse bottom sheet
+        // Bottom sheet expand/collapse
         const sheet = document.getElementById('bottomSheet');
         const handle = document.getElementById('dragHandle');
-
         let isExpanded = false;
-
         handle.addEventListener('click', () => {
-            if(isExpanded) {
-                sheet.classList.remove('expanded');
-            } else {
-                sheet.classList.add('expanded');
-            }
+            sheet.classList.toggle('expanded', !isExpanded);
             isExpanded = !isExpanded;
         });
 
-        // Detail View Toggle
+        // Detail view toggle
         const detailView = document.getElementById('detailView');
         function toggleDetailView() {
-            if (detailView.classList.contains('translate-x-full')) {
-                detailView.classList.remove('translate-x-full');
-            } else {
-                detailView.classList.add('translate-x-full');
-            }
+            detailView.classList.toggle('translate-x-full');
         }
+
+        // ---------- Isometric map generator ----------
+        // Builds a stylized 2.5D city: extruded blocks with real height,
+        // a recessed river, grounded ambient shadows and one glowing
+        // "landmark" tower that marks the featured listing on the sheet.
+        (function () {
+            const svg = document.getElementById('isoMap');
+            const NS = 'http://www.w3.org/2000/svg';
+            const tw = 100, th = 90, originX = 400, originY = -100;
+            const cols = 10, rows = 21;
+
+            function isoOrigin(col, row) {
+                return {
+                    x: originX + (col - row) * (tw / 2),
+                    y: originY + (col + row) * (th / 2)
+                };
+            }
+
+            function poly(points, fill) {
+                const p = document.createElementNS(NS, 'polygon');
+                p.setAttribute('points', points.map(pt => pt.join(',')).join(' '));
+                p.setAttribute('fill', fill);
+                return p;
+            }
+
+            function groundShadow(x0, y0) {
+                const e = document.createElementNS(NS, 'ellipse');
+                e.setAttribute('cx', x0);
+                e.setAttribute('cy', y0 + th * 0.55);
+                e.setAttribute('rx', tw * 0.42);
+                e.setAttribute('ry', th * 0.22);
+                e.setAttribute('fill', '#192f23');
+                e.setAttribute('opacity', '0.10');
+                e.setAttribute('filter', 'url(#softBlur)');
+                return e;
+            }
+
+            function drawBlock(col, row, h, top, left, right, withShadow) {
+                const { x: x0, y: y0 } = isoOrigin(col, row);
+                const frag = document.createDocumentFragment();
+                if (withShadow !== false) frag.appendChild(groundShadow(x0, y0));
+                const topY = y0 - h;
+                frag.appendChild(poly([
+                    [x0 - tw / 2, topY + th / 2], [x0, topY + th], [x0, y0 + th], [x0 - tw / 2, y0 + th / 2]
+                ], left));
+                frag.appendChild(poly([
+                    [x0, topY + th], [x0 + tw / 2, topY + th / 2], [x0 + tw / 2, y0 + th / 2], [x0, y0 + th]
+                ], right));
+                frag.appendChild(poly([
+                    [x0, topY], [x0 + tw / 2, topY + th / 2], [x0, topY + th], [x0 - tw / 2, topY + th / 2]
+                ], top));
+                svg.appendChild(frag);
+            }
+
+            function drawFlat(col, row, fill, sink) {
+                const { x: x0, y: y0 } = isoOrigin(col, row);
+                const yy = y0 + (sink || 0);
+                svg.appendChild(poly([
+                    [x0, yy], [x0 + tw / 2, yy + th / 2], [x0, yy + th], [x0 - tw / 2, yy + th / 2]
+                ], fill));
+            }
+
+            function mulberry32(a) {
+                return function () {
+                    a |= 0; a = (a + 0x6D2B79F5) | 0;
+                    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+                    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+                    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+                };
+            }
+            const rng = mulberry32(1337);
+
+            const tiles = [];
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) tiles.push({ col, row, s: col + row });
+            }
+            tiles.sort((a, b) => a.s - b.s);
+
+            const palettes = [
+                { top: '#eae8e3', left: '#c7c5c0', right: '#b3b1ab' },
+                { top: '#dcdad5', left: '#bcbab5', right: '#a6a49f' },
+                { top: '#f0eee9', left: '#cfcdc8', right: '#bab8b3' }
+            ];
+            const park = { top: '#cfe9d7', left: '#9dbfa7', right: '#7fa88c' };
+            const RIVER_ROWS = [12, 13, 14];
+            const LANDMARK = { col: 5, row: 8 };
+
+            tiles.forEach(({ col, row }) => {
+                if (RIVER_ROWS.includes(row)) { drawFlat(col, row, 'url(#waterGrad)', 6); return; }
+                if (col === LANDMARK.col && row === LANDMARK.row) {
+                    drawBlock(col, row, 260, 'url(#landmarkTop)', '#20362a', '#152920');
+                    return;
+                }
+                const r = rng();
+                if (r < 0.10) {
+                    drawBlock(col, row, 10, park.top, park.left, park.right, false);
+                } else if (r < 0.52) {
+                    const h = 40 + Math.floor(rng() * 130);
+                    const pal = palettes[Math.floor(rng() * palettes.length)];
+                    drawBlock(col, row, h, pal.top, pal.left, pal.right);
+                }
+            });
+        })();
     </script>
 </body></html>

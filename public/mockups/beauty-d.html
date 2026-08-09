@@ -1,349 +1,689 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lumière AI Salon - Home</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "primary-fixed": "#ffdbce",
-                        "inverse-surface": "#303030",
-                        "secondary-fixed-dim": "#cac6c1",
-                        "on-secondary-fixed": "#1d1b19",
-                        "tertiary": "#ac3328",
-                        "tertiary-container": "#ffaa9e",
-                        "surface-dim": "#dcd9d9",
-                        "on-surface-variant": "#51443f",
-                        "primary": "#7d5545",
-                        "outline": "#83746f",
-                        "surface-container-high": "#eae7e7",
-                        "on-tertiary": "#ffffff",
-                        "on-tertiary-fixed": "#410001",
-                        "on-tertiary-container": "#952219",
-                        "inverse-on-surface": "#f3f0f0",
-                        "secondary-container": "#e6e2dd",
-                        "surface-container": "#f0eded",
-                        "tertiary-fixed": "#ffdad5",
-                        "on-primary-fixed": "#301408",
-                        "on-secondary": "#ffffff",
-                        "secondary": "#605e5a",
-                        "on-primary": "#ffffff",
-                        "surface-tint": "#7d5545",
-                        "surface-container-lowest": "#ffffff",
-                        "on-secondary-container": "#666460",
-                        "surface": "#fcf9f8",
-                        "on-background": "#1b1c1c",
-                        "primary-container": "#e8b4a0",
-                        "on-error": "#ffffff",
-                        "inverse-primary": "#f0bba7",
-                        "surface-container-low": "#f6f3f2",
-                        "background": "#fcf9f8",
-                        "surface-container-highest": "#e4e2e1",
-                        "on-secondary-fixed-variant": "#484643",
-                        "error-container": "#ffdad6",
-                        "surface-variant": "#e4e2e1",
-                        "on-tertiary-fixed-variant": "#8b1a13",
-                        "secondary-fixed": "#e6e2dd",
-                        "on-surface": "#1b1c1c",
-                        "on-primary-container": "#6a4535",
-                        "outline-variant": "#d5c3bc",
-                        "surface-bright": "#fcf9f8",
-                        "tertiary-fixed-dim": "#ffb4a9",
-                        "on-error-container": "#93000a",
-                        "on-primary-fixed-variant": "#623e2f",
-                        "primary-fixed-dim": "#f0bba7",
-                        "error": "#ba1a1a",
-                        "coral-vibrant": "#FF6F5E",
-                        "cream-base": "#FDF8F3",
-                        "charcoal-soft": "#333333"
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Lumière AI Salon - Home</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "primary-fixed": "#ffdbce",
+                            "inverse-surface": "#303030",
+                            "secondary-fixed-dim": "#cac6c1",
+                            "on-secondary-fixed": "#1d1b19",
+                            tertiary: "#ac3328",
+                            "tertiary-container": "#ffaa9e",
+                            "surface-dim": "#dcd9d9",
+                            "on-surface-variant": "#51443f",
+                            primary: "#7d5545",
+                            outline: "#83746f",
+                            "surface-container-high": "#eae7e7",
+                            "on-tertiary": "#ffffff",
+                            "on-tertiary-fixed": "#410001",
+                            "on-tertiary-container": "#952219",
+                            "inverse-on-surface": "#f3f0f0",
+                            "secondary-container": "#e6e2dd",
+                            "surface-container": "#f0eded",
+                            "tertiary-fixed": "#ffdad5",
+                            "on-primary-fixed": "#301408",
+                            "on-secondary": "#ffffff",
+                            secondary: "#605e5a",
+                            "on-primary": "#ffffff",
+                            "surface-tint": "#7d5545",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-container": "#666460",
+                            surface: "#fcf9f8",
+                            "on-background": "#1b1c1c",
+                            "primary-container": "#e8b4a0",
+                            "on-error": "#ffffff",
+                            "inverse-primary": "#f0bba7",
+                            "surface-container-low": "#f6f3f2",
+                            background: "#fcf9f8",
+                            "surface-container-highest": "#e4e2e1",
+                            "on-secondary-fixed-variant": "#484643",
+                            "error-container": "#ffdad6",
+                            "surface-variant": "#e4e2e1",
+                            "on-tertiary-fixed-variant": "#8b1a13",
+                            "secondary-fixed": "#e6e2dd",
+                            "on-surface": "#1b1c1c",
+                            "on-primary-container": "#6a4535",
+                            "outline-variant": "#d5c3bc",
+                            "surface-bright": "#fcf9f8",
+                            "tertiary-fixed-dim": "#ffb4a9",
+                            "on-error-container": "#93000a",
+                            "on-primary-fixed-variant": "#623e2f",
+                            "primary-fixed-dim": "#f0bba7",
+                            error: "#ba1a1a",
+                            "coral-vibrant": "#FF6F5E",
+                            "cream-base": "#FDF8F3",
+                            "charcoal-soft": "#333333",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            gutter: "24px",
+                            "container-max": "1280px",
+                            "margin-mobile": "20px",
+                            "margin-desktop": "64px",
+                            unit: "8px",
+                        },
+                        fontFamily: {
+                            "label-md": ["Be Vietnam Pro"],
+                            "headline-md": ["Playfair Display"],
+                            "label-sm": ["Be Vietnam Pro"],
+                            "headline-lg": ["Playfair Display"],
+                            "headline-lg-mobile": ["Playfair Display"],
+                            "body-md": ["Be Vietnam Pro"],
+                            "headline-sm": ["Playfair Display"],
+                            "body-lg": ["Be Vietnam Pro"],
+                        },
+                        fontSize: {
+                            "label-md": [
+                                "14px",
+                                {
+                                    lineHeight: "1.2",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-md": [
+                                "32px",
+                                { lineHeight: "1.2", fontWeight: "500" },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                { lineHeight: "1.2", fontWeight: "500" },
+                            ],
+                            "headline-lg": [
+                                "48px",
+                                {
+                                    lineHeight: "1.1",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-lg-mobile": [
+                                "32px",
+                                { lineHeight: "1.2", fontWeight: "600" },
+                            ],
+                            "body-md": [
+                                "16px",
+                                { lineHeight: "1.5", fontWeight: "400" },
+                            ],
+                            "headline-sm": [
+                                "24px",
+                                { lineHeight: "1.3", fontWeight: "500" },
+                            ],
+                            "body-lg": [
+                                "18px",
+                                { lineHeight: "1.6", fontWeight: "400" },
+                            ],
+                        },
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "24px",
-                        "container-max": "1280px",
-                        "margin-mobile": "20px",
-                        "margin-desktop": "64px",
-                        "unit": "8px"
-                    },
-                    "fontFamily": {
-                        "label-md": ["Be Vietnam Pro"],
-                        "headline-md": ["Playfair Display"],
-                        "label-sm": ["Be Vietnam Pro"],
-                        "headline-lg": ["Playfair Display"],
-                        "headline-lg-mobile": ["Playfair Display"],
-                        "body-md": ["Be Vietnam Pro"],
-                        "headline-sm": ["Playfair Display"],
-                        "body-lg": ["Be Vietnam Pro"]
-                    },
-                    "fontSize": {
-                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
-                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }],
-                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
-                        "headline-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
-                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
-                    }
+                },
+            };
+        </script>
+        <style>
+            .hover-lift {
+                transition:
+                    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .hover-lift:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 40px rgba(51, 51, 51, 0.05);
+            }
+            .ai-shimmer {
+                background: linear-gradient(
+                    90deg,
+                    #ff6f5e 0%,
+                    #ffdbce 50%,
+                    #ff6f5e 100%
+                );
+                background-size: 200% auto;
+                animation: shimmer 2s linear infinite;
+            }
+            @keyframes shimmer {
+                0% {
+                    background-position: 200% center;
+                }
+                100% {
+                    background-position: -200% center;
                 }
             }
-        }
-    </script>
-<style>
-        .hover-lift {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(51, 51, 51, 0.05);
-        }
-        .ai-shimmer {
-            background: linear-gradient(90deg, #FF6F5E 0%, #ffdbce 50%, #FF6F5E 100%);
-            background-size: 200% auto;
-            animation: shimmer 2s linear infinite;
-        }
-        @keyframes shimmer {
-            0% { background-position: 200% center; }
-            100% { background-position: -200% center; }
-        }
-    </style>
-</head>
-<body class="bg-surface text-on-surface antialiased font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar -->
-<nav class="w-full top-0 sticky bg-surface z-50 transition-shadow duration-300" id="main-nav">
-<div class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop py-gutter">
-<a class="font-headline-sm text-headline-sm font-semibold tracking-tighter text-on-surface" href="#">Lumière AI Salon</a>
-<div class="hidden md:flex gap-8 items-center">
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Services</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">AI Gallery</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Stylists</a>
-</div>
-<div class="flex items-center gap-4">
-<button class="font-label-md text-label-md px-6 py-3 rounded-full bg-cream-base border border-outline/20 text-charcoal-soft hover:bg-surface-container transition-colors duration-300 scale-95 active:opacity-80 flex items-center gap-2">
-                    Book Appointment
-                </button>
-<button aria-label="Account" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors duration-300">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
-</button>
-</div>
-</div>
-</nav>
-<!-- Hero Section -->
-<section class="w-full bg-primary-container relative overflow-hidden min-h-[85vh] flex items-center">
-<!-- Abstract shape decoration -->
-<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl -translate-y-1/4 translate-x-1/4 pointer-events-none"></div>
-<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
-<div class="max-w-container-max mx-auto px-margin-desktop py-24 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-<div class="flex flex-col gap-8 max-w-xl">
-<h1 class="font-headline-lg text-headline-lg text-on-primary-container italic leading-tight">
-                    Descubre Tu Nuevo Estilo
-                </h1>
-<p class="font-body-lg text-body-lg text-on-primary-container/80 leading-relaxed">
-                    Experimenta la fusión perfecta entre el cuidado orgánico y la precisión de la inteligencia artificial. Visualiza tu transformación antes del primer corte.
+        </style>
+    </head>
+    <body
+        class="bg-surface text-on-surface antialiased font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container"
+    >
+        <!-- TopNavBar -->
+        <nav
+            class="w-full top-0 sticky bg-surface z-50 transition-shadow duration-300"
+            id="main-nav"
+        >
+            <div
+                class="flex justify-between items-center max-w-container-max mx-auto px-margin-desktop py-gutter"
+            >
+                <a
+                    class="font-headline-sm text-headline-sm font-semibold tracking-tighter text-on-surface"
+                    href="#"
+                    >Lumière AI Salon</a
+                >
+                <div class="hidden md:flex gap-8 items-center">
+                    <a
+                        class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300"
+                        href="#"
+                        >Services</a
+                    >
+                    <a
+                        class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300"
+                        href="#"
+                        >AI Gallery</a
+                    >
+                    <a
+                        class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300"
+                        href="#"
+                        >Stylists</a
+                    >
+                </div>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="font-label-md text-label-md px-6 py-3 rounded-full bg-cream-base border border-outline/20 text-charcoal-soft hover:bg-surface-container transition-colors duration-300 scale-95 active:opacity-80 flex items-center gap-2"
+                    >
+                        Book Appointment
+                    </button>
+                    <button
+                        aria-label="Account"
+                        class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors duration-300"
+                    >
+                        <span
+                            class="material-symbols-outlined"
+                            style="font-variation-settings: &quot;FILL&quot; 0"
+                            >account_circle</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Hero Section -->
+        <section
+            class="w-full bg-primary-container relative overflow-hidden min-h-[870px] flex items-center"
+        >
+            <!-- Abstract shape decoration -->
+            <div
+                class="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl -translate-y-1/4 translate-x-1/4 pointer-events-none"
+            ></div>
+            <div
+                class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"
+            ></div>
+            <div
+                class="max-w-container-max mx-auto px-margin-desktop py-24 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+            >
+                <div class="flex flex-col gap-8 max-w-xl">
+                    <h1
+                        class="font-headline-lg text-headline-lg text-on-primary-container italic leading-tight"
+                    >
+                        Descubre Tu Nuevo Estilo
+                    </h1>
+                    <p
+                        class="font-body-lg text-body-lg text-on-primary-container/80 leading-relaxed"
+                    >
+                        Experimenta la fusión perfecta entre el cuidado orgánico
+                        y la precisión de la inteligencia artificial. Visualiza
+                        tu transformación antes del primer corte.
+                    </p>
+                    <div class="flex items-center gap-4 pt-4">
+                        <button
+                            class="group font-label-md text-label-md px-8 py-4 rounded-full bg-coral-vibrant text-white shadow-lg hover:shadow-coral-vibrant/40 transition-all duration-300 flex items-center gap-3 overflow-hidden relative"
+                        >
+                            <span class="relative z-10 flex items-center gap-2">
+                                Previsualizar con IA
+                                <span
+                                    class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform"
+                                    >arrow_forward</span
+                                >
+                            </span>
+                            <div
+                                class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full"
+                            ></div>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative flex justify-center items-center">
+                    <!-- Decorative rings -->
+                    <div
+                        class="absolute inset-0 border-[1px] border-white/20 rounded-full scale-[1.15] pointer-events-none"
+                    ></div>
+                    <div
+                        class="absolute inset-0 border-[1px] border-white/10 rounded-full scale-[1.3] pointer-events-none"
+                    ></div>
+                    <div
+                        class="w-full max-w-[500px] aspect-square rounded-full overflow-hidden border-4 border-cream-base/30 shadow-2xl relative group"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-coral-vibrant/20 to-transparent mix-blend-overlay z-10"
+                        ></div>
+                        <img
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            data-alt="A highly detailed close-up portrait of a woman with healthy, glowing skin and an elegant, modern hairstyle. The lighting is soft, studio-quality, emphasizing the luxurious texture of her hair. The background is a soft, warm neutral tone complementing the clay pink aesthetic. The overall mood is sophisticated, calm, and high-end beauty editorial."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXnFCVeHTDJuYR4hrqGawRgLRJkCQjc_680q3D_aDXf5CUuclNjNfYpsxO76o-cS79WcfAaDG5Flkw1GVv4PsEHpsvPXjpAH3CN9vhBcb7qhAatAFiQoWk3uQ88av8sjviZXdplNUt5th5RwzSwFXb_XxxC_CHFuyUO4n4lQ9xs-pQDIMgVhQitAbiYlWjb6eji8cLXPuLuLTHkRpVDkUQmWAkXNL_rNqcOGGHEBXMj1PzD0VugPk"
+                        />
+                    </div>
+                    <!-- Floating Elements -->
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-cream-base rounded-2xl p-4 shadow-xl flex items-center gap-4 animate-[bounce_4s_infinite_ease-in-out]"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-full ai-shimmer flex items-center justify-center text-white"
+                        >
+                            <span class="material-symbols-outlined"
+                                >auto_awesome</span
+                            >
+                        </div>
+                        <div>
+                            <p
+                                class="font-label-sm text-label-sm text-on-surface-variant"
+                            >
+                                Análisis Capilar IA
+                            </p>
+                            <p
+                                class="font-label-md text-label-md text-on-surface"
+                            >
+                                Completado
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Mosaic Gallery -->
+        <section class="py-24 bg-surface">
+            <div class="max-w-container-max mx-auto px-margin-desktop">
+                <div class="text-center mb-16">
+                    <h2
+                        class="font-headline-md text-headline-md text-on-surface mb-4"
+                    >
+                        Galería de Estilo
+                    </h2>
+                    <p
+                        class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto"
+                    >
+                        Inspiración curada por nuestra inteligencia artificial,
+                        adaptada a tendencias globales y fisionomías únicas.
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]"
+                >
+                    <div
+                        class="col-span-1 md:col-span-2 row-span-2 rounded-3xl overflow-hidden relative group hover-lift bg-cream-base"
+                    >
+                        <img
+                            class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]"
+                            data-alt="A wide architectural shot of a minimalist, high-end beauty salon interior. Soft, diffused natural light fills the space. Features smooth curved walls painted in a soft clay pink, luxurious cream-colored styling chairs, and large minimalist mirrors. The aesthetic is organic, calm, and sophisticated, reflecting a modern sanctuary for self-care."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHARp_sS7ETbwrbK-MILUeBt74MP9dYNwMBZaa4mprQPXctYsCHP-GL5jc605vxvzx9wPi-VIoeYYEN1uZkd7mD0pDkssiHz6d7A7HEM1Uo_1mFWMjId8Ry26B5_T2rg-t6ymnv9cP2Ya9-w2xoEDnN9IcNtb21Wa1IT2RrJumBtv6rFWBZUloe7Gx_V3HatxTeoa6cpUftSluBzqGPiHpAW0jB7xQ_POyQa3HK21SFnDpPbORUzE"
+                        />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[calc(1.5rem-8px)] m-2 pointer-events-none"
+                        ></div>
+                        <div
+                            class="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0 pointer-events-none"
+                        >
+                            <h3 class="font-headline-sm text-headline-sm mb-1">
+                                Corte Asimétrico
+                            </h3>
+                            <p class="font-label-sm text-label-sm opacity-80">
+                                98% Match de IA
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-3xl overflow-hidden relative group hover-lift bg-cream-base"
+                    >
+                        <img
+                            class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]"
+                            data-alt="Close-up portrait of a person with perfectly styled, voluminous balayage hair. The lighting highlights the warm honey and caramel tones in the hair. The background is a soft, creamy white. The mood is luxurious and confident, typical of a high-end salon showcase."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrnwjdKFu3wFcX-nyeXjXpGDfuKyyEfNwCTp5qH4YN6bMEt5ua08_nBeALiKQl5Dr-E8oR3URSzGVM8s2NZUwokh1rYUqYZX4eQxcjvwq_q4VEmL6YJGVmcTdCf7sA0afyK5E5og7kEXb4DaqqVn_OgXqEmunQj2Ve-88h7vdVKIszzk60fXgiXS_9G1aNX6No-PQrn1L-zIvvOk4yqp9_d5sEtOekjoGDhCm8_V7k8ldLEimyEr8"
+                        />
+                    </div>
+                    <div
+                        class="rounded-3xl overflow-hidden relative group hover-lift bg-cream-base"
+                    >
+                        <img
+                            class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]"
+                            data-alt="A detail shot showing hands expertly styling hair using sleek, modern tools. The lighting is bright and clean, focusing on the texture of the hair and the precision of the stylist. The setting is bright, conveying a clinical yet warm professional salon environment."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnJW9_SLKB2p8uVxPfUCXcRd7zMI_quMPPIqG-TcEBSfUkThlgB3UG611TEdfKPx_KgP1SsM2zKBRlEDOzGZqzEmRl-590ZQg2AwCkNTxb_c6TnFLavTojk_w0jkHAKHEoDXUwkOF2gY7ywDXYdT7zXz6Ci8XC5OLru7wtu_OF2ZceEHKDnOhhhrVXXsyICaExT5nYNekc6Vq98N41PUibQLAghDHyF5cAyD2EKwL6GMqO0dRjR6Q"
+                        />
+                    </div>
+                    <div
+                        class="rounded-3xl overflow-hidden relative group hover-lift bg-cream-base"
+                    >
+                        <img
+                            class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]"
+                            data-alt="Portrait of a person with a sleek, modern bob cut, looking away from the camera. The styling is minimalist and chic. The background is a subtle textured clay pink. The overall feel is modern, refined, and sophisticated."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW0v24ZDuCIDXpArEx_P3ROptMwG_qlFFuvpY-0TQR22lvDEqB5FJ6TxPoT9IeZPPIPCUpqg0zdEg2-P4wpeDpKz-ugwiGptX0vLaw7XijeViuiwbaPCU5l_AFxbTO1KZXFNu71YGfQPcB8HN0TQf2nGKnZFxp3DIs400ndTRZhoymRXPdnWY74905uD_e3OR7nEkrywG6rHdWQvmxChYdsw-C4yuDsQm_Ls0Ezu_exMvBxHEbnQQ"
+                        />
+                    </div>
+                    <div
+                        class="col-span-1 md:col-span-2 rounded-3xl overflow-hidden relative group hover-lift bg-cream-base"
+                    >
+                        <img
+                            class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]"
+                            data-alt="A split-screen style image showing a digital wireframe or stylized 'AI scan' overlay on a woman's face on the left, transitioning into a fully styled, hyper-realistic final portrait on the right. This visualizes the AI-to-reality transformation process in a clean, sophisticated, high-tech beauty context."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWaUO617rtX_BpRli15Lqb84DSDZ_73IrVFBRjzkss1oaHM0gcKqGeq16dFvb8U5NxlTP6MczFOmc8dTz-gUBrZ1Vk9wq_WGViFkA10Kgvx3_7jrvMiFkHL9-Dy83MDbh8cV5lcD-X-JnxgsaAVh5LRBvh2zrhIWNIqi0R3f1sUPm_aAPZoY6jqoonQ19gZk6L2QFlE-tWYL9FZ_V0HhiUL_s_kwomnXKL0_STrDUXb7pgaHQSds"
+                        />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[calc(1.5rem-8px)] m-2"
+                        >
+                            <button
+                                class="bg-white/90 backdrop-blur-sm text-on-surface font-label-md text-label-md px-6 py-3 rounded-full flex items-center gap-2 hover:bg-white transition-colors"
+                            >
+                                Ver Proceso IA
+                                <span class="material-symbols-outlined text-sm"
+                                    >visibility</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Experts Section -->
+        <section class="py-24 bg-surface-container-low">
+            <div class="max-w-container-max mx-auto px-margin-desktop">
+                <div class="flex justify-between items-end mb-16">
+                    <div>
+                        <h2
+                            class="font-headline-md text-headline-md text-on-surface mb-2"
+                        >
+                            Nuestros Expertos
+                        </h2>
+                        <p
+                            class="font-body-md text-body-md text-on-surface-variant"
+                        >
+                            Maestros del estilo, potenciados por tecnología.
+                        </p>
+                    </div>
+                    <button
+                        class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors hidden md:flex items-center gap-2 group"
+                    >
+                        Ver todo el equipo
+                        <span
+                            class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform"
+                            >arrow_forward</span
+                        >
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Stylist 1 -->
+                    <div
+                        class="bg-cream-base rounded-3xl p-6 hover-lift flex flex-col gap-6"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary-container"
+                            >
+                                <img
+                                    class="w-full h-full object-cover"
+                                    data-alt="Professional headshot of a stylish male hair stylist in his 30s. He has a warm, confident smile and is wearing a neat, dark minimalist apron over a white shirt. The background is a soft, out-of-focus salon setting. Lighting is flattering and soft."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPstzgF0KQjmjsb3CXBh0Rypw4UV57Kn2CGJ2ZY1phEvST22jyrR5xWSFkk4UCMkaZ5JKhHFTCyF0Xsn7eWEPmS09eQdx5PtOa-0zxbYpQHk4XhxgfDCZsNxwj-6p7I42fQuO9ebHiFX3bE-5uVbvhvnOEIVq5bkUC3TM9o7mUVAosWXb47_eQNM3Xnko6l4F2UZbXVCc9Y6JcrUjv6e5cLA4VvbXfkTpq4pSLWr46HmUmCfuGx4k"
+                                />
+                            </div>
+                            <div>
+                                <h3
+                                    class="font-headline-sm text-headline-sm text-on-surface"
+                                >
+                                    Mateo R.
+                                </h3>
+                                <p
+                                    class="font-label-sm text-label-sm text-primary uppercase tracking-wider mt-1"
+                                >
+                                    Director Creativo
+                                </p>
+                            </div>
+                        </div>
+                        <p
+                            class="font-body-md text-body-md text-on-surface-variant flex-grow"
+                        >
+                            Especialista en colorimetría avanzada y cortes
+                            estructurales. 15 años de experiencia.
+                        </p>
+                        <button
+                            class="w-full font-label-md text-label-md py-3 rounded-xl border border-outline/20 text-charcoal-soft hover:bg-surface-container transition-colors duration-300"
+                        >
+                            Agendar Cita
+                        </button>
+                    </div>
+                    <!-- Stylist 2 -->
+                    <div
+                        class="bg-cream-base rounded-3xl p-6 hover-lift flex flex-col gap-6"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary-container"
+                            >
+                                <img
+                                    class="w-full h-full object-cover"
+                                    data-alt="Professional headshot of a female hair stylist with a creative, modern haircut. She looks approachable and professional, wearing a stylish neutral-toned outfit. The background is a clean, bright, and soft cream color. High-quality studio lighting."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxbJuH4UDv1L3eLiilXUFFv3rofnV3fQgQ38Qbma-Y_-p1pk4xt0eQ22ylSoVAZj2wLaAHMelIXsavDirpfd-2P0wTz_wOdETA6NZZKoOpk8h882xbrI4RNtDD7-yFgh0NbZIiHrfZW070UHsFxYFuta7prbQbyuyx1nCg3bzVeYHSIrytWRswonRaBmXgXRaZkQkjpWw76cIoQMa531I1PIoNl40S60g8teefdP-0yutGVKjAQw0"
+                                />
+                            </div>
+                            <div>
+                                <h3
+                                    class="font-headline-sm text-headline-sm text-on-surface"
+                                >
+                                    Elena S.
+                                </h3>
+                                <p
+                                    class="font-label-sm text-label-sm text-primary uppercase tracking-wider mt-1"
+                                >
+                                    Master Stylist
+                                </p>
+                            </div>
+                        </div>
+                        <p
+                            class="font-body-md text-body-md text-on-surface-variant flex-grow"
+                        >
+                            Experta en texturas naturales y transformaciones de
+                            balayage orgánico.
+                        </p>
+                        <button
+                            class="w-full font-label-md text-label-md py-3 rounded-xl border border-outline/20 text-charcoal-soft hover:bg-surface-container transition-colors duration-300"
+                        >
+                            Agendar Cita
+                        </button>
+                    </div>
+                    <!-- AI Assistant -->
+                    <div
+                        class="bg-gradient-to-br from-cream-base to-primary-container/20 rounded-3xl p-6 hover-lift flex flex-col gap-6 border border-coral-vibrant/10 relative overflow-hidden"
+                    >
+                        <div
+                            class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none"
+                        >
+                            <span class="material-symbols-outlined text-6xl"
+                                >graphic_eq</span
+                            >
+                        </div>
+                        <div class="flex items-center gap-4 relative z-10">
+                            <div
+                                class="w-20 h-20 rounded-full flex items-center justify-center bg-white shadow-sm border border-outline/10 text-coral-vibrant"
+                            >
+                                <span class="material-symbols-outlined text-4xl"
+                                    >smart_toy</span
+                                >
+                            </div>
+                            <div>
+                                <h3
+                                    class="font-headline-sm text-headline-sm text-on-surface"
+                                >
+                                    Lumière AI
+                                </h3>
+                                <p
+                                    class="font-label-sm text-label-sm text-coral-vibrant uppercase tracking-wider mt-1"
+                                >
+                                    Asistente Virtual
+                                </p>
+                            </div>
+                        </div>
+                        <p
+                            class="font-body-md text-body-md text-on-surface-variant flex-grow relative z-10"
+                        >
+                            Análisis facial en tiempo real para recomendar
+                            cortes y colores basados en tu fisionomía.
+                        </p>
+                        <button
+                            class="w-full font-label-md text-label-md py-3 rounded-xl bg-coral-vibrant text-white hover:bg-coral-vibrant/90 transition-colors duration-300 shadow-md relative z-10 flex items-center justify-center gap-2"
+                        >
+                            <span class="material-symbols-outlined text-sm"
+                                >arrow_back_ios_new</span
+                            >
+                            Iniciar Análisis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer
+            class="w-full mt-auto bg-surface-container pt-16 pb-8 border-t border-outline-variant/30"
+        >
+            <div
+                class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-desktop py-16"
+            >
+                <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+                    <span
+                        class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tighter"
+                        >Lumière AI Salon</span
+                    >
+                    <p
+                        class="font-body-md text-body-md text-on-surface-variant opacity-80 mt-2"
+                    >
+                        Donde la belleza orgánica se encuentra con la precisión
+                        tecnológica.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4
+                        class="font-label-md text-label-md text-on-surface mb-2"
+                    >
+                        Servicios
+                    </h4>
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >Cortes y Estilo</a
+                    >
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >Colorimetría AI</a
+                    >
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >Tratamientos Orgánicos</a
+                    >
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4
+                        class="font-label-md text-label-md text-on-surface mb-2"
+                    >
+                        Compañía
+                    </h4>
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >Sobre Nosotros</a
+                    >
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors font-bold text-primary"
+                        href="#"
+                        >Careers</a
+                    >
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >Sustainability</a
+                    >
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4
+                        class="font-label-md text-label-md text-on-surface mb-2"
+                    >
+                        Legal
+                    </h4>
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >Privacy Policy</a
+                    >
+                    <a
+                        class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >Terms of Service</a
+                    >
+                </div>
+            </div>
+            <div
+                class="max-w-container-max mx-auto px-margin-desktop mt-8 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4"
+            >
+                <p class="font-body-md text-body-md text-secondary opacity-70">
+                    © 2024 Lumière AI Salon. Precision in Beauty.
                 </p>
-<div class="flex items-center gap-4 pt-4">
-<button class="group font-label-md text-label-md px-8 py-4 rounded-full bg-coral-vibrant text-white shadow-lg hover:shadow-coral-vibrant/40 transition-all duration-300 flex items-center gap-3 overflow-hidden relative">
-<span class="relative z-10 flex items-center gap-2">
-                            Previsualizar con IA
-                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</span>
-<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full"></div>
-</button>
-</div>
-</div>
-<div class="relative flex justify-center items-center">
-<!-- Decorative rings -->
-<div class="absolute inset-0 border-[1px] border-white/20 rounded-full scale-[1.15] pointer-events-none"></div>
-<div class="absolute inset-0 border-[1px] border-white/10 rounded-full scale-[1.3] pointer-events-none"></div>
-<div class="w-full max-w-[500px] aspect-square rounded-full overflow-hidden border-4 border-cream-base/30 shadow-2xl relative group">
-<div class="absolute inset-0 bg-gradient-to-tr from-coral-vibrant/20 to-transparent mix-blend-overlay z-10"></div>
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A highly detailed close-up portrait of a woman with healthy, glowing skin and an elegant, modern hairstyle. The lighting is soft, studio-quality, emphasizing the luxurious texture of her hair. The background is a soft, warm neutral tone complementing the clay pink aesthetic. The overall mood is sophisticated, calm, and high-end beauty editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXnFCVeHTDJuYR4hrqGawRgLRJkCQjc_680q3D_aDXf5CUuclNjNfYpsxO76o-cS79WcfAaDG5Flkw1GVv4PsEHpsvPXjpAH3CN9vhBcb7qhAatAFiQoWk3uQ88av8sjviZXdplNUt5th5RwzSwFXb_XxxC_CHFuyUO4n4lQ9xs-pQDIMgVhQitAbiYlWjb6eji8cLXPuLuLTHkRpVDkUQmWAkXNL_rNqcOGGHEBXMj1PzD0VugPk"/>
-</div>
-<!-- Floating Elements -->
-<div class="absolute -bottom-6 -left-6 bg-cream-base rounded-2xl p-4 shadow-xl flex items-center gap-4 animate-[bounce_4s_infinite_ease-in-out]">
-<div class="w-12 h-12 rounded-full ai-shimmer flex items-center justify-center text-white">
-<span class="material-symbols-outlined">auto_awesome</span>
-</div>
-<div>
-<p class="font-label-sm text-label-sm text-on-surface-variant">Análisis Capilar IA</p>
-<p class="font-label-md text-label-md text-on-surface">Completado</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Mosaic Gallery -->
-<section class="py-24 bg-surface">
-<div class="max-w-container-max mx-auto px-margin-desktop">
-<div class="text-center mb-16">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Galería de Estilo</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Inspiración curada por nuestra inteligencia artificial, adaptada a tendencias globales y fisionomías únicas.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-<div class="col-span-1 md:col-span-2 row-span-2 rounded-3xl overflow-hidden relative group hover-lift bg-cream-base">
-<img class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" data-alt="A wide architectural shot of a minimalist, high-end beauty salon interior. Soft, diffused natural light fills the space. Features smooth curved walls painted in a soft clay pink, luxurious cream-colored styling chairs, and large minimalist mirrors. The aesthetic is organic, calm, and sophisticated, reflecting a modern sanctuary for self-care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHARp_sS7ETbwrbK-MILUeBt74MP9dYNwMBZaa4mprQPXctYsCHP-GL5jc605vxvzx9wPi-VIoeYYEN1uZkd7mD0pDkssiHz6d7A7HEM1Uo_1mFWMjId8Ry26B5_T2rg-t6ymnv9cP2Ya9-w2xoEDnN9IcNtb21Wa1IT2RrJumBtv6rFWBZUloe7Gx_V3HatxTeoa6cpUftSluBzqGPiHpAW0jB7xQ_POyQa3HK21SFnDpPbORUzE"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[calc(1.5rem-8px)] m-2 pointer-events-none"></div>
-<div class="absolute bottom-8 left-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0 pointer-events-none">
-<h3 class="font-headline-sm text-headline-sm mb-1">Corte Asimétrico</h3>
-<p class="font-label-sm text-label-sm opacity-80">98% Match de IA</p>
-</div>
-</div>
-<div class="rounded-3xl overflow-hidden relative group hover-lift bg-cream-base">
-<img class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" data-alt="Close-up portrait of a person with perfectly styled, voluminous balayage hair. The lighting highlights the warm honey and caramel tones in the hair. The background is a soft, creamy white. The mood is luxurious and confident, typical of a high-end salon showcase." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrnwjdKFu3wFcX-nyeXjXpGDfuKyyEfNwCTp5qH4YN6bMEt5ua08_nBeALiKQl5Dr-E8oR3URSzGVM8s2NZUwokh1rYUqYZX4eQxcjvwq_q4VEmL6YJGVmcTdCf7sA0afyK5E5og7kEXb4DaqqVn_OgXqEmunQj2Ve-88h7vdVKIszzk60fXgiXS_9G1aNX6No-PQrn1L-zIvvOk4yqp9_d5sEtOekjoGDhCm8_V7k8ldLEimyEr8"/>
-</div>
-<div class="rounded-3xl overflow-hidden relative group hover-lift bg-cream-base">
-<img class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" data-alt="A detail shot showing hands expertly styling hair using sleek, modern tools. The lighting is bright and clean, focusing on the texture of the hair and the precision of the stylist. The setting is bright, conveying a clinical yet warm professional salon environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnJW9_SLKB2p8uVxPfUCXcRd7zMI_quMPPIqG-TcEBSfUkThlgB3UG611TEdfKPx_KgP1SsM2zKBRlEDOzGZqzEmRl-590ZQg2AwCkNTxb_c6TnFLavTojk_w0jkHAKHEoDXUwkOF2gY7ywDXYdT7zXz6Ci8XC5OLru7wtu_OF2ZceEHKDnOhhhrVXXsyICaExT5nYNekc6Vq98N41PUibQLAghDHyF5cAyD2EKwL6GMqO0dRjR6Q"/>
-</div>
-<div class="rounded-3xl overflow-hidden relative group hover-lift bg-cream-base">
-<img class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" data-alt="Portrait of a person with a sleek, modern bob cut, looking away from the camera. The styling is minimalist and chic. The background is a subtle textured clay pink. The overall feel is modern, refined, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW0v24ZDuCIDXpArEx_P3ROptMwG_qlFFuvpY-0TQR22lvDEqB5FJ6TxPoT9IeZPPIPCUpqg0zdEg2-P4wpeDpKz-ugwiGptX0vLaw7XijeViuiwbaPCU5l_AFxbTO1KZXFNu71YGfQPcB8HN0TQf2nGKnZFxp3DIs400ndTRZhoymRXPdnWY74905uD_e3OR7nEkrywG6rHdWQvmxChYdsw-C4yuDsQm_Ls0Ezu_exMvBxHEbnQQ"/>
-</div>
-<div class="col-span-1 md:col-span-2 rounded-3xl overflow-hidden relative group hover-lift bg-cream-base">
-<img class="w-full h-full object-cover rounded-[calc(1.5rem-8px)] m-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" data-alt="A split-screen style image showing a digital wireframe or stylized 'AI scan' overlay on a woman's face on the left, transitioning into a fully styled, hyper-realistic final portrait on the right. This visualizes the AI-to-reality transformation process in a clean, sophisticated, high-tech beauty context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWaUO617rtX_BpRli15Lqb84DSDZ_73IrVFBRjzkss1oaHM0gcKqGeq16dFvb8U5NxlTP6MczFOmc8dTz-gUBrZ1Vk9wq_WGViFkA10Kgvx3_7jrvMiFkHL9-Dy83MDbh8cV5lcD-X-JnxgsaAVh5LRBvh2zrhIWNIqi0R3f1sUPm_aAPZoY6jqoonQ19gZk6L2QFlE-tWYL9FZ_V0HhiUL_s_kwomnXKL0_STrDUXb7pgaHQSds"/>
-<div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[calc(1.5rem-8px)] m-2">
-<button class="bg-white/90 backdrop-blur-sm text-on-surface font-label-md text-label-md px-6 py-3 rounded-full flex items-center gap-2 hover:bg-white transition-colors">
-                            Ver Proceso IA
-                            <span class="material-symbols-outlined text-sm">visibility</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Experts Section -->
-<section class="py-24 bg-surface-container-low">
-<div class="max-w-container-max mx-auto px-margin-desktop">
-<div class="flex justify-between items-end mb-16">
-<div>
-<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Nuestros Expertos</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Maestros del estilo, potenciados por tecnología.</p>
-</div>
-<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors hidden md:flex items-center gap-2 group">
-                    Ver todo el equipo
-                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Stylist 1 -->
-<div class="bg-cream-base rounded-3xl p-6 hover-lift flex flex-col gap-6">
-<div class="flex items-center gap-4">
-<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary-container">
-<img class="w-full h-full object-cover" data-alt="Professional headshot of a stylish male hair stylist in his 30s. He has a warm, confident smile and is wearing a neat, dark minimalist apron over a white shirt. The background is a soft, out-of-focus salon setting. Lighting is flattering and soft." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPstzgF0KQjmjsb3CXBh0Rypw4UV57Kn2CGJ2ZY1phEvST22jyrR5xWSFkk4UCMkaZ5JKhHFTCyF0Xsn7eWEPmS09eQdx5PtOa-0zxbYpQHk4XhxgfDCZsNxwj-6p7I42fQuO9ebHiFX3bE-5uVbvhvnOEIVq5bkUC3TM9o7mUVAosWXb47_eQNM3Xnko6l4F2UZbXVCc9Y6JcrUjv6e5cLA4VvbXfkTpq4pSLWr46HmUmCfuGx4k"/>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Mateo R.</h3>
-<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider mt-1">Director Creativo</p>
-</div>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
-                        Especialista en colorimetría avanzada y cortes estructurales. 15 años de experiencia.
-                    </p>
-<button class="w-full font-label-md text-label-md py-3 rounded-xl border border-outline/20 text-charcoal-soft hover:bg-surface-container transition-colors duration-300">
-                        Agendar Cita
-                    </button>
-</div>
-<!-- Stylist 2 -->
-<div class="bg-cream-base rounded-3xl p-6 hover-lift flex flex-col gap-6">
-<div class="flex items-center gap-4">
-<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary-container">
-<img class="w-full h-full object-cover" data-alt="Professional headshot of a female hair stylist with a creative, modern haircut. She looks approachable and professional, wearing a stylish neutral-toned outfit. The background is a clean, bright, and soft cream color. High-quality studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxbJuH4UDv1L3eLiilXUFFv3rofnV3fQgQ38Qbma-Y_-p1pk4xt0eQ22ylSoVAZj2wLaAHMelIXsavDirpfd-2P0wTz_wOdETA6NZZKoOpk8h882xbrI4RNtDD7-yFgh0NbZIiHrfZW070UHsFxYFuta7prbQbyuyx1nCg3bzVeYHSIrytWRswonRaBmXgXRaZkQkjpWw76cIoQMa531I1PIoNl40S60g8teefdP-0yutGVKjAQw0"/>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Elena S.</h3>
-<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider mt-1">Master Stylist</p>
-</div>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
-                        Experta en texturas naturales y transformaciones de balayage orgánico.
-                    </p>
-<button class="w-full font-label-md text-label-md py-3 rounded-xl border border-outline/20 text-charcoal-soft hover:bg-surface-container transition-colors duration-300">
-                        Agendar Cita
-                    </button>
-</div>
-<!-- AI Assistant -->
-<div class="bg-gradient-to-br from-cream-base to-primary-container/20 rounded-3xl p-6 hover-lift flex flex-col gap-6 border border-coral-vibrant/10 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-<span class="material-symbols-outlined text-6xl">graphic_eq</span>
-</div>
-<div class="flex items-center gap-4 relative z-10">
-<div class="w-20 h-20 rounded-full flex items-center justify-center bg-white shadow-sm border border-outline/10 text-coral-vibrant">
-<span class="material-symbols-outlined text-4xl">smart_toy</span>
-</div>
-<div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Lumière AI</h3>
-<p class="font-label-sm text-label-sm text-coral-vibrant uppercase tracking-wider mt-1">Asistente Virtual</p>
-</div>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant flex-grow relative z-10">
-                        Análisis facial en tiempo real para recomendar cortes y colores basados en tu fisionomía.
-                    </p>
-<button class="w-full font-label-md text-label-md py-3 rounded-xl bg-coral-vibrant text-white hover:bg-coral-vibrant/90 transition-colors duration-300 shadow-md relative z-10 flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
-                        Iniciar Análisis
-                    </button>
-</div>
-</div>
-</div>
-</section>
-<!-- Footer -->
-<footer class="w-full mt-auto bg-surface-container pt-16 pb-8 border-t border-outline-variant/30">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-desktop py-16">
-<div class="col-span-1 md:col-span-1 flex flex-col gap-4">
-<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tighter">Lumière AI Salon</span>
-<p class="font-body-md text-body-md text-on-surface-variant opacity-80 mt-2">
-                    Donde la belleza orgánica se encuentra con la precisión tecnológica.
-                </p>
-</div>
-<div class="flex flex-col gap-4">
-<h4 class="font-label-md text-label-md text-on-surface mb-2">Servicios</h4>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Cortes y Estilo</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Colorimetría AI</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Tratamientos Orgánicos</a>
-</div>
-<div class="flex flex-col gap-4">
-<h4 class="font-label-md text-label-md text-on-surface mb-2">Compañía</h4>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Sobre Nosotros</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors font-bold text-primary" href="#">Careers</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Sustainability</a>
-</div>
-<div class="flex flex-col gap-4">
-<h4 class="font-label-md text-label-md text-on-surface mb-2">Legal</h4>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
-</div>
-</div>
-<div class="max-w-container-max mx-auto px-margin-desktop mt-8 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="font-body-md text-body-md text-secondary opacity-70">
-                © 2024 Lumière AI Salon. Precision in Beauty.
-            </p>
-<div class="flex gap-4">
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
-</div>
-</div>
-</footer>
-<script>
-        // Simple scroll effect for navbar shadow
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('main-nav');
-            if (window.scrollY > 20) {
-                nav.classList.add('shadow-sm', 'bg-surface/95', 'backdrop-blur-md');
-            } else {
-                nav.classList.remove('shadow-sm', 'bg-surface/95', 'backdrop-blur-md');
-            }
-        });
-    </script>
-</body></html>
+                <div class="flex gap-4">
+                    <a
+                        class="text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        ><span class="material-symbols-outlined">share</span></a
+                    >
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Simple scroll effect for navbar shadow
+            window.addEventListener("scroll", () => {
+                const nav = document.getElementById("main-nav");
+                if (window.scrollY > 20) {
+                    nav.classList.add(
+                        "shadow-sm",
+                        "bg-surface/95",
+                        "backdrop-blur-md",
+                    );
+                } else {
+                    nav.classList.remove(
+                        "shadow-sm",
+                        "bg-surface/95",
+                        "backdrop-blur-md",
+                    );
+                }
+            });
+        </script>
+    </body>
+</html>
