@@ -171,8 +171,6 @@
     }
 }
 
-/* Global reset: without these, the browser's default body margin/padding
-   leaves a gap around the fixed hero background gif */
 html,
 body {
     margin: 0;
@@ -192,7 +190,6 @@ body ::selection {
     color: var(--color-primary);
 }
 
-/* Custom scrollbar for entire page */
 ::-webkit-scrollbar {
     width: 4px;
 }
@@ -203,20 +200,17 @@ body ::selection {
     background: #464741;
     border-radius: 4px;
 }
-/* Vault specific scrollbar styling will be applied via JS when in section */
 body.vault-active ::-webkit-scrollbar-track {
     background: #0b0b0b;
 }
 body.vault-active ::-webkit-scrollbar-thumb {
     background: #b5b5b0;
 }
-/* Hero text glow */
 .text-glow {
     text-shadow:
         0 0 20px rgba(255, 255, 255, 0.35),
         0 0 40px rgba(255, 255, 255, 0.15);
 }
-/* Glass transition: frosted glass that fades out via mask, so the blur itself has no hard edge */
 .glass-transition {
     background: linear-gradient(
         to bottom,
@@ -239,31 +233,32 @@ body.vault-active ::-webkit-scrollbar-thumb {
         transparent 85%
     );
 }
-/* Vault Inner Shadow */
+@media (hover: none) and (pointer: coarse) {
+    .glass-transition {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
 .vault-inner-shadow {
     box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
 }
-/* Smooth section transitions */
 section {
     transition: background-color 1s ease-in-out;
 }
-/* Scroll snap fue removido a propósito: `scroll-snap-type` en <html> hace que
-   los elementos con `position: fixed` (el header fijo del hero) se recorten
-   respecto al "snapport" del contenedor de scroll-snap en lugar del viewport
-   real (bug conocido en Chromium/WebKit). Eso generaba un hueco negro arriba
-   del gif de fondo apenas se llegaba a la mitad de la sección Vault. */
 html {
     scroll-behavior: smooth;
+}
+@media (hover: none) and (pointer: coarse) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 .nav-item-active {
     color: #ffffff;
 }
-/* Fixed hero: #identity itself carries real height so there is guaranteed scroll room for the pinned header to play its parallax before Studio slides over it */
 #identity {
     position: relative;
     height: 150vh;
-    /* dvh se ajusta al viewport visible real; evita que el hero salte
-       cuando la barra de URL de Safari/Chrome mobile aparece o desaparece */
     height: 150dvh;
 }
 #identity .hero-fixed-header {
@@ -284,9 +279,6 @@ html {
         transparent 70%
     );
 }
-/* En mobile la animación de scroll del hero está desactivada (ver index.vue),
-   así que no necesita los 150dvh extra de "espacio para animar": con un
-   viewport completo alcanza y se evita scroll vacío antes de llegar a Vault. */
 @media (max-width: 767px) {
     #identity {
         height: 100dvh;
