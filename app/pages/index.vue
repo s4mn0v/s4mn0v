@@ -7,7 +7,7 @@
         ></svg>
         <!-- SideNavBar (Universe Navigator): bottom-centered glass dock -->
         <nav
-            class="fixed left-1/2 -translate-x-1/2 bottom-4 md:bottom-8 z-50 flex flex-row items-center gap-1 md:gap-2 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 md:px-3 md:py-3 shadow-2xl"
+            class="fixed left-1/2 -translate-x-1/2 bottom-4 md:bottom-8 z-50 flex flex-row items-center gap-1 md:gap-2 bg-black/40 backdrop-blur-none md:backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 md:px-3 md:py-3 shadow-2xl"
             id="sideNav"
         >
             <!-- Identity Tab -->
@@ -103,7 +103,7 @@
         </section>
         <!-- Universe 2: Engineering Vault -->
         <section
-            class="min-h-screen w-full h-full z-20 bg-clip-padding backdrop-filter backdrop-blur-xl bg-vault-bg/70 border-y border-white/10 text-vault-text flex flex-col relative px-margin-mobile md:px-margin-desktop py-24"
+            class="min-h-screen w-full h-full z-20 bg-clip-padding backdrop-filter backdrop-blur-none md:backdrop-blur-xl bg-vault-bg/70 border-y border-white/10 text-vault-text flex flex-col relative px-margin-mobile md:px-margin-desktop py-24"
             id="vault"
         >
             <!-- Glass transition: frosted blur fading to nothing, so the hero melts into the Vault instead of cutting -->
@@ -345,9 +345,8 @@
                 aria-hidden="true"
             ></div>
         </section>
-        <!-- Universe 3: UI/UX Studio (scattered mockup wall, static — no scroll animation) -->
         <section
-            class="w-full h-full z-20 bg-clip-padding backdrop-filter backdrop-blur-xl bg-studio-bg/70 text-studio-text relative px-margin-mobile md:px-margin-desktop py-32 overflow-hidden"
+            class="w-full h-full z-20 bg-clip-padding backdrop-filter backdrop-blur-none md:backdrop-blur-xl bg-studio-bg/70 text-studio-text relative px-margin-mobile md:px-margin-desktop py-32 overflow-hidden"
             id="studio"
         >
             <!-- Glass transition: same soft frosted seam as Identity → Vault, now for Vault → Studio -->
@@ -607,7 +606,7 @@ const NAV_ICONS: Record<string, { filled: string; outline: string }> = {
 };
 
 function navIconName(section: string): string {
-    const icons = NAV_ICONS[section]!;
+    const icons = NAV_ICONS[section];
     return activeSection.value === section ? icons.filled : icons.outline;
 }
 
