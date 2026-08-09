@@ -93,6 +93,7 @@
     --font-body-md: "Hanken Grotesk";
     --font-headline-lg: "Hanken Grotesk";
     --font-label-sm: "JetBrains Mono";
+    --font-label-xs: "JetBrains Mono";
     --font-headline-lg-mobile: "Hanken Grotesk";
     --font-code-md: "JetBrains Mono";
     --font-display-xl: "JetBrains Mono";
@@ -114,6 +115,11 @@
     --text-label-sm: 12px;
     --text-label-sm--line-height: 1.4;
     --text-label-sm--font-weight: 500;
+
+    --text-label-xs: 10px;
+    --text-label-xs--line-height: 1;
+    --text-label-xs--letter-spacing: 0.3em;
+    --text-label-xs--font-weight: 500;
 
     --text-headline-lg-mobile: 24px;
     --text-headline-lg-mobile--line-height: 1.2;

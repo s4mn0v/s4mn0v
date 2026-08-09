@@ -1,0 +1,855 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>S4M N0V — Three Universes Portfolio</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-tertiary-fixed": "#1e1b1c",
+                            "inverse-surface": "#e5e2e0",
+                            "on-surface": "#e5e2e0",
+                            "on-secondary-fixed-variant": "#43474f",
+                            error: "#ffb4ab",
+                            "surface-container-high": "#2b2a29",
+                            "on-primary": "#30312d",
+                            "surface-container-highest": "#353434",
+                            "on-secondary": "#2c3138",
+                            "secondary-container": "#454951",
+                            "on-error": "#690005",
+                            "on-background": "#e5e2e0",
+                            "tertiary-fixed": "#e8e1e3",
+                            "outline-variant": "#464741",
+                            "on-primary-fixed": "#1b1c18",
+                            "primary-fixed": "#e4e2dc",
+                            "on-secondary-fixed": "#171c23",
+                            "on-secondary-container": "#b5b8c2",
+                            secondary: "#c3c6d0",
+                            "surface-container-low": "#1c1b1b",
+                            "on-surface-variant": "#c7c7bf",
+                            "on-tertiary": "#332f31",
+                            surface: "#141313",
+                            "surface-variant": "#353434",
+                            tertiary: "#ffffff",
+                            "on-error-container": "#ffdad6",
+                            "on-primary-fixed-variant": "#474743",
+                            "inverse-primary": "#5f5f5a",
+                            "on-primary-container": "#656560",
+                            "surface-dim": "#141313",
+                            outline: "#91918a",
+                            "error-container": "#93000a",
+                            "surface-container": "#201f1f",
+                            "tertiary-container": "#e8e1e3",
+                            "tertiary-fixed-dim": "#ccc5c7",
+                            "surface-tint": "#c8c6c1",
+                            "surface-bright": "#3a3938",
+                            "secondary-fixed-dim": "#c3c6d0",
+                            background: "#141313",
+                            "secondary-fixed": "#dfe2ec",
+                            "inverse-on-surface": "#313030",
+                            "surface-container-lowest": "#0e0e0e",
+                            "primary-container": "#e4e2dc",
+                            "on-tertiary-fixed-variant": "#4a4647",
+                            primary: "#ffffff",
+                            "on-tertiary-container": "#686365",
+                            "primary-fixed-dim": "#c8c6c1",
+
+                            // Specific prompt colors added as arbitrary values for tailwind usage where required by prompt, but prioritizing theme colors where possible.
+                            "identity-bg": "#08090D",
+                            "identity-glow": "#8A7CFF",
+                            "identity-text": "#F2F0EA",
+                            "studio-bg": "#F4F3EF",
+                            "studio-accent": "#FF5C35",
+                            "studio-text": "#111318",
+                            "studio-border": "#E2E1DD",
+                            "vault-bg": "#0B0909",
+                            "vault-surface": "#211B17",
+                            "vault-gold": "#B08D57",
+                            "vault-burgundy": "#6F1D2B",
+                            "vault-text": "#E8E0D0",
+                            "vault-code": "#D6C7A8",
+                            "vault-python": "#D4AF37", // approximate gold
+                            "vault-golang": "#008080", // approximate teal
+                            "vault-automation": "#8B4513", // approximate brown
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.125rem",
+                            lg: "0.25rem",
+                            xl: "0.5rem",
+                            full: "0.75rem",
+                        },
+                        spacing: {
+                            "container-max": "1440px",
+                            "margin-desktop": "64px",
+                            "margin-mobile": "16px",
+                            unit: "4px",
+                            gutter: "24px",
+                        },
+                        fontFamily: {
+                            "display-lg": ["Hanken Grotesk"],
+                            "body-md": ["Hanken Grotesk"],
+                            "headline-lg": ["Hanken Grotesk"],
+                            "label-sm": ["JetBrains Mono"],
+                            "headline-lg-mobile": ["Hanken Grotesk"],
+                            "code-md": ["JetBrains Mono"],
+                        },
+                        fontSize: {
+                            "display-lg": [
+                                "64px",
+                                {
+                                    lineHeight: "1.1",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "body-md": [
+                                "16px",
+                                {
+                                    lineHeight: "1.6",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "1.2",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "label-sm": [
+                                "12px",
+                                {
+                                    lineHeight: "1.4",
+                                    fontWeight: "500",
+                                },
+                            ],
+                            "headline-lg-mobile": [
+                                "24px",
+                                {
+                                    lineHeight: "1.2",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "code-md": [
+                                "14px",
+                                {
+                                    lineHeight: "1.5",
+                                    fontWeight: "400",
+                                },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            /* Custom scrollbar for entire page */
+            ::-webkit-scrollbar {
+                width: 4px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #08090d;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #464741;
+                border-radius: 4px;
+            }
+
+            /* Vault specific scrollbar styling will be applied via JS when in section */
+            body.vault-active ::-webkit-scrollbar-track {
+                background: #0b0909;
+            }
+            body.vault-active ::-webkit-scrollbar-thumb {
+                background: #b08d57;
+            }
+
+            /* Identity Glow effects */
+            .glow-text {
+                text-shadow: 0 0 20px #8a7cff;
+            }
+            .glow-box {
+                box-shadow: 0 0 30px 0px rgba(138, 124, 255, 0.4);
+            }
+
+            /* Vault Inner Shadow */
+            .vault-inner-shadow {
+                box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+            }
+
+            /* Smooth section transitions */
+            section {
+                transition: background-color 1s ease-in-out;
+            }
+
+            .nav-item-active {
+                color: #ffffff; /* Primary equivalent for current section text */
+            }
+        </style>
+    </head>
+    <body
+        class="bg-identity-bg text-on-surface font-body-md overflow-x-hidden w-full m-0 p-0"
+    >
+        <!-- TopAppBar for Vault (Hidden by default, shown via JS later if needed or always present but contextually styled. We'll stick to SideNav as primary navigator as requested) -->
+        <!-- SideNavBar (Universe Navigator) -->
+        <nav
+            class="fixed right-8 top-1/2 -translate-y-1/2 h-auto w-12 bg-transparent flex flex-col items-end gap-8 z-50"
+            id="sideNav"
+        >
+            <!-- Identity Tab -->
+            <a
+                class="nav-link text-identity-glow border-r-2 border-identity-glow pr-4 transition-all duration-500 scale-110 flex items-center justify-end w-full group relative"
+                data-section="identity"
+                href="#identity"
+            >
+                <span
+                    class="absolute right-8 opacity-0 group-hover:opacity-100 transition-opacity font-label-sm text-label-sm whitespace-nowrap mr-4"
+                    >Identity</span
+                >
+                <span
+                    class="material-symbols-outlined"
+                    data-weight="fill"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >person</span
+                >
+            </a>
+            <!-- Studio Tab -->
+            <a
+                class="nav-link text-on-surface-variant/50 pr-4 transition-all duration-500 hover:text-studio-accent hover:scale-110 flex items-center justify-end w-full group relative"
+                data-section="studio"
+                href="#studio"
+            >
+                <span
+                    class="absolute right-8 opacity-0 group-hover:opacity-100 transition-opacity font-label-sm text-label-sm whitespace-nowrap mr-4"
+                    >Studio</span
+                >
+                <span class="material-symbols-outlined">palette</span>
+            </a>
+            <!-- Vault Tab -->
+            <a
+                class="nav-link text-on-surface-variant/50 pr-4 transition-all duration-500 hover:text-vault-gold hover:scale-110 flex items-center justify-end w-full group relative"
+                data-section="vault"
+                href="#vault"
+            >
+                <span
+                    class="absolute right-8 opacity-0 group-hover:opacity-100 transition-opacity font-label-sm text-label-sm whitespace-nowrap mr-4"
+                    >Vault</span
+                >
+                <span class="material-symbols-outlined">terminal</span>
+            </a>
+        </nav>
+        <!-- Universe 1: Identity -->
+        <section
+            class="min-h-screen w-full bg-identity-bg flex flex-col items-center justify-center relative overflow-hidden px-margin-mobile md:px-margin-desktop py-24"
+            id="identity"
+        >
+            <!-- Atmospheric Halos -->
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-identity-glow/20 rounded-full blur-[120px] pointer-events-none"
+            ></div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-identity-glow/10 rounded-full blur-[100px] pointer-events-none"
+            ></div>
+            <div
+                class="z-10 text-center max-w-4xl mx-auto flex flex-col items-center gap-8"
+            >
+                <h1
+                    class="font-display-lg text-display-lg text-identity-text flex gap-4 tracking-tighter"
+                >
+                    <span
+                        class="transform transition-transform duration-1000 hover:-translate-x-4"
+                        >S4M</span
+                    >
+                    <span
+                        class="text-identity-glow glow-text transform transition-transform duration-1000 hover:translate-x-4"
+                        >N0V</span
+                    >
+                </h1>
+                <p
+                    class="font-body-md text-body-md text-on-surface-variant max-w-lg mt-8 text-center leading-relaxed"
+                >
+                    Exploring the digital frontier where code meets
+                    consciousness. Specializing in high-end interfaces and
+                    deep-tech architecture.
+                </p>
+                <div class="mt-16 flex gap-4 flex-wrap justify-center">
+                    <span
+                        class="font-label-sm text-label-sm uppercase text-identity-glow border border-identity-glow/30 px-4 py-2 rounded-full glow-box"
+                        >Systems</span
+                    >
+                    <span
+                        class="font-label-sm text-label-sm uppercase text-identity-glow border border-identity-glow/30 px-4 py-2 rounded-full glow-box"
+                        >Interfaces</span
+                    >
+                    <span
+                        class="font-label-sm text-label-sm uppercase text-identity-glow border border-identity-glow/30 px-4 py-2 rounded-full glow-box"
+                        >Algorithms</span
+                    >
+                </div>
+                <div class="mt-24 animate-bounce text-identity-glow/50">
+                    <span class="material-symbols-outlined text-4xl"
+                        >keyboard_arrow_down</span
+                    >
+                </div>
+            </div>
+        </section>
+        <!-- Universe 2: UI/UX Studio -->
+        <section
+            class="min-h-screen w-full bg-studio-bg text-studio-text flex flex-col relative px-margin-mobile md:px-margin-desktop py-24 transition-colors duration-1000"
+            id="studio"
+        >
+            <div
+                class="max-w-container-max mx-auto w-full grid grid-cols-12 gap-gutter z-10"
+            >
+                <!-- Studio Header -->
+                <div
+                    class="col-span-12 md:col-span-4 flex flex-col gap-8 mb-16 md:mb-0 md:sticky md:top-32 h-fit"
+                >
+                    <h2
+                        class="font-display-lg text-display-lg-mobile md:text-display-lg text-studio-text tracking-tight"
+                    >
+                        Digital<br /><span class="text-studio-accent"
+                            >Studio.</span
+                        >
+                    </h2>
+                    <p
+                        class="font-body-md text-body-md text-on-secondary-fixed-variant leading-relaxed"
+                    >
+                        Crafting editorial, modern interfaces focusing on
+                        clarity and creative impact. High-contrast elements
+                        against vast whitespace.
+                    </p>
+                    <button
+                        class="bg-studio-accent text-white font-label-sm text-label-sm px-8 py-4 w-fit hover:bg-studio-accent/90 transition-colors uppercase tracking-wider"
+                    >
+                        View All Projects
+                    </button>
+                </div>
+                <!-- Studio Canvas (Bento Grid / Asymmetric) -->
+                <div class="col-span-12 md:col-span-8 flex flex-col gap-16">
+                    <!-- Project 1 -->
+                    <div
+                        class="group relative w-full h-125 border border-studio-border bg-white overflow-hidden flex flex-col"
+                    >
+                        <div
+                            class="p-8 border-b border-studio-border flex justify-between items-center bg-white z-10"
+                        >
+                            <div>
+                                <h3
+                                    class="font-headline-lg text-headline-lg-mobile md:text-headline-lg"
+                                >
+                                    E-Commerce Platform
+                                </h3>
+                                <span
+                                    class="font-label-sm text-label-sm text-studio-accent uppercase mt-2 block"
+                                    >Web Application</span
+                                >
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-3xl text-studio-accent opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-4 group-hover:translate-x-0 duration-300"
+                                >arrow_forward</span
+                            >
+                        </div>
+                        <div
+                            class="grow relative bg-[#F9F9F9] p-8 flex items-center justify-center overflow-hidden"
+                        >
+                            <!-- Floating Mockup Representation -->
+                            <div
+                                class="bg-cover bg-center w-[80%] h-[120%] absolute top-12 rounded-lg shadow-xl transform group-hover:-translate-y-4 transition-transform duration-700"
+                                data-alt="A highly detailed, editorial style mockup of a modern e-commerce dashboard floating against a stark white background. High contrast, minimalist UI design, vivid coral accents, soft studio lighting casting subtle realistic drop shadows."
+                                style="
+                                    background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDFexp7AWJlr8lx63gQfxe5DwLv8ONb0pcNTn9LY-C6003LTUmh4wCxB9gyCIXaicbgt7RoNQ0kZBTncooA4ienEKLMASIOGnJ9aFRYsKBq2I0v98jrKlC-KSDigemvbpFRYMzzlPM_DwD4BxivhB_3_818wa0e7JxnNCtL_RZO5lOIlN9ChkYd5hjwQJveYbAxWy5QgjaNOufOWwTAUrl1zrCLNmj7Z-DdLKUzuVxaxyqGVR53mDk&quot;);
+                                "
+                            ></div>
+                        </div>
+                    </div>
+                    <!-- Projects 2 & 3 Side by side -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="group relative w-full h-100 border border-studio-border bg-white overflow-hidden flex flex-col"
+                        >
+                            <div
+                                class="p-6 border-b border-studio-border flex justify-between items-start bg-white z-10"
+                            >
+                                <div>
+                                    <h3
+                                        class="font-headline-lg text-headline-lg-mobile"
+                                    >
+                                        Fintech App
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-studio-accent uppercase mt-2 block"
+                                        >iOS Native</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="grow relative bg-[#F9F9F9] flex items-end justify-center pt-8"
+                            >
+                                <div
+                                    class="bg-cover bg-top w-[60%] h-full rounded-t-3xl shadow-lg border border-b-0 border-studio-border transform group-hover:scale-105 transition-transform duration-500"
+                                    data-alt="A sleek, modern mobile banking application interface displayed on a tilted device frame. Editorial aesthetic, warm white background, clean typography, vibrant coral data visualizations. Soft, diffused lighting."
+                                    style="
+                                        background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBp1F7kPsb_iwSkXVFpnxGqkJEjddYYmWQy_GFneVHRRtL5yf9JAzifCPNgtU_BpDoYgAZjs8u3LFMRi8vSgM7B5Ni_glQoTaN3cfFJn8uICcrKzHHuMcYvk2u568Koc5i_-Z-VhHWGUeywPQ6xm6oQ3_0KDLJZqdz4zDzgYXB-67te_DGN00tNi7xpuU9kqeGCjCIgmUITOz4G0TL1odPS_U_F0PKTIuT2zgSHh7nWE1sEMgnOSxw&quot;);
+                                    "
+                                ></div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative w-full h-100 border border-studio-border bg-white overflow-hidden flex flex-col"
+                        >
+                            <div
+                                class="p-6 border-b border-studio-border flex justify-between items-start bg-white z-10"
+                            >
+                                <div>
+                                    <h3
+                                        class="font-headline-lg text-headline-lg-mobile"
+                                    >
+                                        Brand Identity
+                                    </h3>
+                                    <span
+                                        class="font-label-sm text-label-sm text-studio-accent uppercase mt-2 block"
+                                        >Visual System</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="grow relative bg-[#F9F9F9] p-8 flex items-center justify-center"
+                            >
+                                <div
+                                    class="w-full h-full border border-dashed border-studio-border flex items-center justify-center bg-white group-hover:border-studio-accent transition-colors duration-300"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-6xl text-studio-border group-hover:text-studio-accent transition-colors"
+                                        >grid_view</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Chromatic Transition Bridge -->
+        <section
+            class="h-64 w-full"
+            style="
+                background: linear-gradient(
+                    to bottom,
+                    #f4f3ef,
+                    #28252b,
+                    #0b0909
+                );
+                position: relative;
+            "
+        >
+            <!-- Illuminating Thread -->
+            <div
+                class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-linear-to-b from-transparent via-[#A88A5A] to-transparent opacity-50"
+            ></div>
+        </section>
+        <!-- Universe 3: Engineering Vault -->
+        <section
+            class="min-h-screen w-full bg-vault-bg text-vault-text flex flex-col relative px-margin-mobile md:px-margin-desktop py-24 border-t border-vault-gold/20"
+            id="vault"
+        >
+            <div
+                class="max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 z-10 relative"
+            >
+                <!-- Decorative classical elements -->
+                <div
+                    class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5"
+                    style="
+                        background-image: repeating-linear-gradient(
+                            45deg,
+                            transparent,
+                            transparent 10px,
+                            #b08d57 10px,
+                            #b08d57 11px
+                        );
+                    "
+                ></div>
+                <!-- Vault Header -->
+                <div
+                    class="lg:col-span-12 mb-16 text-center border-b border-vault-gold/30 pb-12"
+                >
+                    <span
+                        class="material-symbols-outlined text-vault-gold text-5xl mb-6 block"
+                        >account_balance</span
+                    >
+                    <h2
+                        class="font-display-lg text-display-lg-mobile md:text-display-lg text-vault-gold tracking-tight uppercase"
+                        style="
+                            font-family: &quot;JetBrains Mono&quot;, monospace;
+                        "
+                    >
+                        The_Vault.
+                    </h2>
+                    <p
+                        class="font-code-md text-code-md text-[#C9BFAE] max-w-2xl mx-auto mt-6"
+                    >
+                        Archived architectural artifacts and core systems.
+                        Precision engineering rendered in Gothic Tech.
+                    </p>
+                </div>
+                <!-- Repositories (Manuscripts) -->
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <h3
+                        class="font-label-sm text-label-sm uppercase text-vault-gold mb-4 border-b border-vault-gold/20 pb-2"
+                    >
+                        Active Constructs
+                    </h3>
+                    <!-- Repo Card 1 -->
+                    <div
+                        class="bg-[#141311] border border-[#332D27] p-6 hover:border-vault-gold/50 transition-colors group"
+                    >
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="material-symbols-outlined text-vault-gold text-xl"
+                                    >folder_data</span
+                                >
+                                <h4
+                                    class="font-code-md text-code-md font-bold text-vault-gold group-hover:text-vault-text transition-colors"
+                                >
+                                    core-engine-v4
+                                </h4>
+                            </div>
+                            <span
+                                class="font-label-sm text-label-sm text-vault-burgundy border border-vault-burgundy/50 px-2 py-1 rounded-sm"
+                                >Private</span
+                            >
+                        </div>
+                        <p
+                            class="font-code-md text-code-md text-[#C9BFAE] mb-6 leading-relaxed"
+                        >
+                            Distributed state management and synchronization
+                            service. Handles high-throughput transaction
+                            processing with eventual consistency guarantees.
+                        </p>
+                        <div class="flex gap-6 items-center">
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-3 h-3 rounded-full bg-vault-golang"
+                                ></div>
+                                <span
+                                    class="font-label-sm text-label-sm text-[#C9BFAE]"
+                                    >Golang</span
+                                >
+                            </div>
+                            <div
+                                class="flex items-center gap-2 font-label-sm text-label-sm text-[#C9BFAE]"
+                            >
+                                <span class="material-symbols-outlined text-sm"
+                                    >star</span
+                                >
+                                128
+                            </div>
+                            <div
+                                class="flex items-center gap-2 font-label-sm text-label-sm text-[#C9BFAE]"
+                            >
+                                <span class="material-symbols-outlined text-sm"
+                                    >fork_right</span
+                                >
+                                32
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repo Card 2 -->
+                    <div
+                        class="bg-[#141311] border border-[#332D27] p-6 hover:border-vault-gold/50 transition-colors group"
+                    >
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="material-symbols-outlined text-vault-gold text-xl"
+                                    >account_tree</span
+                                >
+                                <h4
+                                    class="font-code-md text-code-md font-bold text-vault-gold group-hover:text-vault-text transition-colors"
+                                >
+                                    neural-router
+                                </h4>
+                            </div>
+                            <span
+                                class="font-label-sm text-label-sm text-vault-gold border border-vault-gold/50 px-2 py-1 rounded-sm"
+                                >Public</span
+                            >
+                        </div>
+                        <p
+                            class="font-code-md text-code-md text-[#C9BFAE] mb-6 leading-relaxed"
+                        >
+                            Predictive traffic routing algorithm leveraging
+                            basic ML models to optimize packet flow across
+                            distributed nodes.
+                        </p>
+                        <div class="flex gap-6 items-center">
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-3 h-3 rounded-full bg-vault-python"
+                                ></div>
+                                <span
+                                    class="font-label-sm text-label-sm text-[#C9BFAE]"
+                                    >Python</span
+                                >
+                            </div>
+                            <div
+                                class="flex items-center gap-2 font-label-sm text-label-sm text-[#C9BFAE]"
+                            >
+                                <span class="material-symbols-outlined text-sm"
+                                    >star</span
+                                >
+                                256
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gists / Fragments (Sidebar) -->
+                <div class="lg:col-span-4 flex flex-col gap-8">
+                    <h3
+                        class="font-label-sm text-label-sm uppercase text-vault-gold mb-4 border-b border-vault-gold/20 pb-2"
+                    >
+                        Fragments
+                    </h3>
+                    <div
+                        class="bg-[#15110F] border border-[#A69A87]/30 vault-inner-shadow p-6"
+                    >
+                        <ul class="flex flex-col">
+                            <!-- Gist Item 1 -->
+                            <li
+                                class="py-4 border-b border-[#29231D] last:border-b-0 hover:bg-[#1A1512] transition-colors group cursor-pointer px-2 -mx-2"
+                            >
+                                <div class="flex items-center gap-3 mb-1">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-[#C9BFAE] group-hover:text-vault-gold"
+                                        >description</span
+                                    >
+                                    <h5
+                                        class="font-code-md text-code-md text-[#C9BFAE] group-hover:text-vault-gold transition-colors"
+                                    >
+                                        deploy_script.sh
+                                    </h5>
+                                </div>
+                                <p
+                                    class="font-label-sm text-label-sm text-[#8B4513] pl-7"
+                                >
+                                    Automations • Updated 2 days ago
+                                </p>
+                            </li>
+                            <!-- Gist Item 2 -->
+                            <li
+                                class="py-4 border-b border-[#29231D] last:border-b-0 hover:bg-[#1A1512] transition-colors group cursor-pointer px-2 -mx-2"
+                            >
+                                <div class="flex items-center gap-3 mb-1">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-[#C9BFAE] group-hover:text-vault-gold"
+                                        >description</span
+                                    >
+                                    <h5
+                                        class="font-code-md text-code-md text-[#C9BFAE] group-hover:text-vault-gold transition-colors"
+                                    >
+                                        db_migration_v2.sql
+                                    </h5>
+                                </div>
+                                <p
+                                    class="font-label-sm text-label-sm text-[#C9BFAE]/50 pl-7"
+                                >
+                                    Data • Updated 1 week ago
+                                </p>
+                            </li>
+                            <!-- Gist Item 3 -->
+                            <li
+                                class="py-4 border-b border-[#29231D] last:border-b-0 hover:bg-[#1A1512] transition-colors group cursor-pointer px-2 -mx-2"
+                            >
+                                <div class="flex items-center gap-3 mb-1">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-[#C9BFAE] group-hover:text-vault-gold"
+                                        >description</span
+                                    >
+                                    <h5
+                                        class="font-code-md text-code-md text-[#C9BFAE] group-hover:text-vault-gold transition-colors"
+                                    >
+                                        config_parser.go
+                                    </h5>
+                                </div>
+                                <p
+                                    class="font-label-sm text-label-sm text-vault-golang pl-7"
+                                >
+                                    Golang • Updated 1 month ago
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Artifact Action -->
+                    <button
+                        class="w-full bg-transparent border border-vault-gold text-vault-gold font-code-md text-code-md py-4 hover:bg-vault-gold hover:text-vault-bg transition-colors flex items-center justify-center gap-2"
+                    >
+                        <span class="material-symbols-outlined text-lg"
+                            >download</span
+                        >
+                        <span>Download Archives Key</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Footer from JSON -->
+        <footer
+            class="bg-surface-container-lowest text-on-surface-variant flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-12 gap-gutter border-t border-outline-variant/10 z-20 relative"
+        >
+            <div
+                class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-4 md:mb-0"
+            >
+                © 2024 Technocratic Gothic Archive. Built for the New
+                Renaissance.
+            </div>
+            <div class="flex gap-8">
+                <!-- Footer Links -->
+                <a
+                    class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline decoration-primary/30 hover:translate-y-0.5 transition-transform block"
+                    href="#identity"
+                    >Identity</a
+                >
+                <a
+                    class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline decoration-primary/30 hover:translate-y-0.5 transition-transform block"
+                    href="#studio"
+                    >Studio</a
+                >
+                <a
+                    class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline decoration-primary/30 hover:translate-y-0.5 transition-transform block"
+                    href="#vault"
+                    >Engineering</a
+                >
+                <a
+                    class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline decoration-primary/30 hover:translate-y-0.5 transition-transform block"
+                    href="#"
+                    >Legal</a
+                >
+            </div>
+        </footer>
+        <script>
+            // Simple Scroll Spy for SideNav and overall body styling based on active section
+            document.addEventListener("DOMContentLoaded", () => {
+                const sections = document.querySelectorAll("section");
+                const navLinks = document.querySelectorAll(".nav-link");
+                const body = document.body;
+
+                const observerOptions = {
+                    root: null,
+                    rootMargin: "-50% 0px", // Trigger when section is halfway up the viewport
+                    threshold: 0,
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const activeId = entry.target.id;
+
+                            // Update body class for specific scrollbar styles if needed
+                            if (activeId === "vault") {
+                                body.classList.add("vault-active");
+                            } else {
+                                body.classList.remove("vault-active");
+                            }
+
+                            // Update Nav Links
+                            navLinks.forEach((link) => {
+                                const sectionTarget =
+                                    link.getAttribute("data-section");
+                                const spanIcon = link.querySelector(
+                                    ".material-symbols-outlined",
+                                );
+
+                                // Reset classes
+                                link.className =
+                                    "nav-link text-on-surface-variant/50 pr-4 transition-all duration-500 flex items-center justify-end w-full group relative hover:scale-110";
+                                spanIcon.style = "";
+                                spanIcon.removeAttribute("data-weight");
+
+                                if (sectionTarget === activeId) {
+                                    // Active State Styling based on Universe
+                                    if (activeId === "identity") {
+                                        link.classList.add(
+                                            "text-identity-glow",
+                                            "border-r-2",
+                                            "border-identity-glow",
+                                            "scale-110",
+                                        );
+                                        link.classList.remove(
+                                            "text-on-surface-variant/50",
+                                            "hover:scale-110",
+                                        );
+                                    } else if (activeId === "studio") {
+                                        link.classList.add(
+                                            "text-studio-accent",
+                                            "border-r-2",
+                                            "border-studio-accent",
+                                            "scale-110",
+                                        );
+                                        link.classList.remove(
+                                            "text-on-surface-variant/50",
+                                            "hover:scale-110",
+                                        );
+                                    } else if (activeId === "vault") {
+                                        link.classList.add(
+                                            "text-vault-gold",
+                                            "border-r-2",
+                                            "border-vault-gold",
+                                            "scale-110",
+                                        );
+                                        link.classList.remove(
+                                            "text-on-surface-variant/50",
+                                            "hover:scale-110",
+                                        );
+                                    }
+
+                                    spanIcon.setAttribute(
+                                        "data-weight",
+                                        "fill",
+                                    );
+                                    spanIcon.style =
+                                        "font-variation-settings: 'FILL' 1;";
+                                } else {
+                                    // Hover states for inactive
+                                    if (sectionTarget === "identity")
+                                        link.classList.add(
+                                            "hover:text-identity-glow",
+                                        );
+                                    if (sectionTarget === "studio")
+                                        link.classList.add(
+                                            "hover:text-studio-accent",
+                                        );
+                                    if (sectionTarget === "vault")
+                                        link.classList.add(
+                                            "hover:text-vault-gold",
+                                        );
+                                }
+                            });
+                        }
+                    });
+                }, observerOptions);
+
+                sections.forEach((section) => {
+                    if (section.id) observer.observe(section);
+                });
+            });
+        </script>
+    </body>
+</html>

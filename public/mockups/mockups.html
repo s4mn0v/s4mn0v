@@ -1,0 +1,371 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+            name="viewport"
+        />
+        <title>Monochrome Portfolio Gallery - Mobile</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Geist:wght@400&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "on-primary-container": "#636565",
+                            "inverse-on-surface": "#313032",
+                            "secondary-fixed-dim": "#c6c6cf",
+                            "on-tertiary-fixed": "#1b1b21",
+                            secondary: "#c6c6cf",
+                            "on-surface-variant": "#c4c7c8",
+                            "primary-fixed": "#e2e2e2",
+                            "secondary-container": "#45464e",
+                            "on-tertiary-container": "#64646b",
+                            "on-surface": "#e5e1e4",
+                            "primary-fixed-dim": "#c6c6c7",
+                            "error-container": "#93000a",
+                            primary: "#ffffff",
+                            "tertiary-fixed-dim": "#c7c5ce",
+                            surface: "#131315",
+                            "surface-container-low": "#1c1b1d",
+                            "on-background": "#e5e1e4",
+                            background: "#131315",
+                            "inverse-surface": "#e5e1e4",
+                            "on-secondary-fixed-variant": "#45464e",
+                            "tertiary-container": "#e3e1ea",
+                            "secondary-fixed": "#e2e1eb",
+                            "surface-variant": "#353437",
+                            "on-secondary-fixed": "#1a1b22",
+                            tertiary: "#ffffff",
+                            "on-secondary": "#2f3037",
+                            "primary-container": "#e2e2e2",
+                            outline: "#8e9192",
+                            "on-error": "#690005",
+                            "surface-tint": "#c6c6c7",
+                            "on-tertiary-fixed-variant": "#46464d",
+                            "surface-dim": "#131315",
+                            "surface-container": "#201f22",
+                            "surface-bright": "#39393b",
+                            "surface-container-high": "#2a2a2c",
+                            "inverse-primary": "#5d5f5f",
+                            "on-secondary-container": "#b4b4bd",
+                            "tertiary-fixed": "#e3e1ea",
+                            "on-primary-fixed": "#1a1c1c",
+                            "surface-container-lowest": "#0e0e10",
+                            "outline-variant": "#444748",
+                            "on-primary-fixed-variant": "#454747",
+                            "on-primary": "#2f3131",
+                            "on-error-container": "#ffdad6",
+                            "on-tertiary": "#303037",
+                            error: "#ffb4ab",
+                            "surface-container-highest": "#353437",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            gutter: "1px",
+                            unit: "4px",
+                            "margin-lg": "32px",
+                            "margin-sm": "8px",
+                            "margin-md": "16px",
+                            "container-padding": "24px",
+                        },
+                        fontFamily: {
+                            "mono-data": ["JetBrains Mono"],
+                            "label-caps": ["JetBrains Mono"],
+                            "headline-sm": ["JetBrains Mono"],
+                            "body-md": ["Geist"],
+                            "headline-md": ["JetBrains Mono"],
+                            "body-sm": ["Geist"],
+                            "headline-lg": ["JetBrains Mono"],
+                        },
+                        fontSize: {
+                            "mono-data": [
+                                "11px",
+                                {
+                                    lineHeight: "1.4",
+                                    letterSpacing: "0",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "label-caps": [
+                                "10px",
+                                {
+                                    lineHeight: "1",
+                                    letterSpacing: "0.1em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "headline-sm": [
+                                "18px",
+                                {
+                                    lineHeight: "1.4",
+                                    letterSpacing: "0",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "body-md": [
+                                "14px",
+                                {
+                                    lineHeight: "1.6",
+                                    letterSpacing: "0",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                {
+                                    lineHeight: "1.2",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "body-sm": [
+                                "12px",
+                                {
+                                    lineHeight: "1.5",
+                                    letterSpacing: "0",
+                                    fontWeight: "400",
+                                },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "1.2",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                background-color: #09090b;
+                color: #e5e1e4;
+                overscroll-behavior-y: none;
+            }
+            .snap-y-container {
+                scroll-snap-type: y mandatory;
+                overflow-y: scroll;
+                height: 100vh;
+            }
+            .snap-section {
+                scroll-snap-align: start;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            /* Mobile Device Mockup Outline */
+            .device-mockup {
+                width: 85%;
+                max-width: 320px;
+                aspect-ratio: 9 / 19.5;
+                border: 1px solid #27272a;
+                border-radius: 2rem; /* Softened for mobile frame aesthetic, distinct from global strict corners */
+                overflow: hidden;
+                background-color: #18181b;
+                position: relative;
+            }
+            .device-notch {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40%;
+                height: 20px;
+                background-color: #27272a;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                z-index: 10;
+            }
+            .content-frame {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            /* Hide scrollbar for clean aesthetic */
+            ::-webkit-scrollbar {
+                display: none;
+            }
+
+            .chip {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 4px 8px;
+                border: 1px solid #27272a;
+                background: #18181b;
+            }
+        </style>
+    </head>
+    <body class="antialiased">
+        <div class="snap-y-container">
+            <!-- Screen 6 Project -->
+            <section
+                class="snap-section w-full px-container-padding py-margin-lg bg-background border-b border-outline-variant"
+            >
+                <div class="w-full flex flex-col items-center gap-margin-md">
+                    <div class="w-full text-center mb-margin-sm">
+                        <h2
+                            class="font-headline-sm text-headline-sm text-primary mb-unit uppercase tracking-tight"
+                        >
+                            System_Dash
+                        </h2>
+                        <p
+                            class="font-mono-data text-mono-data text-on-surface-variant"
+                        >
+                            OP-ID: 8092-A
+                        </p>
+                    </div>
+                    <div class="device-mockup shadow-lg">
+                        <div class="device-notch"></div>
+                        <iframe
+                            class="content-frame"
+                            src="{{DATA:SCREEN:SCREEN_6}}"
+                            title="Screen 6 Implementation"
+                        ></iframe>
+                    </div>
+                    <div
+                        class="w-full max-w-[320px] flex flex-wrap gap-unit justify-center mt-margin-md"
+                    >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[REACT]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[D3.JS]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[WS_REALTIME]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[2023_Q4]</span
+                        >
+                    </div>
+                </div>
+            </section>
+            <!-- Screen 13 Project -->
+            <section
+                class="snap-section w-full px-container-padding py-margin-lg bg-background border-b border-outline-variant"
+            >
+                <div class="w-full flex flex-col items-center gap-margin-md">
+                    <div class="w-full text-center mb-margin-sm">
+                        <h2
+                            class="font-headline-sm text-headline-sm text-primary mb-unit uppercase tracking-tight"
+                        >
+                            Data_Grid_View
+                        </h2>
+                        <p
+                            class="font-mono-data text-mono-data text-on-surface-variant"
+                        >
+                            OP-ID: 7120-B
+                        </p>
+                    </div>
+                    <div class="device-mockup shadow-lg">
+                        <div class="device-notch"></div>
+                        <iframe
+                            class="content-frame"
+                            src="{{DATA:SCREEN:SCREEN_13}}"
+                            title="Screen 13 Implementation"
+                        ></iframe>
+                    </div>
+                    <div
+                        class="w-full max-w-[320px] flex flex-wrap gap-unit justify-center mt-margin-md"
+                    >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[VUE]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[AG-GRID]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[EXPORT_MODULE]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[2024_Q1]</span
+                        >
+                    </div>
+                </div>
+            </section>
+            <!-- Screen 16 Project -->
+            <section
+                class="snap-section w-full px-container-padding py-margin-lg bg-background"
+            >
+                <div class="w-full flex flex-col items-center gap-margin-md">
+                    <div class="w-full text-center mb-margin-sm">
+                        <h2
+                            class="font-headline-sm text-headline-sm text-primary mb-unit uppercase tracking-tight"
+                        >
+                            Auth_Gateway
+                        </h2>
+                        <p
+                            class="font-mono-data text-mono-data text-on-surface-variant"
+                        >
+                            OP-ID: 9910-X
+                        </p>
+                    </div>
+                    <div class="device-mockup shadow-lg">
+                        <div class="device-notch"></div>
+                        <iframe
+                            class="content-frame"
+                            src="{{DATA:SCREEN:SCREEN_16}}"
+                            title="Screen 16 Implementation"
+                        ></iframe>
+                    </div>
+                    <div
+                        class="w-full max-w-[320px] flex flex-wrap gap-unit justify-center mt-margin-md"
+                    >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[NEXT.JS]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[OAUTH2]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[MFA_FLOW]</span
+                        >
+                        <span
+                            class="chip font-label-caps text-label-caps text-on-surface"
+                            >[2024_Q2]</span
+                        >
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

@@ -11,6 +11,9 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
       icons: [
+        "material-symbols:arrow-downward-rounded",
+        "material-symbols:arrow-upward-rounded",
+        "material-symbols:fingerprint",
         "material-symbols:arrow-forward-rounded",
         "material-symbols:code-rounded",
         "material-symbols:description-outline-rounded",

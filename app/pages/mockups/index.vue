@@ -38,8 +38,10 @@
                     <div
                         class="max-w-container-max w-full h-full max-h-217.5 flex flex-col gap-gutter relative z-10"
                     >
-                        <div
-                            class="grow bg-glass-fill backdrop-blur-md rounded-xl border border-white/10 overflow-hidden relative shadow-[0_0_80px_rgba(255,255,255,0.05)] flex flex-col"
+                        <NuxtLink
+                            :to="`/mockups/archive/${entry.slug}`"
+                            :aria-label="`Ver ${entry.title} en vivo`"
+                            class="group grow bg-glass-fill backdrop-blur-md rounded-xl border border-white/10 overflow-hidden relative shadow-[0_0_80px_rgba(255,255,255,0.05)] flex flex-col cursor-pointer"
                         >
                             <div
                                 class="h-10 bg-surface-lowest border-b border-white/10 flex items-center px-4 gap-2 shrink-0"
@@ -60,21 +62,42 @@
                                 >
                                     {{ entry.title }}
                                 </div>
-                                <NuxtLink
-                                    :to="`/mockups/archive/${entry.slug}`"
-                                    class="font-label-xs text-label-xs text-vault-gold hover:text-primary transition-colors uppercase shrink-0"
+                            </div>
+                            <div class="grow overflow-hidden relative">
+                                <iframe
+                                    :src="mockupSrc(entry.path)"
+                                    class="absolute inset-0 w-full h-full pointer-events-none"
+                                    loading="lazy"
+                                    tabindex="-1"
+                                    aria-hidden="true"
+                                ></iframe>
+                                <div
+                                    class="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-300 flex items-center justify-center"
                                 >
-                                    Live
-                                </NuxtLink>
+                                    <div
+                                        class="flex items-center gap-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-primary font-label-sm text-label-sm uppercase tracking-widest border border-white/30 px-6 py-3 rounded-full bg-black/40 backdrop-blur-sm"
+                                    >
+                                        <UIcon
+                                            name="i-material-symbols-open-in-new-rounded"
+                                        />
+                                        View Live
+                                    </div>
+                                </div>
+                                <div
+                                    class="mockup-touch-hint hidden absolute inset-0 pointer-events-none items-center justify-center"
+                                >
+                                    <div class="absolute inset-0 bg-black/60"></div>
+                                    <div
+                                        class="relative flex items-center gap-2 text-primary font-label-sm text-label-sm uppercase tracking-widest border border-white/30 px-6 py-3 rounded-full bg-black/40 backdrop-blur-sm"
+                                    >
+                                        <UIcon
+                                            name="i-material-symbols-open-in-new-rounded"
+                                        />
+                                        View Live
+                                    </div>
+                                </div>
                             </div>
-                            <div class="grow overflow-hidden">
-                                <img
-                                    :src="mockupSrc(entry.screenshot)"
-                                    :alt="entry.title"
-                                    class="w-full h-full object-cover object-top"
-                                />
-                            </div>
-                        </div>
+                        </NuxtLink>
                         <div
                             class="shrink-0 flex flex-col md:flex-row justify-between items-start md:items-end border-t border-white/10 pt-4 gap-4 pb-4"
                         >
@@ -141,22 +164,51 @@
                         <div
                             class="grow flex justify-center items-center relative overflow-hidden"
                         >
-                            <div
-                                class="w-75 md:w-90 h-150 md:h-180 bg-surface-lowest rounded-[2.5rem] border-8 border-[#1A1A1A] p-2 relative shadow-[0_0_100px_rgba(255,255,255,0.03)] overflow-hidden shrink-0"
+                            <NuxtLink
+                                :to="`/mockups/archive/${entry.slug}`"
+                                :aria-label="`Ver ${entry.title} en vivo`"
+                                class="group block w-75 md:w-90 h-150 md:h-180 bg-surface-lowest rounded-[2.5rem] border-8 border-[#1A1A1A] p-2 relative shadow-[0_0_100px_rgba(255,255,255,0.03)] overflow-hidden shrink-0 cursor-pointer"
                             >
                                 <div
                                     class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#1A1A1A] rounded-b-xl z-20"
                                 ></div>
                                 <div
-                                    class="w-full h-full bg-background rounded-4xl overflow-hidden"
+                                    class="w-full h-full bg-background rounded-4xl overflow-hidden relative"
                                 >
-                                    <img
-                                        :src="mockupSrc(entry.screenshot)"
-                                        :alt="entry.title"
-                                        class="w-full h-full object-cover"
-                                    />
+                                    <iframe
+                                        :src="mockupSrc(entry.path)"
+                                        class="absolute inset-0 w-full h-full pointer-events-none"
+                                        loading="lazy"
+                                        tabindex="-1"
+                                        aria-hidden="true"
+                                    ></iframe>
+                                    <div
+                                        class="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-300 flex items-center justify-center"
+                                    >
+                                        <div
+                                            class="flex items-center gap-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-primary font-label-xs text-label-xs uppercase tracking-widest border border-white/30 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm"
+                                        >
+                                            <UIcon
+                                                name="i-material-symbols-open-in-new-rounded"
+                                            />
+                                            View Live
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="mockup-touch-hint hidden absolute inset-0 pointer-events-none items-center justify-center"
+                                    >
+                                        <div class="absolute inset-0 bg-black/60"></div>
+                                        <div
+                                            class="relative flex items-center gap-2 text-primary font-label-xs text-label-xs uppercase tracking-widest border border-white/30 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm"
+                                        >
+                                            <UIcon
+                                                name="i-material-symbols-open-in-new-rounded"
+                                            />
+                                            View Live
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </NuxtLink>
                         </div>
                         <div
                             class="w-full md:w-1/3 flex flex-col justify-end border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-8 gap-6 pb-4 shrink-0"
@@ -201,12 +253,6 @@
                                     >{{ entry.year }}</span
                                 >
                             </div>
-                            <NuxtLink
-                                :to="`/mockups/archive/${entry.slug}`"
-                                class="font-label-xs text-label-xs text-vault-gold hover:text-primary transition-colors uppercase w-fit"
-                            >
-                                View Live
-                            </NuxtLink>
                         </div>
                     </div>
                 </section>
@@ -247,5 +293,20 @@ onMounted(() => {
 .mockups-scroll {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+@media (hover: none) and (pointer: coarse) {
+    .mockup-touch-hint {
+        display: flex;
+        animation: mockup-touch-hint-pulse 2.4s ease-in-out infinite;
+    }
+}
+@keyframes mockup-touch-hint-pulse {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 </style>
